@@ -1,12 +1,17 @@
 import './App.css';
-import Navbar from './components/Navbar';
-import React from "react"; 
+import React from 'react';
+import Homepage from './components/homepage/homepage';
+import Login from './components/login/login';
+import Register from './components/register/register';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <>
-    <Navbar/>
-    </>
+    <div className="App">
+      {/* <Homepage /> */}
+      <Login />
+      {/* <Register /> */}
+    </div>
   );
 }
 
