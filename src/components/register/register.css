@@ -1,5 +1,6 @@
 .register {
     width: 400px;
+    height: 500px;
     background: #fff;
     border: 1px solid #dddfe2;
     box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
@@ -7,7 +8,7 @@
     padding: 1rem;
     align-items: center;
     text-align: center;
-    margin-top: 200px;
+    margin-top: 120px;
     margin-bottom: 0px;
 }
 
@@ -32,7 +33,5 @@
     border-radius: 8px;
     outline: none;
     cursor: pointer;
-    width: 50%;
-    align-items: center;
-    text-align: center;
 }
+
