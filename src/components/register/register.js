@@ -31,7 +31,7 @@ const Register = () => {
                // nav.push("/login")
             })
         } else {
-            alert("invlid input")
+            alert("invalid input")
         }
         
     }
