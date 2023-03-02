@@ -1,4 +1,3 @@
-
 import './App.css';
 import React from 'react';
 import Homepage from './components/homepage/homepage';
@@ -9,11 +8,16 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 function App() {
   return (
     <div className="App">
-      {/* <Homepage /> */}
-      <Login />
-      {/* <Register /> */}
+      <Router>
+        <Routes>
+          <Route path="/" element={<Login/>}/>
+          <Route path="/register" element={<Register/>}/>
+          <Route path="/homepage" element={<Homepage/>}/>
+        </Routes>
+      </Router>
     </div>
   );
 }
 
 export default App;
+
