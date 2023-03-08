@@ -1,11 +1,11 @@
 import React, { useState } from "react"
 import "./register.css"
 import axios from "axios"
-//import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 const Register = () => {
 
-    //const nav = useNavigate()
+    const nav = useNavigate()
 
     const [ user, setUser] = useState({
         name: "",
@@ -28,7 +28,7 @@ const Register = () => {
             axios.post("http://localhost:9002/register", user)
             .then( res => {
                 alert(res.data.message)
-               // nav.push("/login")
+               nav.push("/login")
             })
         } else {
             alert("invalid input")
@@ -46,7 +46,9 @@ const Register = () => {
             <input type="password" name="reEnterPassword" value={user.reEnterPassword} placeholder="Re-enter Password" onChange={ handleChange }></input>
             <div className="button" onClick={register} >Register</div>
             <div>or</div>
-            <div className="button" >Login</div>
+            <div className="login_link">
+                <a href="/login">Login</a>
+            </div>
         </div>
     )
 }

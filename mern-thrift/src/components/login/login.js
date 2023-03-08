@@ -1,11 +1,11 @@
 import React, {useState} from "react"
 import "./login.css"
 import axios from "axios"
-//import { useNavigate } from "react-router-dom"
+import { useNavigate } from 'react-router-dom';
 
 const Login = ({ setLoginUser}) => {
 
-    //const nav = useNavigate()
+    const nav = useNavigate()
 
     const [ user, setUser] = useState({
         email:"",
@@ -24,8 +24,8 @@ const Login = ({ setLoginUser}) => {
         axios.post("http://localhost:9002/login", user)
         .then(res => {
             alert(res.data.message)
-            //setLoginUser(res.data.user)
-            //nav.push("/")
+            setLoginUser(res.data.user)
+            nav.push("/")
         })
     }
 
@@ -36,7 +36,10 @@ const Login = ({ setLoginUser}) => {
             <input type="password" name="password" value={user.password} onChange={handleChange}  placeholder="Enter your Password" ></input>
             <div className="button" onClick={login}>Login</div>
             <div>or</div>
-            <div className="button">Register</div>
+            <div className="reg_link">
+                <a href="/register">Register</a>
+            </div>
+
         </div>
     )
 }

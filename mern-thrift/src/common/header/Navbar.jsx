@@ -47,7 +47,7 @@ const Navbar = ({ CartItem }) => {
           <div class='search'>
             <div className='icon f_flex width'>
               <div className='icons'>
-                <Link to='/userprofile'>
+                <Link to='/login'>
                   <i className='fa fa-user icon-circle'></i>
                 </Link>
                 <Link to='/cart'>

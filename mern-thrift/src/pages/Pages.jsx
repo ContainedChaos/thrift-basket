@@ -15,8 +15,8 @@ const Pages = ({productItems, CartItem, addToCart, shopItems}) => {
     <FlashDeals productItems={productItems} addToCart={addToCart}/>
     <TopCate />
     <NewArrivals />
-    <Discount />
-    <Shop shopItems={shopItems} addToCart={addToCart} />
+    {/* <Discount /> */}
+    {/* <Shop shopItems={shopItems} addToCart={addToCart} /> */}
     <Annocument />
     <Wrapper />
     </>
