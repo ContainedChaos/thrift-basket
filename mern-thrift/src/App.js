@@ -3,6 +3,7 @@
 import Homepage from './components/homepage/homepage';
 import Login from './components/login/login';
 import Register from './components/register/register';
+import DataProvider from './context/DataProvider';
 // import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // function App() {
@@ -24,7 +25,7 @@ import Register from './components/register/register';
 
 import React, { useState } from "react"
 import "./App.css"
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route, Outlet, Navigate } from "react-router-dom"
 import Header from "./common/header/Header"
 import Pages from "./pages/Pages"
 import Data from "./components/Data"
@@ -91,20 +92,33 @@ function App() {
   }
 
   const [ user, setLoginUser] = useState({})
+  const [isAuthenticated, isUserAuthenticated] = useState(false);
+  const PrivateRoute = ( {isAuthenticated, ...props}) => {
+
+    return isAuthenticated ?
+    <>
+      <Outlet />
+    </>
+    : <Navigate replace to = '/' />
+  }
 
   return (
     <>
+    <DataProvider>
       <Router>
       <Header CartItem={CartItem}/>
         <Routes>
           <Route path='/' element={<Pages productItems={productItems} addToCart={addToCart} shopItems={shopItems}/>}/>
-          <Route path="/login" element={<Login setLoginUser={setLoginUser} />}/>
+          <Route path="/login" element={<Login isUserAuthenticated={isUserAuthenticated}/>}/>
           <Route path="/register" element={<Register/>}/>
-          <Route path="/homepage" element={<Homepage/>}/>
+          {/* <Route path='/' element={<PrivateRoute isAuthenticated={isAuthenticated} />} > */}
+            <Route path="/homepage" element={<Homepage isUserAuthenticated={isUserAuthenticated}/>}/>
+          {/* </Route> */}
           <Route path='/cart' element={<Cart CartItem={CartItem} addToCart={addToCart} decreaseQty={decreaseQty} />}/>
         </Routes>
       <Footer />
       </Router>
+    </DataProvider>
     </>
   )
 }
