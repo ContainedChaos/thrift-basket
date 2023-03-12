@@ -50,3 +50,12 @@
     cursor: pointer;
 }
 
+.login .forgot_pass {
+    font-size: 1rem;
+    padding: 0.5rem;
+    margin: 0.5rem ;
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+}
+

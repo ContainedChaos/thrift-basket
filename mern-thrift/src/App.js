@@ -4,6 +4,8 @@ import Homepage from './components/homepage/homepage';
 import Login from './components/login/login';
 import Register from './components/register/register';
 import DataProvider from './context/DataProvider';
+import ForgotPassword from './components/ForgotPassword/ForgotPassword';
+import PasswordReset from './components/PasswordReset/PasswordReset';
 
 
 
@@ -97,6 +99,8 @@ function App() {
           <Route path="/login" element={<Login isUserAuthenticated={isUserAuthenticated}/>}/>
           <Route path="/register" element={<Register/>}/>
           <Route path="/verify" element={<Verify/>}/>
+          <Route path="/forgotpassword" element={<ForgotPassword/>}/>
+          <Route path="/passwordreset" element={<PasswordReset/>}/>
           {/* <Route path='/' element={<PrivateRoute isAuthenticated={isAuthenticated} />} > */}
             <Route path="/homepage" element={<Homepage isUserAuthenticated={isUserAuthenticated}/>}/>
           {/* </Route> */}

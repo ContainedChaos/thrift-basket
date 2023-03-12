@@ -31,7 +31,9 @@ const Login = ({ isUserAuthenticated }) => {
             isUserAuthenticated(true);
             alert(res.data.message)
             //setLoginUser(res.data.user)
-            nav("/homepage", {state:{id:user.email}})
+            if (res.data.message === "Login Successful") {
+                nav("/homepage", {state:{id:user.email}})
+            }
         })
     }
 
@@ -44,6 +46,9 @@ const Login = ({ isUserAuthenticated }) => {
             <div>or</div>
             <div className="reg_link">
                 <a href="/register">Register</a>
+            </div>
+            <div className="forgot_pass">
+                <a href="/forgotpassword">Forgot Password?</a>
             </div>
 
         </div>
