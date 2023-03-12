@@ -59,7 +59,6 @@ const Register = () => {
 
     return (
         <div className="register">
-            {console.log("User", user)}
             <h1>Register</h1>
             <input type="text" name="name" value={user.name} placeholder="Your Name" onChange={ handleChange }></input>
             {errors.name && <p style={{color: "red", fontSize: "13px"}}>{errors.name}</p>}
