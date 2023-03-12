@@ -4,23 +4,7 @@ import Homepage from './components/homepage/homepage';
 import Login from './components/login/login';
 import Register from './components/register/register';
 import DataProvider from './context/DataProvider';
-// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-// function App() {
-//   return (
-//     <div className="App">
-//       <Router>
-//         <Routes>
-//           <Route path="/" element={<Login/>}/>
-//           <Route path="/register" element={<Register/>}/>
-//           <Route path="/homepage" element={<Homepage/>}/>
-//         </Routes>
-//       </Router>
-//     </div>
-//   );
-// }
-
-// export default App;
 
 
 import React, { useState } from "react"
@@ -32,6 +16,7 @@ import Data from "./components/Data"
 import Cart from "./common/Cart/Cart"
 import Footer from "./common/footer/Footer"
 import Sdata from "./components/shops/Sdata"
+import Verify from './components/verify/verify';
 
 function App() {
   /*
@@ -111,6 +96,7 @@ function App() {
           <Route path='/' element={<Pages productItems={productItems} addToCart={addToCart} shopItems={shopItems}/>}/>
           <Route path="/login" element={<Login isUserAuthenticated={isUserAuthenticated}/>}/>
           <Route path="/register" element={<Register/>}/>
+          <Route path="/verify" element={<Verify/>}/>
           {/* <Route path='/' element={<PrivateRoute isAuthenticated={isAuthenticated} />} > */}
             <Route path="/homepage" element={<Homepage isUserAuthenticated={isUserAuthenticated}/>}/>
           {/* </Route> */}

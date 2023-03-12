@@ -28,11 +28,11 @@ const Register = () => {
             axios.post("http://localhost:9002/register", user)
             .then( res => {
                 alert(res.data.message)
-               nav("/login")
+               nav("/verify")
             })
         } else {
             alert("invalid input")
-        }
+        } 
         
     }
 
