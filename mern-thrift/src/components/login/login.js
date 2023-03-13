@@ -27,7 +27,7 @@ const Login = ({ isUserAuthenticated }) => {
         .then(res => {
             sessionStorage.setItem('accessToken', `Bearer ${res.data.accessToken}`);
             sessionStorage.setItem('refreshToken', `Bearer ${res.data.refreshToken}`);
-            setAccount({ email: res.data.email});
+            setAccount({ email: res.data.user});
             isUserAuthenticated(true);
             alert(res.data.message)
             //setLoginUser(res.data.user)
@@ -86,11 +86,12 @@ const Login = ({ isUserAuthenticated }) => {
 //     }
 
     return (
+        
         <div className="login">
             <h1>Login</h1>
             <input type="text" name="email" value={user.email} onChange={handleChange} placeholder="Enter your Email"></input>
             <input type="password" name="password" value={user.password} onChange={handleChange}  placeholder="Enter your Password" ></input>
-            <div className="button" onClick={Login}>Login</div>
+            <div className="button" onClick={login}>Login</div>
             <div>or</div>
             <div className="reg_link">
                 <a href="/register">Register</a>

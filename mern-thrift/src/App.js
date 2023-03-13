@@ -6,6 +6,7 @@ import Register from './components/register/register';
 import DataProvider from './context/DataProvider';
 import ForgotPassword from './components/ForgotPassword/ForgotPassword';
 import PasswordReset from './components/PasswordReset/PasswordReset';
+import UserProfile from './components/UserProfile/UserProfile';
 
 
 
@@ -101,6 +102,7 @@ function App() {
           <Route path="/verify" element={<Verify/>}/>
           <Route path="/forgotpassword" element={<ForgotPassword/>}/>
           <Route path="/passwordreset" element={<PasswordReset/>}/>
+          <Route path="/userprofile/:token" element={<UserProfile/>}/>
           {/* <Route path='/' element={<PrivateRoute isAuthenticated={isAuthenticated} />} > */}
             <Route path="/homepage" element={<Homepage isUserAuthenticated={isUserAuthenticated}/>}/>
           {/* </Route> */}

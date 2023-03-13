@@ -14,7 +14,7 @@ const Register = () => {
         name: "",
         email:"",
         phone:"",
-        // role:"",
+        role:"",
         password:"",
         reEnterPassword: ""
     })
@@ -33,14 +33,14 @@ const Register = () => {
     }
 
     useEffect(() => {
-        if (Object.keys(errors).length === 0 && user.name && user.phone && user.email && user.password && user.reEnterPassword) {
+        if (Object.keys(errors).length === 0 && user.name && user.phone && user.email && user.role && user.password && user.reEnterPassword) {
             register();
         }        
     }, [errors])
 
     const register = () => {
-        const { name, email, phone, password, reEnterPassword } = user
-        if( name && email && password && phone && (password === reEnterPassword)){
+        const { name, email, phone, role, password, reEnterPassword } = user
+        if( name && email && password && phone && role && (password === reEnterPassword)){
             axios.post("http://localhost:9002/register", user)
             .then( res => {
                 alert(res.data.message)
@@ -70,10 +70,10 @@ const Register = () => {
             {errors.password && <p style={{color: "red", fontSize: "13px"}}>{errors.password}</p>}
             <input type="password" name="reEnterPassword" value={user.reEnterPassword} placeholder="Re-enter Password" onChange={ handleChange }></input>
             {errors.reEnterPassword && <p style={{color: "red", fontSize: "13px"}}>{errors.reEnterPassword}</p>} 
-            {/* <div className="user_roles">
+            <div className="user_roles">
                 <input type="radio" value="buyer" name="role" onChange={ handleChange }/> I want to buy thrifted items!
                 <input type="radio" value="seller" name="role" onChange={ handleChange }/> I want to sell thrifted items!
-            </div> */}
+            </div>
             <div className="button" onClick={handleSubmit} >Register</div>
             <div>or</div>
             <div className="login_link">
