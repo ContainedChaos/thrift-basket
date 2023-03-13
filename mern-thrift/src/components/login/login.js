@@ -1,12 +1,13 @@
-import React, {useState} from "react"
+import React, {useState, useContext} from "react"
 import "./login.css"
 import axios from "axios"
-import { Link } from "react-router-dom"
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from 'react-router-dom';
+import { DataContext } from "../../context/DataProvider";
 
-const Login = ({ setLoginUser}) => {
+const Login = ({ isUserAuthenticated }) => {
 
-    //const nav = useNavigate()
+    const nav = useNavigate();
+    const { setAccount } = useContext(DataContext);
 
     const [ user, setUser] = useState({
         email:"",
@@ -24,9 +25,15 @@ const Login = ({ setLoginUser}) => {
     const login = () => {
         axios.post("http://localhost:9002/login", user)
         .then(res => {
+            sessionStorage.setItem('accessToken', `Bearer ${res.data.accessToken}`);
+            sessionStorage.setItem('refreshToken', `Bearer ${res.data.refreshToken}`);
+            setAccount({ email: res.data.email});
+            isUserAuthenticated(true);
             alert(res.data.message)
             //setLoginUser(res.data.user)
-            //nav.push("/")
+            if (res.data.message === "Login Successful") {
+                nav("/homepage", {state:{id:user.email}})
+            }
         })
     }
 
@@ -85,12 +92,13 @@ const Login = ({ setLoginUser}) => {
             <input type="password" name="password" value={user.password} onChange={handleChange}  placeholder="Enter your Password" ></input>
             <div className="button" onClick={Login}>Login</div>
             <div>or</div>
-            <div className="button">Register</div>
-            <p className="forgot-password text-right">
-                <Link to={"/reset"}>Forgot password? </Link>
-            </p>
-            {/* <Link style={{ textAlign: 'center', display: 'block', marginTop: '5px' }}
-                to={'/ForgotPass'}> Forget Password </Link> */}
+            <div className="reg_link">
+                <a href="/register">Register</a>
+            </div>
+            <div className="forgot_pass">
+                <a href="/forgotpassword">Forgot Password?</a>
+            </div>
+
         </div>
     )
 }
