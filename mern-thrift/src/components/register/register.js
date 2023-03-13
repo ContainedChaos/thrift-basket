@@ -1,7 +1,8 @@
 import React, { useState } from "react"
+import { Link } from "react-router-dom"
 import "./register.css"
 import axios from "axios"
-//import { useNavigate } from "react-router-dom"
+//import { Link, useNavigate } from "react-router-dom"
 
 const Register = () => {
 
@@ -44,9 +45,11 @@ const Register = () => {
             <input type="text" name="email" value={user.email} placeholder="Your Email" onChange={ handleChange }></input>
             <input type="password" name="password" value={user.password} placeholder="Your Password" onChange={ handleChange }></input>
             <input type="password" name="reEnterPassword" value={user.reEnterPassword} placeholder="Re-enter Password" onChange={ handleChange }></input>
-            <div className="button" onClick={register} >Register</div>
+            <div className="button" onClick={register}  >Register</div>
             <div>or</div>
+        
             <div className="button" >Login</div>
+            <Link to = {'/'}> Sign In </Link>
         </div>
     )
 }
