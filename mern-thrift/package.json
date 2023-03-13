@@ -21,14 +21,10 @@
     "react-router": "^6.8.2",
     "react-router-dom": "^6.8.2",
     "react-scripts": "5.0.1",
-<<<<<<< HEAD
-    "styles": "^0.2.1",
-=======
     "react-slick": "^0.29.0",
     "react-toastify": "^9.1.1",
     "slick-carousel": "^1.8.1",
     "styled-components": "^5.3.8",
->>>>>>> 6a6b3e7d06190d91d4dda63843c711be5dbdae6b
     "web-vitals": "^2.1.4"
   },
   "scripts": {
