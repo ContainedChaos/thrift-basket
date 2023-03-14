@@ -7,13 +7,14 @@ const ProductDetails = ({productItems, addToCart}) => {
   let myProductId = Number(productId);
   const product = productItems.find((product) => product.id === myProductId);
   const {id, discount, cover, name, price} = product;
+  console.log(cover);
 
   return (
     <>
     <div className="overall-container">
       <div className="product-details-container">
         <div className="product-image-grid">
-          <img id="product-image" src={`http://localhost:3001/images/flash/flash-${productId}.png`} alt='image not found' />
+          <img id="product-image" src={cover} alt='image not found' />
         </div>
         <div className="product-details-grid">
           <h2>{name}</h2>

@@ -4,12 +4,12 @@ import Head from "./Head"
 import Search from "./Search"
 import Navbar from "./Navbar"
 
-const Header = ({ CartItem }) => {
+const Header = ({ CartItem , isAuthenticated}) => {
   return (
     <>
       {/* <Head /> */}
       {/* <Search CartItem={CartItem} /> */}
-      <Navbar CartItem={CartItem}/>
+      <Navbar CartItem={CartItem} isAuthenticated = {isAuthenticated}/>
     </>
   )
 }

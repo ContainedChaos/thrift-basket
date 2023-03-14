@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 
-const Navbar = ({ CartItem }) => {
+const Navbar = ({ CartItem, isAuthenticated }) => {
   // fixed Header
   // window.addEventListener("scroll", function () {
   //   const search = document.querySelector(".search")
@@ -19,12 +19,14 @@ const Navbar = ({ CartItem }) => {
             </h4>
           </div>
 
+        {/* {isAuthenticated ? (
           <div className="search">
             <div className='search-box f_flex'>
               <i className='fa fa-search'></i>
               <input type='text' placeholder='Search and hit enter...' />
             </div>
-          </div>
+          </div> 
+        ) : <></>} */}
 
           <div className='navlink'>
             <ul className="link f_flex capitalize">
@@ -33,13 +35,13 @@ const Navbar = ({ CartItem }) => {
                 <Link to='/'>home</Link>
               </li>
               <li>
-                <Link to='/userprofile'>my profile</Link>
+                <Link to='/'>my profile</Link>
               </li>
               <li>
-                <Link to='/track'>track my order</Link>
+                <Link to='/'>track my order</Link>
               </li>
               <li>
-                <Link to='/contact'>contact</Link>
+                <Link to='/'>contact</Link>
               </li>
             </ul>
           </div>
@@ -47,12 +49,18 @@ const Navbar = ({ CartItem }) => {
           <div class='search'>
             <div className='icon f_flex width'>
               <div className='icons'>
+              {isAuthenticated ? (
+                <Link to='/'>
+                  <i className='fa fa-user icon-circle'></i>
+                </Link>
+                ) : (
                 <Link to='/login'>
                   <i className='fa fa-user icon-circle'></i>
                 </Link>
+                )}
                 <Link to='/cart'>
                   <i className='fa fa-shopping-bag icon-circle'></i>
-                  <span>{CartItem.length === 0 ? "" : CartItem.length}</span>
+                  <span>{CartItem.length === 0 ? "0" : CartItem.length}</span>
                 </Link>
               </div>
             </div>

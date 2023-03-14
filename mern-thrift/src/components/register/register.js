@@ -3,8 +3,9 @@ import "./register.css"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import Validation from "./validation"
+import Navbar from "../../common/header/Navbar"
 
-const Register = () => {
+const Register = ({CartItem}) => {
 
     const nav = useNavigate()
 
@@ -58,6 +59,8 @@ const Register = () => {
     }
 
     return (
+        <>
+        <Navbar CartItem={CartItem}/>
         <div className="register">
             <h1>Register</h1>
             <input type="text" name="name" value={user.name} placeholder="Your Name" onChange={ handleChange }></input>
@@ -80,6 +83,7 @@ const Register = () => {
                 <a href="/login">Login</a>
             </div>
         </div>
+        </>
     )
 }
 

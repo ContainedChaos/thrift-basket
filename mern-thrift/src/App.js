@@ -7,6 +7,8 @@ import DataProvider from './context/DataProvider';
 import ForgotPassword from './components/ForgotPassword/ForgotPassword';
 import PasswordReset from './components/PasswordReset/PasswordReset';
 import UserProfile from './components/UserProfile/UserProfile';
+import ProductDetails from './components/ProductDetails/ProductDetails';
+import Navbar from './common/header/Navbar';
 
 
 
@@ -51,7 +53,7 @@ function App() {
     // ani increase  exits product QTY by 1
     // if item and product doesnt match then will add new items
     if (productExit) {
-      setCartItem(CartItem.map((item) => (item.id === product.id ? { ...productExit, qty: productExit.qty + 1 } : item)))
+      setCartItem(CartItem.map((item) => (item.id === product.id ? { ...productExit, qty: 1 } : item)))
     } else {
       // but if the product doesnt exit in the cart that mean if card is empty
       // then new product is added in cart  and its qty is initalize to 1
@@ -80,7 +82,7 @@ function App() {
   }
 
   const [ user, setLoginUser] = useState({})
-  const [isAuthenticated, isUserAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const PrivateRoute = ( {isAuthenticated, ...props}) => {
 
     return isAuthenticated ?
@@ -94,17 +96,18 @@ function App() {
     <>
     <DataProvider>
       <Router>
-      <Header CartItem={CartItem}/>
+      {/* <Header CartItem={CartItem} isAuthenticated={isAuthenticated}/> */}
         <Routes>
-          <Route path='/' element={<Pages productItems={productItems} addToCart={addToCart} shopItems={shopItems}/>}/>
-          <Route path="/login" element={<Login isUserAuthenticated={isUserAuthenticated}/>}/>
-          <Route path="/register" element={<Register/>}/>
+          <Route path='/' element={<Pages productItems={productItems} addToCart={addToCart} shopItems={shopItems} CartItem={CartItem}/>}/>
+          <Route path="/login" element={<Login isAuthenticated={isAuthenticated}setIsAuthenticated={setIsAuthenticated} CartItem={CartItem}/>}/>
+          <Route path="/register" element={<Register CartItem={CartItem}/>}/>
           <Route path="/verify" element={<Verify/>}/>
           <Route path="/forgotpassword" element={<ForgotPassword/>}/>
           <Route path="/passwordreset" element={<PasswordReset/>}/>
-          <Route path="/userprofile/:token" element={<UserProfile/>}/>
+          <Route path="/userprofile" element={<UserProfile/>}/>
+          <Route path='/productdetails/:productId' element={<ProductDetails productItems={productItems} addToCart={addToCart} />}/>
           {/* <Route path='/' element={<PrivateRoute isAuthenticated={isAuthenticated} />} > */}
-            <Route path="/homepage" element={<Homepage isUserAuthenticated={isUserAuthenticated}/>}/>
+            <Route path="/homepage" element={<Homepage setIsAuthenticated={setIsAuthenticated} CartItem={CartItem} isAuthenticated={isAuthenticated}/>}/>
           {/* </Route> */}
           <Route path='/cart' element={<Cart CartItem={CartItem} addToCart={addToCart} decreaseQty={decreaseQty} />}/>
         </Routes>

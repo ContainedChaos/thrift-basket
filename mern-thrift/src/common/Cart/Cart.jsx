@@ -1,5 +1,6 @@
 import React from "react"
 import "./style.css"
+import Navbar from "../header/Navbar"
 
 const Cart = ({ CartItem, addToCart, decreaseQty }) => {
   // Stpe: 7   calucate total of items
@@ -8,6 +9,7 @@ const Cart = ({ CartItem, addToCart, decreaseQty }) => {
   // prodcut qty total
   return (
     <>
+    <Navbar CartItem={CartItem}/>
       <section className='cart-items'>
         <div className='container d_flex'>
           {/* if hamro cart ma kunai pani item xaina bhane no diplay */}
@@ -33,21 +35,13 @@ const Cart = ({ CartItem, addToCart, decreaseQty }) => {
                   </div>
                   <div className='cart-items-function'>
                     <div className='removeCart'>
-                      <button className='removeCart'>
+                      <button className='removeCart' onClick={() => decreaseQty(item)}>
                         <i className='fa-solid fa-xmark'></i>
                       </button>
                     </div>
                     {/* stpe: 5 
                     product ko qty lai inc ra des garne
                     */}
-                    <div className='cartControl d_flex'>
-                      <button className='incCart' onClick={() => addToCart(item)}>
-                        <i className='fa-solid fa-plus'></i>
-                      </button>
-                      <button className='desCart' onClick={() => decreaseQty(item)}>
-                        <i className='fa-solid fa-minus'></i>
-                      </button>
-                    </div>
                   </div>
 
                   <div className='cart-item-price'></div>
@@ -62,6 +56,9 @@ const Cart = ({ CartItem, addToCart, decreaseQty }) => {
               <h4>Total Price :</h4>
               <h3>${totalPrice}.00</h3>
             </div>
+            <button>
+              Proceed to checkout
+            </button>
           </div>
         </div>
       </section>
