@@ -7,18 +7,18 @@ const Homepage = ({CartItem, isAuthenticated, setIsAuthenticated}) => {
     
     const logout = () => {
         setIsAuthenticated(false);
-        localStorage.clear();
+        window.localStorage.clear();
     }
 
     return (
         <>
         <Navbar CartItem={CartItem} isAuthenticated={isAuthenticated}/>
         <div className="homepage">
-            <h1>Hello</h1>
+            <h1>Welcome</h1>
             <div className="button" onClick={logout} >
                 <a href = "/"> Logout </a>
             </div>
-            <a href = "/userprofile">Profile</a>
+            {/* <a href = "/userprofile">Profile</a> */}
         </div>
         </>
     )

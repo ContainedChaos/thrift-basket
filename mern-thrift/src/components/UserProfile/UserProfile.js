@@ -75,6 +75,9 @@
 
 
 import React, { Component } from "react";
+import Navbar from "../../common/header/Navbar"; 
+import "./UserProfile.css";
+import logout from "../../components/homepage/homepage"
 
 export default class UserProfile extends Component{
 constructor(props){
@@ -83,6 +86,7 @@ constructor(props){
         userData: "",
     };
 }
+
 componentDidMount(){
     fetch("http://localhost:9002/userprofile",{
             method: "POST",
@@ -114,16 +118,21 @@ componentDidMount(){
 // }
     render(){
         return(
-            <div>
-                <b>Name:</b> {this.state.userData.name}
-                <br/>
-                <b>Email:</b> {this.state.userData.email}<br/>
-                <b>Phone:</b> {this.state.userData.phone}<br/>
-                <b>Role:</b> {this.state.userData.role}<br/>
+            <>
+            <Navbar CartItem={this.props.CartItem} isAuthenticated={this.props.isAuthenticated}/>
+            <div className="user-profile">
+                <h2>My Profile</h2>
+                <label className="attribute">Name:</label> <label className="info">{this.state.userData.name}</label><br/>
+                <label className="attribute">Email:</label> <label className="info">{this.state.userData.email}</label><br/>
+                <label className="attribute">Phone:</label> <label className="info">{this.state.userData.phone}</label><br/>
+                <label className="attribute">Role:</label> <label className="info">{this.state.userData.role}</label><br/>
                 {/* <button onClick={this.logOut}>Log Out</button> */}
 
             </div>
-
+            {/* <div className="profile-button" onClick={logout} >
+                <a href = "/"> Logout </a>
+            </div> */}
+            </>
         );
     }
 }

@@ -6,8 +6,9 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Validation from './validation';
 import './PasswordReset.css'
 import axios from 'axios';
+import Navbar from '../../common/header/Navbar';
 
-const PasswordReset = () => {
+const PasswordReset = ({CartItem}) => {
 
     const [errors, setError] = useState({})
 
@@ -56,7 +57,8 @@ const PasswordReset = () => {
 
     
     return (
-
+        <>
+        <Navbar CartItem={CartItem}/>
         <div className="passreset">
             <h1>Enter Your New Password</h1>
             {/* {message ? <p style={{ color: "green", fontWeight: "bold" }}>Password reset link sent successfully to your email</p> : ""} */}
@@ -68,6 +70,7 @@ const PasswordReset = () => {
             {errors.reEnterPassword && <p style={{color: "red", fontSize: "13px"}}>{errors.reEnterPassword}</p>} 
             <button className='btn' onClick={handleSubmit}>Send</button>
         </div>
+        </>
     )
 }
 

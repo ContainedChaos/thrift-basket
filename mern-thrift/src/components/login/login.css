@@ -26,9 +26,22 @@
 }
 
 .login > .button {
-    background: rgb(182, 114, 93);
+    background: rgb(131, 73, 55);
     border: 1px solid rgb(182, 114, 93);
-    color: black;
+    color: rgb(255, 255, 255);
+    font-size: 1.25rem;
+    padding: 0.5rem;
+    margin: 0.5rem ;
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+    margin-top: 50px;
+}
+
+.login > .button:hover {
+    background: rgb(168, 103, 84);
+    border: 2px solid rgb(86, 36, 21);
+    color: rgb(255, 255, 255);
     font-size: 1.25rem;
     padding: 0.5rem;
     margin: 0.5rem ;
@@ -39,7 +52,7 @@
 }
 
 .login .reg_link {
-    background: rgb(182, 114, 93);
+    background: rgb(131, 73, 55);
     border: 1px solid rgb(182, 114, 93);
     color: #fff;
     font-size: 1.25rem;
@@ -48,6 +61,22 @@
     border-radius: 8px;
     outline: none;
     cursor: pointer;
+}
+
+.login .reg_link:hover {
+    background: rgb(168, 103, 84);
+    border: 2px solid rgb(86, 36, 21);
+    color: #fff;
+    font-size: 1.25rem;
+    padding: 0.5rem;
+    margin: 0.5rem ;
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+}
+
+.reg_link a {
+    color: white;
 }
 
 .login .forgot_pass {

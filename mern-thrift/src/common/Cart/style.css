@@ -109,3 +109,12 @@
   width: 111%;
   border-radius: 10px;
 }
+ .cart-total button a {
+  text-decoration: none;
+  color:white;
+ }
+ .cart-total button a:hover {
+  text-decoration: none;
+  color: white;
+ }
+

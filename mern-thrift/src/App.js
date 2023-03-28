@@ -44,21 +44,17 @@ function App() {
 
   //Step 4 :
   const addToCart = (product) => {
-    // if hamro product alredy cart xa bhane  find garna help garxa
     const productExit = CartItem.find((item) => item.id === product.id)
-    // if productExit chai alredy exit in cart then will run fun() => setCartItem
-    // ani inside => setCartItem will run => map() ani yo map() chai each cart ma
-    // gayara check garxa if item.id ra product.id chai match bhayo bhane
-    // productExit product chai display garxa
-    // ani increase  exits product QTY by 1
-    // if item and product doesnt match then will add new items
     if (productExit) {
-      setCartItem(CartItem.map((item) => (item.id === product.id ? { ...productExit, qty: 1 } : item)))
+      setCartItem(CartItem.map((item) => (item.id === product.id ? { ...productExit, qty: productExit.qty + 1 } : item)))
     } else {
-      // but if the product doesnt exit in the cart that mean if card is empty
-      // then new product is added in cart  and its qty is initalize to 1
       setCartItem([...CartItem, { ...product, qty: 1 }])
     }
+  }
+
+  const removeFromCart = (product) => {
+    const productExit = CartItem.find((item) => item.id === product.id)
+    setCartItem(CartItem.filter((item) => item.id !== product.id))
   }
 
   // Stpe: 6
@@ -101,15 +97,15 @@ function App() {
           <Route path='/' element={<Pages productItems={productItems} addToCart={addToCart} shopItems={shopItems} CartItem={CartItem}/>}/>
           <Route path="/login" element={<Login isAuthenticated={isAuthenticated}setIsAuthenticated={setIsAuthenticated} CartItem={CartItem}/>}/>
           <Route path="/register" element={<Register CartItem={CartItem}/>}/>
-          <Route path="/verify" element={<Verify/>}/>
-          <Route path="/forgotpassword" element={<ForgotPassword/>}/>
-          <Route path="/passwordreset" element={<PasswordReset/>}/>
-          <Route path="/userprofile" element={<UserProfile/>}/>
-          <Route path='/productdetails/:productId' element={<ProductDetails productItems={productItems} addToCart={addToCart} />}/>
+          <Route path="/verify" element={<Verify CartItem={CartItem}/>}/>
+          <Route path="/forgotpassword" element={<ForgotPassword CartItem={CartItem}/>}/>
+          <Route path="/passwordreset" element={<PasswordReset CartItem={CartItem}/>}/>
+          <Route path="/userprofile" element={<UserProfile CartItem={CartItem} isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated}/>}/>
+          <Route path='/productdetails/:productId' element={<ProductDetails productItems={productItems} addToCart={addToCart} CartItem={CartItem} />}/>
           {/* <Route path='/' element={<PrivateRoute isAuthenticated={isAuthenticated} />} > */}
             <Route path="/homepage" element={<Homepage setIsAuthenticated={setIsAuthenticated} CartItem={CartItem} isAuthenticated={isAuthenticated}/>}/>
           {/* </Route> */}
-          <Route path='/cart' element={<Cart CartItem={CartItem} addToCart={addToCart} decreaseQty={decreaseQty} />}/>
+          <Route path='/cart' element={<Cart CartItem={CartItem} addToCart={addToCart} decreaseQty={decreaseQty} removeFromCart={removeFromCart}/>}/>
         </Routes>
       <Footer />
       </Router>
