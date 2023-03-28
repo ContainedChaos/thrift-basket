@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { DataContext } from "../../context/DataProvider";
 import Navbar from "../../common/header/Navbar";
 
-const Login = ({ CartItem, isAuthenticated, setIsAuthenticated}) => {
+const Login = ({ CartItem, setIsAuthenticated}) => {
 
     const nav = useNavigate();
 
@@ -29,6 +29,16 @@ const Login = ({ CartItem, isAuthenticated, setIsAuthenticated}) => {
             // sessionStorage.setItem('refreshToken', `Bearer ${res.data.refreshToken}`);
             // window.localStorage.setItem("accessToken", `Bearer ${res.data.accessToken}`);
             window.localStorage.setItem("accessToken", res.data.accessToken);
+            if (res.data.role === "buyer")
+            {
+                window.localStorage.setItem("isBuyer", true);
+            }
+
+            else
+            {
+                window.localStorage.setItem("isBuyer", false);
+            }
+            
             setIsAuthenticated(true);
             window.localStorage.setItem("isAuthenticated", true)
             alert(res.data.message)
@@ -41,7 +51,7 @@ const Login = ({ CartItem, isAuthenticated, setIsAuthenticated}) => {
 
     return (
         <>
-        <Navbar CartItem={CartItem} isAuthenticated={isAuthenticated}/>
+        <Navbar CartItem={CartItem}/>
         <div className="login">
             <h1>Login</h1>
             <input type="text" name="email" value={user.email} onChange={handleChange} placeholder="Enter your Email"></input>
