@@ -22,6 +22,8 @@ const Login = ({ CartItem, isAuthenticated, setIsAuthenticated}) => {
         })
     }
 
+    
+
     const login = () => {
         axios.post("http://localhost:9002/login", user)
         .then(res => {

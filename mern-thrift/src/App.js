@@ -22,6 +22,7 @@ import Cart from "./common/Cart/Cart"
 import Footer from "./common/footer/Footer"
 import Sdata from "./components/shops/Sdata"
 import Verify from './components/verify/verify';
+import sellerHomepage from './components/homepage/sellerHomepage';
 
 function App() {
   /*
@@ -104,6 +105,7 @@ function App() {
           <Route path='/productdetails/:productId' element={<ProductDetails productItems={productItems} addToCart={addToCart} CartItem={CartItem} />}/>
           {/* <Route path='/' element={<PrivateRoute isAuthenticated={isAuthenticated} />} > */}
             <Route path="/homepage" element={<Homepage setIsAuthenticated={setIsAuthenticated} CartItem={CartItem} isAuthenticated={isAuthenticated}/>}/>
+            <Route path="/sellerhomepage" element={<sellerHomepage setIsAuthenticated={setIsAuthenticated} CartItem={CartItem} isAuthenticated={isAuthenticated}/>}/>
           {/* </Route> */}
           <Route path='/cart' element={<Cart CartItem={CartItem} addToCart={addToCart} decreaseQty={decreaseQty} removeFromCart={removeFromCart}/>}/>
         </Routes>
