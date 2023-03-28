@@ -74,8 +74,8 @@ const Register = ({CartItem}) => {
             <input type="password" name="reEnterPassword" value={user.reEnterPassword} placeholder="Re-enter Password" onChange={ handleChange }></input>
             {errors.reEnterPassword && <p style={{color: "red", fontSize: "13px"}}>{errors.reEnterPassword}</p>} 
             <div className="user_roles">
-                <input type="radio" value="buyer" name="role" onChange={ handleChange }/> I want to buy thrifted items!
-                <input type="radio" value="seller" name="role" onChange={ handleChange }/> I want to sell thrifted items!
+                <p><input type="radio" value="buyer" name="role" onChange={ handleChange }/> I want to buy thrifted items!</p>
+                <p><input type="radio" value="seller" name="role" onChange={ handleChange }/> I want to sell thrifted items!</p>
             </div>
             <div className="button" onClick={handleSubmit} >Register</div>
             <div>or</div>

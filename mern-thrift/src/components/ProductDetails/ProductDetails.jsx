@@ -1,16 +1,18 @@
 import React from "react"
 import {useParams} from 'react-router-dom';
 // import productItems from '../Data';
+import Navbar from "../../common/header/Navbar";
 
-const ProductDetails = ({productItems, addToCart}) => {
+const ProductDetails = ({productItems, addToCart, CartItem}) => {
   const {productId} = useParams();
   let myProductId = Number(productId);
   const product = productItems.find((product) => product.id === myProductId);
-  const {id, discount, cover, name, price} = product;
+  const {id, discount, cover, name, price, description} = product;
   console.log(cover);
 
   return (
     <>
+    <Navbar CartItem={CartItem}/>
     <div className="overall-container">
       <div className="product-details-container">
         <div className="product-image-grid">
@@ -26,10 +28,7 @@ const ProductDetails = ({productItems, addToCart}) => {
                     <i className='fa fa-star'></i>
                   </div>
             <p>
-            It was a simple green chair. There was nothing extraordinary about it or so it seemed. 
-            It was the type of chair one would pass without even noticing it was there, let alone what 
-            the actual color of it was. It was due to this common and unassuming appearance that few people 
-            actually stopped to sit in it and discover its magical powers.
+            {description}
             </p>
           <div className="product-price">
           <h4>BDT {price}.00</h4>

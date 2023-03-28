@@ -5,13 +5,13 @@ const Wrapper = () => {
   const data = [
     {
       cover: <i class='fa-solid fa-truck-fast'></i>,
-      title: "Worldwide Delivery",
-      decs: "We offer competitive prices on our 100 million plus product any range.",
+      title: "Eco-friendly",
+      decs: "Helps us reduce waste and save the environment.",
     },
     {
       cover: <i class='fa-solid fa-id-card'></i>,
       title: "Safe Payment",
-      decs: "We offer competitive prices on our 100 million plus product any range.",
+      decs: "Using trusted and secure payment platforms is crucial to protect personal and financial information when making online purchases.",
     },
     {
       cover: <i class='fa-solid fa-shield'></i>,
@@ -20,8 +20,8 @@ const Wrapper = () => {
     },
     {
       cover: <i class='fa-solid fa-headset'></i>,
-      title: "24/7 Support ",
-      decs: "We offer competitive prices on our 100 million plus product any range.",
+      title: "Affordable choices",
+      decs: "Prices so cheap, there's something for everyone.",
     },
   ]
   return (

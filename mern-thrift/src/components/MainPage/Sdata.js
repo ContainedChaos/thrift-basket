@@ -15,7 +15,7 @@ const Sdata = [
     id: 3,
     title: "Stay Warm And Stay Fashionable",
     desc: "Chic coats, jackets and winter wear to get you through winter, available at the best prices.",
-    cover: "./images/SlideCard/slide-3.jpg",
+    cover: "./images/SlideCard/slide-5.webp",
   },
   {
     id: 4,

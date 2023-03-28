@@ -49,8 +49,8 @@ const Navbar = ({ CartItem, isAuthenticated }) => {
           <div class='search'>
             <div className='icon f_flex width'>
               <div className='icons'>
-              {isAuthenticated ? (
-                <Link to='/'>
+              {window.localStorage.getItem("isAuthenticated") ? (
+                <Link to='/userprofile'>
                   <i className='fa fa-user icon-circle'></i>
                 </Link>
                 ) : (

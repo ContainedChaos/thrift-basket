@@ -3,31 +3,31 @@ import React from "react"
 const Categories = () => {
   const data = [
     {
-      cateImg: "./images/category/cat1.png",
+      cateImg: "./images/category/dress.png",
       cateName: "Dresses",
     },
     {
-      cateImg: "./images/category/cat2.png",
+      cateImg: "./images/category/shirt.png",
       cateName: "Shirts",
     },
     {
-      cateImg: "./images/category/cat3.png",
+      cateImg: "./images/category/jeans.png",
       cateName: "Pants",
     },
     {
-      cateImg: "./images/category/cat4.png",
+      cateImg: "./images/category/skirt.png",
       cateName: "Skirts",
     },
     {
-      cateImg: "./images/category/cat5.png",
+      cateImg: "./images/category/blouse.png",
       cateName: "Tops",
     },
     {
-      cateImg: "./images/category/cat6.png",
+      cateImg: "./images/category/sneakers.png",
       cateName: "Shoes",
     },
     {
-      cateImg: "./images/category/cat7.png",
+      cateImg: "./images/category/handbag.png",
       cateName: "Bags",
     },
   ]

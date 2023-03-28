@@ -30,10 +30,11 @@ const Login = ({ CartItem, isAuthenticated, setIsAuthenticated}) => {
             // window.localStorage.setItem("accessToken", `Bearer ${res.data.accessToken}`);
             window.localStorage.setItem("accessToken", res.data.accessToken);
             setIsAuthenticated(true);
+            window.localStorage.setItem("isAuthenticated", true)
             alert(res.data.message)
             if (res.data.message === "Login Successful") {
-                // nav("/homepage")
                 nav("/homepage")
+                // nav("/userprofile")
             }
         })
     }
