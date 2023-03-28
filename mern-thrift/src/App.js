@@ -96,15 +96,15 @@ function App() {
       {/* <Header CartItem={CartItem} isAuthenticated={isAuthenticated}/> */}
         <Routes>
           <Route path='/' element={<Pages productItems={productItems} addToCart={addToCart} shopItems={shopItems} CartItem={CartItem}/>}/>
-          <Route path="/login" element={<Login isAuthenticated={isAuthenticated}setIsAuthenticated={setIsAuthenticated} CartItem={CartItem}/>}/>
+          <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} CartItem={CartItem}/>}/>
           <Route path="/register" element={<Register CartItem={CartItem}/>}/>
           <Route path="/verify" element={<Verify CartItem={CartItem}/>}/>
           <Route path="/forgotpassword" element={<ForgotPassword CartItem={CartItem}/>}/>
           <Route path="/passwordreset" element={<PasswordReset CartItem={CartItem}/>}/>
-          <Route path="/userprofile" element={<UserProfile CartItem={CartItem} isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated}/>}/>
+          <Route path="/userprofile" element={<UserProfile CartItem={CartItem}/>}/>
           <Route path='/productdetails/:productId' element={<ProductDetails productItems={productItems} addToCart={addToCart} CartItem={CartItem} />}/>
           {/* <Route path='/' element={<PrivateRoute isAuthenticated={isAuthenticated} />} > */}
-            <Route path="/homepage" element={<Homepage setIsAuthenticated={setIsAuthenticated} CartItem={CartItem} isAuthenticated={isAuthenticated}/>}/>
+            <Route path="/homepage" element={<Homepage setIsAuthenticated={setIsAuthenticated} CartItem={CartItem}/>}/>
             <Route path="/sellerhomepage" element={<sellerHomepage setIsAuthenticated={setIsAuthenticated} CartItem={CartItem} isAuthenticated={isAuthenticated}/>}/>
           {/* </Route> */}
           <Route path='/cart' element={<Cart CartItem={CartItem} addToCart={addToCart} decreaseQty={decreaseQty} removeFromCart={removeFromCart}/>}/>
