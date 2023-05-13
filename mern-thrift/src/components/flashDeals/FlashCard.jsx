@@ -1,8 +1,9 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import Slider from "react-slick"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 import { Link } from "react-router-dom"
+import axios from "axios"
 
 const SampleNextArrow = (props) => {
   const { onClick } = props
@@ -24,7 +25,9 @@ const SamplePrevArrow = (props) => {
     </div>
   )
 }
-const FlashCard = ({ productItems, addToCart}) => {
+const FlashCard = ({ addToCart}) => {
+  const [productItems, setProductItems] = useState([]);
+  // const [imageSrc, setImageSrc] = useState('');
   const [count, setCount] = useState(0)
   const increment = () => {
     setCount(count + 1)
@@ -39,20 +42,51 @@ const FlashCard = ({ productItems, addToCart}) => {
     prevArrow: <SamplePrevArrow />,
   }
 
+  useEffect(() => {
+    axios
+      .get("http://localhost:9002/products")
+      .then((response) => {
+        console.log(response.data);
+        setProductItems(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
+  // useEffect(() => {
+  //   if (productItems.length > 0) {
+  //     const imageSrc = URL.createObjectURL(
+  //       new Blob([productItems[0].data], { type: productItems[0].contentType })
+  //     );
+  //     setImageSrc(imageSrc);
+  //   }
+  // }, [productItems]);
+
+  
+  
+
   return (
     <>
     <Slider {...settings}>
     {
-      productItems.map((productItems) => {
-
+      productItems.map((productItem) => {
+        // const imageSrc = `data:${productItem.contentType};base64,${productItem.data.toString('base64')}`;
+        // const base64String = btoa(String.fromCharCode(...new Uint8Array(productItem.data)));
+        const imageSrc = URL.createObjectURL(
+          new Blob([productItem.data], { type: productItem.contentType })
+        );
+        localStorage.setItem("url", imageSrc);
       return(
             <div className='box'>
               <div className='product mtop'>
                 <div className='img'>
-                  <span className='discount'>{productItems.discount}% Off</span>
-                  <article key={productItems.id}>
-                    <Link to={`/productdetails/${productItems.id}`}>
-                  <img id="flashcard-img" src={productItems.cover} alt='' />
+                  <span className='discount'>50% Off</span>
+                  <article key={productItem._id}>
+                    <Link to={`/productdetails/${productItem._id}`}>
+                  <img id="flashcard-img" src={imageSrc} alt='' />
+                  {/* <img id="flashcard-img" src={`data:image/png;base64,${base64String}`} alt="Uploaded" /> */}
+
                   </Link>
                   </article>
                   <div className='product-like'>
@@ -61,7 +95,11 @@ const FlashCard = ({ productItems, addToCart}) => {
                   </div>
                 </div>
                 <div className='product-details'>
-                  <h3>{productItems.name}</h3>
+                <article key={productItem._id}>
+                    <Link to={`/productdetails/${productItem._id}`}>
+                  <h3>{productItem.name}</h3>
+                  </Link>
+                  </article>
                   <div className='rate'>
                     <i className='fa fa-star'></i>
                     <i className='fa fa-star'></i>
@@ -70,8 +108,8 @@ const FlashCard = ({ productItems, addToCart}) => {
                     <i className='fa fa-star'></i>
                   </div>
                   <div className='price'>
-                    <h4>{productItems.price}.00</h4> 
-                    <button onClick={() => addToCart(productItems)}>
+                    <h4>{productItem.price}.00</h4> 
+                    <button onClick={() => addToCart(productItem)}>
                       <i className='fa fa-plus'></i>
                     </button>
                   </div>

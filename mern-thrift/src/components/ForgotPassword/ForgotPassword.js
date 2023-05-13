@@ -13,8 +13,6 @@ const ForgotPassword = ({CartItem}) => {
         email:"",
     })
 
-    const [message, setMessage] = useState("");
-
     const setVal = e => {
         const { name, value } = e.target
         setUser({
@@ -24,25 +22,6 @@ const ForgotPassword = ({CartItem}) => {
     }
 
     const sendLink = () => {
-
-        // if (email === "") {
-        //     toast.error("Email is required!", {
-        //         position: "top-center"
-        //     });
-        // } else if (!email.includes("@")) {
-        //     toast.warning("include @ in your email!", {
-        //         position: "top-center"
-        //     });
-        // } else {
-            // const res = await fetch("/sendpasswordlink", {
-            //     method: "POST",
-            //     headers: {
-            //         "Content-Type": "application/json"
-            //     },
-            //     body: JSON.stringify({ email })
-            // });
-
-
            
                 axios.post("http://localhost:9002/sendpasswordlink", user)
                 .then(res => {

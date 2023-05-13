@@ -40,13 +40,17 @@ const Login = ({ CartItem, setIsAuthenticated}) => {
             {
                 window.localStorage.setItem("isBuyer", false);
             }
-            
+
             setIsAuthenticated(true);
             window.localStorage.setItem("isAuthenticated", true)
             alert(res.data.message)
-            if (res.data.message === "Login Successful") {
+            if (res.data.message === "Login Successful" && res.data.role === "buyer") {
                 nav("/homepage")
                 // nav("/userprofile")
+            }
+            else if(res.data.message === "Login Successful" && res.data.role === "seller")
+            {
+                nav("/sellerhomepage")
             }
         })
     }

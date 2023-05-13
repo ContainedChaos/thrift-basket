@@ -15,6 +15,12 @@ const Homepage = ({CartItem, setIsAuthenticated}) => {
         <Navbar CartItem={CartItem} />
         <div className="homepage">
             <h1>Welcome</h1>
+            <div className="button" >
+                <a href = "/"> See Upcoming Drops </a>
+            </div>
+            <div className="button" >
+                <a href = "/"> See Upcoming Auctions</a>
+            </div>
             <div className="button" onClick={logout} >
                 <a href = "/"> Logout </a>
             </div>

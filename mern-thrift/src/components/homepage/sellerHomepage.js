@@ -3,7 +3,7 @@ import "./homepage.css"
 import { useLocation, useNavigate } from "react-router-dom"
 import Navbar from "../../common/header/Navbar"
 
-const sellerHomepage = ({CartItem, isAuthenticated, setIsAuthenticated}) => {
+const SellerHomepage = ({CartItem, isAuthenticated, setIsAuthenticated}) => {
     
     const logout = () => {
         setIsAuthenticated(false);
@@ -15,6 +15,12 @@ const sellerHomepage = ({CartItem, isAuthenticated, setIsAuthenticated}) => {
         <Navbar CartItem={CartItem} isAuthenticated={isAuthenticated}/>
         <div className="homepage">
             <h1>Welcome SELLER</h1>
+            <div className="button" >
+                <a href = "/uploadproducts"> Upload products </a>
+            </div>
+            <div className="button" >
+                <a href = "/announcedrop"> Add a drop announcement </a>
+            </div>
             <div className="button" onClick={logout} >
                 <a href = "/"> Logout </a>
             </div>
@@ -26,4 +32,4 @@ const sellerHomepage = ({CartItem, isAuthenticated, setIsAuthenticated}) => {
 
 {/* <div className="button" onClick={() => isUserAuthenticated(false)} >Logout</div> */}
 
-export default sellerHomepage
+export default SellerHomepage

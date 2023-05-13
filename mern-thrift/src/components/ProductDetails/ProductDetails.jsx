@@ -1,25 +1,44 @@
-import React from "react"
+import {useEffect, useState} from "react"
+import React from "react";
+import axios from "axios";
 import {useParams} from 'react-router-dom';
 // import productItems from '../Data';
 import Navbar from "../../common/header/Navbar";
 
-const ProductDetails = ({productItems, addToCart, CartItem}) => {
+const ProductDetails = ({addToCart, CartItem}) => {
   const {productId} = useParams();
+  const [productItem, setProductItem] = useState([]);
   let myProductId = Number(productId);
-  const product = productItems.find((product) => product.id === myProductId);
-  const {id, discount, cover, name, price, description} = product;
-  console.log(cover);
+  // const product = productItem.find((product) => product.id === myProductId);
+  // const {id, discount, cover, name, price, description} = product;
+  // console.log(cover);
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:9002/productdetails/${productId}`)
+      .then((response) => {
+        console.log(response.data);
+        setProductItem(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, [productId]);
+
+  const imageSrc = URL.createObjectURL(new Blob([productItem.data], { type: productItem.contentType }));
 
   return (
     <>
     <Navbar CartItem={CartItem}/>
+    
     <div className="overall-container">
       <div className="product-details-container">
         <div className="product-image-grid">
-          <img id="product-image" src={cover} alt='image not found' />
+          
+          <img id="product-image" src={imageSrc} alt='not found' />
         </div>
         <div className="product-details-grid">
-          <h2>{name}</h2>
+          <h2>{productItem.name}</h2>
                   <div className='rate'>
                     <i className='fa fa-star'></i>
                     <i className='fa fa-star'></i>
@@ -28,12 +47,12 @@ const ProductDetails = ({productItems, addToCart, CartItem}) => {
                     <i className='fa fa-star'></i>
                   </div>
             <p>
-            {description}
+            {productItem.desc}
             </p>
           <div className="product-price">
-          <h4>BDT {price}.00</h4>
+          <h4>BDT {productItem.price}.00</h4>
           </div>
-          <button onClick={() => addToCart(product)}>
+          <button onClick={() => addToCart(productItem)}>
             Add to basket
           </button>
         </div> 

@@ -9,6 +9,7 @@ import PasswordReset from './components/PasswordReset/PasswordReset';
 import UserProfile from './components/UserProfile/UserProfile';
 import ProductDetails from './components/ProductDetails/ProductDetails';
 import Navbar from './common/header/Navbar';
+import FlashCard from './components/flashDeals/FlashCard';
 
 
 
@@ -22,7 +23,8 @@ import Cart from "./common/Cart/Cart"
 import Footer from "./common/footer/Footer"
 import Sdata from "./components/shops/Sdata"
 import Verify from './components/verify/verify';
-import sellerHomepage from './components/homepage/sellerHomepage';
+import SellerHomepage from './components/homepage/sellerHomepage';
+import Uploadproducts from './components/uploadproducts/uploadproducts';
 
 function App() {
   /*
@@ -102,12 +104,14 @@ function App() {
           <Route path="/forgotpassword" element={<ForgotPassword CartItem={CartItem}/>}/>
           <Route path="/passwordreset" element={<PasswordReset CartItem={CartItem}/>}/>
           <Route path="/userprofile" element={<UserProfile CartItem={CartItem}/>}/>
+          <Route path="/uploadproducts" element={<Uploadproducts setIsAuthenticated={setIsAuthenticated} CartItem={CartItem}/>}/>
           <Route path='/productdetails/:productId' element={<ProductDetails productItems={productItems} addToCart={addToCart} CartItem={CartItem} />}/>
           {/* <Route path='/' element={<PrivateRoute isAuthenticated={isAuthenticated} />} > */}
             <Route path="/homepage" element={<Homepage setIsAuthenticated={setIsAuthenticated} CartItem={CartItem}/>}/>
-            <Route path="/sellerhomepage" element={<sellerHomepage setIsAuthenticated={setIsAuthenticated} CartItem={CartItem} isAuthenticated={isAuthenticated}/>}/>
+            <Route path="/sellerhomepage" element={<SellerHomepage setIsAuthenticated={setIsAuthenticated} CartItem={CartItem} />}/>
           {/* </Route> */}
           <Route path='/cart' element={<Cart CartItem={CartItem} addToCart={addToCart} decreaseQty={decreaseQty} removeFromCart={removeFromCart}/>}/>
+          <Route path='/products' element={<FlashCard addToCart={addToCart} />}/>
         </Routes>
       <Footer />
       </Router>
