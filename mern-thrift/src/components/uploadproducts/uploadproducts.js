@@ -47,9 +47,9 @@ const Uploadproducts = ({CartItem, isAuthenticated, setIsAuthenticated}) => {
         const res = await axios.post("http://localhost:9002/upload", formData);
         console.log(res.data);
 
-        if (res.data.message === "Uploaded successfully") {
-            nav("/")
-        }
+        // if (res.data.message === "Uploaded successfully") {
+        //     nav("/")
+        // }
     };
 
     return (
@@ -69,13 +69,14 @@ const Uploadproducts = ({CartItem, isAuthenticated, setIsAuthenticated}) => {
             <div class="form-right">
             <select name="category" value={category} onChange={handleCategoryChange}>
                 <option value="">Select a category</option>
-                <option value="Category 1">Dress</option>
-                <option value="Category 2">Shirt</option>
-                <option value="Category 3">Pant</option>
-                <option value="Category 4">Skirt</option>
-                <option value="Category 5">Top</option>
-                <option value="Category 6">Shoes</option>
-                <option value="Category 7">Bag</option>
+                <option value="Dresses">Dresses</option>
+                <option value="Shirts">Shirts</option>
+                <option value="Pants">Pants</option>
+                <option value="Skirts">Skirts</option>
+                <option value="Tops">Tops</option>
+                <option value="Shoes">Shoes</option>
+                <option value="Bags">Bags</option>
+            
             </select>
             <input type="file" id="file-input" name="img"  onChange={handleFileChange}/>
             <div className="button" onClick={handleFileUpload}>Upload</div>
