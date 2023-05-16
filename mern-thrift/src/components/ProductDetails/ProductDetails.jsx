@@ -25,7 +25,7 @@ const ProductDetails = ({addToCart, CartItem}) => {
       });
   }, [productId]);
 
-  const imageSrc = URL.createObjectURL(new Blob([productItem.data], { type: productItem.contentType }));
+  // const imageSrc = URL.createObjectURL(new Blob([productItem.data], { type: productItem.contentType }));
 
   return (
     <>
@@ -35,7 +35,7 @@ const ProductDetails = ({addToCart, CartItem}) => {
       <div className="product-details-container">
         <div className="product-image-grid">
           
-          <img id="product-image" src={imageSrc} alt='not found' />
+          <img id="product-image" src={"./images/uploads/"+productItem.fileName} alt='not found' />
         </div>
         <div className="product-details-grid">
           <h2>{productItem.name}</h2>

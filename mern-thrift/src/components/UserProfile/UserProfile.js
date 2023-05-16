@@ -68,7 +68,7 @@ logOut = () => {
                 </div>
                 ) : (
                 <div className="button" >
-                <a href = "/"> Add a drop announcement </a>
+                <a href = "/announcedrop"> Add a drop announcement </a>
                 </div>
                 )}
 

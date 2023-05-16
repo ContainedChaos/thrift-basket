@@ -12,6 +12,7 @@ import Navbar from './common/header/Navbar';
 import FlashCard from './components/flashDeals/FlashCard';
 import AnnounceDrop from './components/AnnounceDrop/AnnounceDrop';
 import SeeAnnouncements from './components/SeeAnnouncements/SeeAnnouncements';
+import CategoryPage from './components/CategoryPage/CategoryPage';
 
 
 import React, { useState } from "react"
@@ -112,6 +113,7 @@ function App() {
           {/* <Route path='/' element={<PrivateRoute isAuthenticated={isAuthenticated} />} > */}
             <Route path="/homepage" element={<Homepage setIsAuthenticated={setIsAuthenticated} CartItem={CartItem}/>}/>
             <Route path="/sellerhomepage" element={<SellerHomepage setIsAuthenticated={setIsAuthenticated} CartItem={CartItem} />}/>
+            <Route path='/category/:type' element={<CategoryPage productItems={productItems} addToCart={addToCart} CartItem={CartItem} />}/>
           {/* </Route> */}
           <Route path='/cart' element={<Cart CartItem={CartItem} addToCart={addToCart} decreaseQty={decreaseQty} removeFromCart={removeFromCart}/>}/>
           <Route path='/products' element={<FlashCard addToCart={addToCart} />}/>
