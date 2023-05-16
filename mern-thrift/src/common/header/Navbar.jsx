@@ -30,12 +30,15 @@ const Navbar = ({ CartItem, isAuthenticated }) => {
 
           <div className='navlink'>
             <ul className="link f_flex capitalize">
-              {/*<ul className='link f_flex uppercase {MobileMenu ? "nav-links-MobileMenu" : "nav-links"} onClick={() => setMobileMenu(false)}'>*/}
               <li>
                 <Link to='/'>home</Link>
               </li>
               <li>
-                <Link to='/'>my profile</Link>
+              {(window.localStorage.getItem("isAuthenticated") === "true") ? (
+                <Link to='/userprofile'>my profile</Link>
+              ) : (
+                <Link to='/login'>my profile</Link>
+              )}
               </li>
               <li>
                 <Link to='/'>track my order</Link>
@@ -49,7 +52,7 @@ const Navbar = ({ CartItem, isAuthenticated }) => {
           <div class='search'>
             <div className='icon f_flex width'>
               <div className='icons'>
-              {window.localStorage.getItem("isAuthenticated") ? (
+              {(window.localStorage.getItem("isAuthenticated") === "true") ? (
                 <Link to='/userprofile'>
                   <i className='fa fa-user icon-circle'></i>
                 </Link>

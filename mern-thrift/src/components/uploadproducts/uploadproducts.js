@@ -56,23 +56,31 @@ const Uploadproducts = ({CartItem, isAuthenticated, setIsAuthenticated}) => {
         <>
         <Navbar CartItem={CartItem} isAuthenticated={isAuthenticated}/>
         <div className="upload">
-            <h1>Welcome SELLER</h1>
-
+            <h1>Add Product</h1>
+            <div class="form-container">
+            <div class="form-left">
             <input type="text" name="name" onChange={handleNameChange} placeholder="Enter the name of your product"></input>
             <input type="text" name="price" onChange={handlePriceChange}  placeholder="Enter the price of your product" ></input>
-            <input type="text" name="desc" onChange={handleDescChange}  placeholder="Write a small description" ></input>
-            <select name="category" value={category} onChange={handleCategoryChange}
-        >
+            <div class="desc-field">
+                <span class="desc-label"></span>
+                <textarea name="desc" placeholder="Write a short description"></textarea>
+            </div>
+            </div>
+            <div class="form-right">
+            <select name="category" value={category} onChange={handleCategoryChange}>
                 <option value="">Select a category</option>
-                <option value="Category 1">Category 1</option>
-                <option value="Category 2">Category 2</option>
-                <option value="Category 3">Category 3</option>
-            
+                <option value="Category 1">Dress</option>
+                <option value="Category 2">Shirt</option>
+                <option value="Category 3">Pant</option>
+                <option value="Category 4">Skirt</option>
+                <option value="Category 5">Top</option>
+                <option value="Category 6">Shoes</option>
+                <option value="Category 7">Bag</option>
             </select>
             <input type="file" id="file-input" name="img"  onChange={handleFileChange}/>
-    
             <div className="button" onClick={handleFileUpload}>Upload</div>
-            <a href = "/userprofile">Profile</a>
+            </div>
+            </div>
         </div>
         </>
     )

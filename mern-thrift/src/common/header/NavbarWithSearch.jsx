@@ -33,7 +33,11 @@ const NavbarWithSearch = ({ CartItem, isAuthenticated }) => {
                 <Link to='/'>home</Link>
               </li>
               <li>
-                <Link to='/'>my profile</Link>
+              {(window.localStorage.getItem("isAuthenticated") === "true") ? (
+                <Link to='/userprofile'>my profile</Link>
+              ) : (
+                <Link to='/login'>my profile</Link>
+              )}
               </li>
               <li>
                 <Link to='/'>track my order</Link>
@@ -47,8 +51,8 @@ const NavbarWithSearch = ({ CartItem, isAuthenticated }) => {
           <div class='search'>
             <div className='icon f_flex width'>
               <div className='icons'>
-              {isAuthenticated ? (
-                <Link to='/homepage'>
+              {(window.localStorage.getItem("isAuthenticated") === "true") ? (
+                <Link to='/userprofile'>
                   <i className='fa fa-user icon-circle'></i>
                 </Link>
                 ) : (

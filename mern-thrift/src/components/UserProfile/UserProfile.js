@@ -52,26 +52,6 @@ logOut = () => {
                 <label className="attribute">Role:</label> <label className="info">{this.state.userData.role}</label><br/>
                 <button id="logoutbtn" onClick={this.logOut}>Log Out</button>
 
-                {(window.localStorage.getItem("isBuyer") === "true") ? (
-                <div className="button" >
-                <a href = "/"> See upcoming drops </a>
-                </div>
-                ) : (
-                <div className="button" >
-                <a href = "/uploadproducts"> Upload Products </a>
-                </div>
-                )}
-
-                {(window.localStorage.getItem("isBuyer") === "true") ? (
-                <div className="button" >
-                <a href = "/"> See upcoming auctions </a>
-                </div>
-                ) : (
-                <div className="button" >
-                <a href = "/"> Add a drop announcement </a>
-                </div>
-                )}
-
             </div>
             </>
         );
