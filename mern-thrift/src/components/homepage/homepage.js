@@ -16,7 +16,7 @@ const Homepage = ({CartItem, setIsAuthenticated}) => {
         <div className="homepage">
             <h1>Welcome</h1>
             <div className="button" >
-                <a href = "/"> See Upcoming Drops </a>
+                <a href = "/announcements"> See Upcoming Drops </a>
             </div>
             <div className="button" >
                 <a href = "/"> See Upcoming Auctions</a>

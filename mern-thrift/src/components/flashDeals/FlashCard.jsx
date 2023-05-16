@@ -52,18 +52,7 @@ const FlashCard = ({ addToCart}) => {
       .catch((error) => {
         console.error(error);
       });
-  }, []);
-
-  // useEffect(() => {
-  //   if (productItems.length > 0) {
-  //     const imageSrc = URL.createObjectURL(
-  //       new Blob([productItems[0].data], { type: productItems[0].contentType })
-  //     );
-  //     setImageSrc(imageSrc);
-  //   }
-  // }, [productItems]);
-
-  
+  }, []); 
   
 
   return (
@@ -73,10 +62,13 @@ const FlashCard = ({ addToCart}) => {
       productItems.map((productItem) => {
         // const imageSrc = `data:${productItem.contentType};base64,${productItem.data.toString('base64')}`;
         // const base64String = btoa(String.fromCharCode(...new Uint8Array(productItem.data)));
-        const imageSrc = URL.createObjectURL(
-          new Blob([productItem.data], { type: productItem.contentType })
-        );
-        localStorage.setItem("url", imageSrc);
+        // const imageSrc = URL.createObjectURL(
+        //   new Blob([productItem.data], { type: productItem.contentType })
+        // );
+        // const destination="./public/uploads/";
+        // const imageSrc=destination+productItem.fileName;
+
+        
       return(
             <div className='box'>
               <div className='product mtop'>
@@ -84,7 +76,7 @@ const FlashCard = ({ addToCart}) => {
                   <span className='discount'>50% Off</span>
                   <article key={productItem._id}>
                     <Link to={`/productdetails/${productItem._id}`}>
-                  <img id="flashcard-img" src={imageSrc} alt='' />
+                  <img id="flashcard-img" src={"./images/uploads/"+productItem.fileName} alt='' />
                   {/* <img id="flashcard-img" src={`data:image/png;base64,${base64String}`} alt="Uploaded" /> */}
 
                   </Link>

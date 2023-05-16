@@ -1,0 +1,52 @@
+.upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50vw;
+    height: 50vh;
+    margin-top: 144px;
+    margin-bottom: 144px;
+    margin-left: 370px;
+    border-radius: 20px;
+    box-shadow: 0 0 15px 5px grey;
+    background: white;
+    position:relative;
+}
+
+.upload > .button {
+    background: #a36043;
+    color: #fff;
+    border: 1px solid #a36043;
+    font-size: 1.25rem;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+}
+
+.upload > .button:hover {
+    background: #b9846d;
+    color: #fff;
+    border: 2px solid #000000;
+    font-size: 1.25rem;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+}
+
+.upload .button a {
+    color: white;
+}
+
+#uploadbutton {
+    color: rgb(255, 255, 255);
+    background: #a36043;
+    padding: 10px;
+    margin-top: 5px;
+    width: 80px;
+    border-radius: 5px;
+}

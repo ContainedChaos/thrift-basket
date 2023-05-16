@@ -10,7 +10,8 @@ import UserProfile from './components/UserProfile/UserProfile';
 import ProductDetails from './components/ProductDetails/ProductDetails';
 import Navbar from './common/header/Navbar';
 import FlashCard from './components/flashDeals/FlashCard';
-
+import AnnounceDrop from './components/AnnounceDrop/AnnounceDrop';
+import SeeAnnouncements from './components/SeeAnnouncements/SeeAnnouncements';
 
 
 import React, { useState } from "react"
@@ -105,6 +106,8 @@ function App() {
           <Route path="/passwordreset" element={<PasswordReset CartItem={CartItem}/>}/>
           <Route path="/userprofile" element={<UserProfile CartItem={CartItem}/>}/>
           <Route path="/uploadproducts" element={<Uploadproducts setIsAuthenticated={setIsAuthenticated} CartItem={CartItem}/>}/>
+          <Route path="/announcedrop" element={<AnnounceDrop setIsAuthenticated={setIsAuthenticated} CartItem={CartItem}/>}/>
+          <Route path="/announcements" element={<SeeAnnouncements CartItem={CartItem}/>}/>
           <Route path='/productdetails/:productId' element={<ProductDetails productItems={productItems} addToCart={addToCart} CartItem={CartItem} />}/>
           {/* <Route path='/' element={<PrivateRoute isAuthenticated={isAuthenticated} />} > */}
             <Route path="/homepage" element={<Homepage setIsAuthenticated={setIsAuthenticated} CartItem={CartItem}/>}/>

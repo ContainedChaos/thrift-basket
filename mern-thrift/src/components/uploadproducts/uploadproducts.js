@@ -12,10 +12,7 @@ const Uploadproducts = ({CartItem, isAuthenticated, setIsAuthenticated}) => {
     const [name, setName] = useState("");
     const [price, setPrice] = useState("")
     const [desc, setDesc] = useState("");
-
-    const handleFileChange = (event) => {
-        setFile(event.target.files[0]);
-    };
+    const [category, setCategory] = useState("");
 
     const handleNameChange = (event) => {
         setName(event.target.value);
@@ -29,6 +26,13 @@ const Uploadproducts = ({CartItem, isAuthenticated, setIsAuthenticated}) => {
         setDesc(event.target.value);
     };
 
+    const handleFileChange = (event) => {
+        setFile(event.target.files[0]);
+    };
+
+    const handleCategoryChange = (event) => {
+        setCategory(event.target.value);
+      };
 
     const handleFileUpload = async () => {
         const token = localStorage.getItem("accessToken");
@@ -38,6 +42,7 @@ const Uploadproducts = ({CartItem, isAuthenticated, setIsAuthenticated}) => {
         formData.append("price", price);
         formData.append("desc", desc);
         formData.append("uploader", token);
+        formData.append("category", category); 
 
         const res = await axios.post("http://localhost:9002/upload", formData);
         console.log(res.data);
@@ -46,40 +51,6 @@ const Uploadproducts = ({CartItem, isAuthenticated, setIsAuthenticated}) => {
             nav("/")
         }
     };
-
-    // const [ product, setProduct ] = useState({
-    //     name:"",
-    //     price:"",
-    //     desc:"",
-    //     img: "",
-    //     uploader: "",
-    // })
-
-    // const handleChange = e => {
-    //     const { name, value } = e.target
-    //     setProduct({
-    //         ...product,
-    //         [name]: value
-    //     })
-    // }
-
- 
-
-    // const upload = () => {
-    //     axios.post("http://localhost:9002/upload", product, token)
-    //     .then(res => {
-    //         // sessionStorage.setItem('accessToken', `Bearer ${res.data.accessToken}`);
-    //         // sessionStorage.setItem('refreshToken', `Bearer ${res.data.refreshToken}`);
-    //         // window.localStorage.setItem("accessToken", `Bearer ${res.data.accessToken}`);
-            
-    //         alert(res.data.message)
-            // if (res.data.message === "Uploaded successfully") {
-            //     nav("/")
-            //     // nav("/userprofile")
-            // }
-    //     })
-    // }
-
 
     return (
         <>
@@ -90,25 +61,21 @@ const Uploadproducts = ({CartItem, isAuthenticated, setIsAuthenticated}) => {
             <input type="text" name="name" onChange={handleNameChange} placeholder="Enter the name of your product"></input>
             <input type="text" name="price" onChange={handlePriceChange}  placeholder="Enter the price of your product" ></input>
             <input type="text" name="desc" onChange={handleDescChange}  placeholder="Write a small description" ></input>
+            <select name="category" value={category} onChange={handleCategoryChange}
+        >
+                <option value="">Select a category</option>
+                <option value="Category 1">Category 1</option>
+                <option value="Category 2">Category 2</option>
+                <option value="Category 3">Category 3</option>
+            
+            </select>
             <input type="file" id="file-input" name="img"  onChange={handleFileChange}/>
     
             <div className="button" onClick={handleFileUpload}>Upload</div>
-
-            {/* <div className="button" >
-                <a href = "/uploadproducts"> Upload products </a>
-            </div>
-            <div className="button" >
-                <a href = "/"> Add a drop announcement </a>
-            </div> */}
-            {/* <div className="button" onClick={logout} >
-                <a href = "/"> Logout </a>
-            </div> */}
             <a href = "/userprofile">Profile</a>
         </div>
         </>
     )
 }
-
-{/* <div className="button" onClick={() => isUserAuthenticated(false)} >Logout</div> */}
 
 export default Uploadproducts
