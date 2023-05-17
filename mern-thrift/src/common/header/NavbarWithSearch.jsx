@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
+import Head from "./Head"
 
 const NavbarWithSearch = ({ CartItem, isAuthenticated }) => {
   // fixed Header
@@ -19,12 +20,12 @@ const NavbarWithSearch = ({ CartItem, isAuthenticated }) => {
             </h4>
           </div>
 
-          <div className="search">
+          {/* <div className="search">
             <div className='search-box f_flex'>
               <i className='fa fa-search'></i>
               <input type='text' placeholder='Search and hit enter...' />
             </div>
-          </div> 
+          </div>  */}
 
           <div className='navlinkk'>
             <ul className="link f_flex capitalize">
@@ -69,6 +70,7 @@ const NavbarWithSearch = ({ CartItem, isAuthenticated }) => {
           </div>
         </div>
       </header>
+      <Head/>
     </>
   )
 }

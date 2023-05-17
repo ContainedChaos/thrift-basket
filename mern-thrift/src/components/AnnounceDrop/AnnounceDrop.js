@@ -54,33 +54,31 @@ const AnnounceDrops = ({CartItem, isAuthenticated, setIsAuthenticated}) => {
     return (
         <>
         <Navbar CartItem={CartItem} isAuthenticated={isAuthenticated}/>
-        <div className="upload">
-            <h1>Welcome SELLER</h1>
+        <div className="uploadannouncement">
+            <h1>Drop Announcement</h1>
 
             <form onSubmit={handleSubmit}>
       <div>
-        <label htmlFor="title">Title:</label>
         <input
           type="text"
           id="title"
           value={title}
+          placeholder="Enter a title for your drop"
           onChange={(e) => setTitle(e.target.value)}
         />
       </div>
       <div>
-        <label htmlFor="description">Description:</label>
         <textarea
           id="description"
           value={description}
+          placeholder="Write a short description"
           onChange={(e) => setDescription(e.target.value)}
         ></textarea>
       </div>
       <div>
-        <label htmlFor="image">Image URL:</label>
         <input type="file" id="file-input" name="img"  onChange={handleFileChange}/>
       </div>
       <div>
-        <label htmlFor="dateTime">Date and Time:</label>
         <input
           type="datetime-local"
           id="dateTime"
@@ -89,18 +87,16 @@ const AnnounceDrops = ({CartItem, isAuthenticated, setIsAuthenticated}) => {
         />
       </div>
       <div>
-        <label htmlFor="priceRange">Price Range:</label>
         <input
           type="text"
           id="priceRange"
           value={priceRange}
+          placeholder="Enter a price range"
           onChange={(e) => setPriceRange(e.target.value)}
         />
       </div>
       <div className="button" id = "uploadbutton" onClick={handleFileUpload}>Upload</div>
     </form>
-            
-            <a href = "/userprofile">Profile</a>
         </div>
         </>
     )

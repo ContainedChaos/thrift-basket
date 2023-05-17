@@ -1,52 +1,65 @@
-.upload {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 50vw;
-    height: 50vh;
-    margin-top: 144px;
-    margin-bottom: 144px;
-    margin-left: 370px;
-    border-radius: 20px;
-    box-shadow: 0 0 15px 5px grey;
-    background: white;
-    position:relative;
-}
 
-.upload > .button {
-    background: #a36043;
-    color: #fff;
-    border: 1px solid #a36043;
-    font-size: 1.25rem;
-    padding: 0.5rem;
-    margin: 0.5rem 0;
-    border-radius: 8px;
-    outline: none;
+.uploadannouncement {
+    height: 600px;
+    max-width: 500px;
+    margin-top: 50px;
+    margin-left: 520px;
+    margin-bottom: 120px;
+    padding: 20px 40px;
+    background-color: #fff;
+    box-shadow: 0px 2px 6px rgb(64, 64, 64);
+    border-radius: 15px;
+  }
+  
+  .uploadannouncement h1 {
+    font-size: 24px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #333;
+  }
+  
+  .uploadannouncement input[type="text"],
+  .uploadannouncement input[type="datetime-local"],
+  .uploadannouncement input[type="file"],
+  .uploadannouncement textarea {
+    display: block;
+    width: 100%;
+    padding:10px;
+    font-size: 16px;
+    border: 1px solid #bbbbbb;
+    border-radius: 4px;
+    color: #333;
+    margin-bottom: -10px;
+  }
+  
+  .uploadannouncement input[type="file"] {
     cursor: pointer;
-}
-
-.upload > .button:hover {
-    background: #b9846d;
+  }
+  
+  .uploadannouncement textarea {
+    resize: vertical;
+    height: 100px;
+  }
+  
+  .uploadannouncement .button {
+    display: inline-block;
+    background-color: rgb(153, 82, 60);
     color: #fff;
-    border: 2px solid #000000;
-    font-size: 1.25rem;
-    padding: 0.5rem;
-    margin: 0.5rem 0;
-    border-radius: 8px;
-    outline: none;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 4px;
     cursor: pointer;
-}
-
-.upload .button a {
-    color: white;
-}
-
-#uploadbutton {
-    color: rgb(255, 255, 255);
-    background: #a36043;
-    padding: 10px;
-    margin-top: 5px;
-    width: 80px;
-    border-radius: 5px;
-}
+    transition: background-color 0.2s ease-in-out;
+    margin-left: 160px;
+    margin-top: 15px;
+  }
+  
+  .uploadannouncement .button:hover {
+    background-color: rgb(187, 118, 97);
+  }
+  
+  .uploadannouncement form div {
+    margin-bottom: 30px;
+  }
+  
