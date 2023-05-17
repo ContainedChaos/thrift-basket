@@ -6,6 +6,7 @@ const Cart = ({ CartItem, addToCart, decreaseQty, removeFromCart }) => {
   // Stpe: 7   calucate total of items
   const totalPrice = CartItem.reduce((price, item) => price + item.qty * item.price, 0)
 
+  const dest = `http://localhost:3000/images/uploads/`;
   // prodcut qty total
   return (
     <>
@@ -24,7 +25,7 @@ const Cart = ({ CartItem, addToCart, decreaseQty, removeFromCart }) => {
               return (
                 <div className='cart-list product d_flex' key={item.id}>
                   <div className='img'>
-                    <img src={item.cover} alt='' />
+                    <img src={dest+item.fileName} alt='' />
                   </div>
                   <div className='cart-details'>
                     <h3>{item.name}</h3>

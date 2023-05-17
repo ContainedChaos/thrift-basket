@@ -44,7 +44,7 @@ const FlashCard = ({ addToCart}) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:9002/products")
+      .get("http://localhost:9002/flashproducts")
       .then((response) => {
         console.log(response.data);
         setProductItems(response.data);
@@ -73,7 +73,7 @@ const FlashCard = ({ addToCart}) => {
             <div className='box'>
               <div className='product mtop'>
                 <div className='img'>
-                  <span className='discount'>50% Off</span>
+                  <span className='discount'>20% Off</span>
                   <article key={productItem._id}>
                     <Link to={`/productdetails/${productItem._id}`}>
                   <img id="flashcard-img" src={"./images/uploads/"+productItem.fileName} alt='' />

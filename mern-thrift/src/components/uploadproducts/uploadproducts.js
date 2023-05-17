@@ -63,7 +63,7 @@ const Uploadproducts = ({CartItem, isAuthenticated, setIsAuthenticated}) => {
             <input type="text" name="price" onChange={handlePriceChange}  placeholder="Enter the price of your product" ></input>
             <div class="desc-field">
                 <span class="desc-label"></span>
-                <textarea name="desc" placeholder="Write a short description"></textarea>
+                <textarea name="desc" onChange={handleDescChange} placeholder="Write a short description"></textarea>
             </div>
             </div>
             <div class="form-right">

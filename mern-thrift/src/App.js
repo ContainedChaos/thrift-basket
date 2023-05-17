@@ -1,5 +1,7 @@
-// import './App.css';
-// import React from 'react';
+import React, { useState } from "react"
+import "./App.css"
+import { BrowserRouter as Router, Routes, Route, Outlet, Navigate } from "react-router-dom"
+
 import Homepage from './components/homepage/homepage';
 import Login from './components/login/login';
 import Register from './components/register/register';
@@ -14,11 +16,8 @@ import AnnounceDrop from './components/AnnounceDrop/AnnounceDrop';
 import SeeAnnouncements from './components/SeeAnnouncements/SeeAnnouncements';
 import CategoryPage from './components/CategoryPage/CategoryPage';
 import Head from './common/header/Head';
-
-
-import React, { useState } from "react"
-import "./App.css"
-import { BrowserRouter as Router, Routes, Route, Outlet, Navigate } from "react-router-dom"
+import OthersProfile from './components/Othersprofile/Othersprofile';
+// import Auctionpage from './components/Auctionpage/Auctionpage';
 import Header from "./common/header/Header"
 import Pages from "./pages/Pages"
 import Data from "./components/Data"
@@ -28,19 +27,10 @@ import Sdata from "./components/shops/Sdata"
 import Verify from './components/verify/verify';
 import SellerHomepage from './components/homepage/sellerHomepage';
 import Uploadproducts from './components/uploadproducts/uploadproducts';
+import AnnounceAuction from './components/AnnounceAuction/AnnounceAuction';
+import AllProducts from "./components/AllProducts/AllProducts";
 
 function App() {
-  /*
-  step1 :  const { productItems } = Data 
-  lai pass garne using props
-  
-  Step 2 : item lai cart ma halne using useState
-  ==> CartItem lai pass garre using props from  <Cart CartItem={CartItem} /> ani import garrxa in cartItem ma
- 
-  Step 3 :  chai flashCard ma xa button ma
-  Step 4 :  addToCart lai chai pass garne using props in pages and cart components
-  */
-
   //Step 1 :
   const { productItems } = Data
   const { shopItems } = Sdata
@@ -106,7 +96,9 @@ function App() {
           <Route path="/forgotpassword" element={<ForgotPassword CartItem={CartItem}/>}/>
           <Route path="/passwordreset" element={<PasswordReset CartItem={CartItem}/>}/>
           <Route path="/userprofile" element={<UserProfile CartItem={CartItem}/>}/>
+          <Route path="/profile/:username" element={<OthersProfile addToCart={addToCart} CartItem={CartItem}/>}/>
           <Route path="/uploadproducts" element={<Uploadproducts setIsAuthenticated={setIsAuthenticated} CartItem={CartItem}/>}/>
+          <Route path="/announceauction" element={<AnnounceAuction setIsAuthenticated={setIsAuthenticated} CartItem={CartItem}/>}/>
           <Route path="/announcedrop" element={<AnnounceDrop setIsAuthenticated={setIsAuthenticated} CartItem={CartItem}/>}/>
           <Route path="/announcements" element={<SeeAnnouncements CartItem={CartItem}/>}/>
           <Route path='/productdetails/:productId' element={<ProductDetails productItems={productItems} addToCart={addToCart} CartItem={CartItem} />}/>
@@ -116,7 +108,9 @@ function App() {
             <Route path='/category/:type' element={<CategoryPage productItems={productItems} addToCart={addToCart} CartItem={CartItem} />}/>
           {/* </Route> */}
           <Route path='/cart' element={<Cart CartItem={CartItem} addToCart={addToCart} decreaseQty={decreaseQty} removeFromCart={removeFromCart}/>}/>
-          <Route path='/products' element={<FlashCard addToCart={addToCart} />}/>
+          <Route path='/flashproducts' element={<FlashCard addToCart={addToCart} />}/>
+          <Route path='/allproducts' element={<AllProducts addToCart={addToCart} />}/>
+          {/* <Route path='/auctionpage' element={<Auctionpage />}/> */}
         </Routes>
       <Footer />
       </Router>
