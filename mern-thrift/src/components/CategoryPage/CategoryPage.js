@@ -3,10 +3,15 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import {useParams} from 'react-router-dom';
 import Navbar from "../../common/header/Navbar";
+import { Link } from "react-router-dom";
 
 const CategoryPage = (({addToCart, CartItem}) => {
   const { type } = useParams();
   const [productItems, setProductItems] = useState([]);
+  const [count, setCount] = useState(0)
+  const increment = () => {
+    setCount(count + 1)
+  }
 
   useEffect(() => {
     // Fetch products for the category from the backend
@@ -21,7 +26,7 @@ const CategoryPage = (({addToCart, CartItem}) => {
       });
   }, [type]);
 
-  
+  const dest = `http://localhost:3000/images/uploads/`;
 
   return (
     <>
@@ -33,13 +38,25 @@ const CategoryPage = (({addToCart, CartItem}) => {
         return(
         <div key={index}>
 
-          <h3>{product.name}</h3>
+          <article key={product._id}>
+              <Link to={`/productdetails/${product._id}`}>
+                  <h3>{product.name}</h3>
+              </Link>
+          </article>
 
           <p>{product.desc}</p>
 
-          <div className='img'>
-          <img id="flashcard-img" src={"./images/uploads/"+product.fileName} alt='' />
-          </div>
+          <article key={product._id}>
+              <Link to={`/productdetails/${product._id}`}>
+                 <img id="flashcard-img" src={dest+product.fileName} alt='' />
+                  {/* <img id="flashcard-img" src={`data:image/png;base64,${base64String}`} alt="Uploaded" /> */}
+
+              </Link>
+          </article>
+
+          <button onClick={() => addToCart(product)}>
+              <i className='fa fa-plus'></i>
+          </button>
 
         </div>)
 
