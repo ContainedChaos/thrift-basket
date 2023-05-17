@@ -13,6 +13,7 @@ import FlashCard from './components/flashDeals/FlashCard';
 import AnnounceDrop from './components/AnnounceDrop/AnnounceDrop';
 import SeeAnnouncements from './components/SeeAnnouncements/SeeAnnouncements';
 import CategoryPage from './components/CategoryPage/CategoryPage';
+import OthersProfile from './components/Othersprofile/Othersprofile';
 
 
 import React, { useState } from "react"
@@ -106,6 +107,7 @@ function App() {
           <Route path="/forgotpassword" element={<ForgotPassword CartItem={CartItem}/>}/>
           <Route path="/passwordreset" element={<PasswordReset CartItem={CartItem}/>}/>
           <Route path="/userprofile" element={<UserProfile CartItem={CartItem}/>}/>
+          <Route path="/profile/:username" element={<OthersProfile addToCart={addToCart} CartItem={CartItem}/>}/>
           <Route path="/uploadproducts" element={<Uploadproducts setIsAuthenticated={setIsAuthenticated} CartItem={CartItem}/>}/>
           <Route path="/announcedrop" element={<AnnounceDrop setIsAuthenticated={setIsAuthenticated} CartItem={CartItem}/>}/>
           <Route path="/announcements" element={<SeeAnnouncements CartItem={CartItem}/>}/>
@@ -116,7 +118,7 @@ function App() {
             <Route path='/category/:type' element={<CategoryPage productItems={productItems} addToCart={addToCart} CartItem={CartItem} />}/>
           {/* </Route> */}
           <Route path='/cart' element={<Cart CartItem={CartItem} addToCart={addToCart} decreaseQty={decreaseQty} removeFromCart={removeFromCart}/>}/>
-          <Route path='/products' element={<FlashCard addToCart={addToCart} />}/>
+          <Route path='/flashproducts' element={<FlashCard addToCart={addToCart} />}/>
         </Routes>
       <Footer />
       </Router>

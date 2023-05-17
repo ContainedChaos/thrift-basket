@@ -4,10 +4,12 @@ import axios from "axios";
 import {useParams} from 'react-router-dom';
 // import productItems from '../Data';
 import Navbar from "../../common/header/Navbar";
+import { Link } from "react-router-dom"
 
 const ProductDetails = ({addToCart, CartItem}) => {
   const {productId} = useParams();
   const [productItem, setProductItem] = useState([]);
+  const [uploader, setUploader] = useState([]);
   let myProductId = Number(productId);
   // const product = productItem.find((product) => product.id === myProductId);
   // const {id, discount, cover, name, price, description} = product;
@@ -18,7 +20,8 @@ const ProductDetails = ({addToCart, CartItem}) => {
       .get(`http://localhost:9002/productdetails/${productId}`)
       .then((response) => {
         console.log(response.data);
-        setProductItem(response.data);
+        setProductItem(response.data.product);
+        setUploader(response.data.user);
       })
       .catch((error) => {
         console.error(error);
@@ -55,6 +58,13 @@ const ProductDetails = ({addToCart, CartItem}) => {
           <div className="product-price">
           <h4>BDT {productItem.price}.00</h4>
           </div>
+          
+          <article key={uploader}>
+              <Link to={`/profile/${uploader}`}>
+                <h3>{uploader}</h3>
+              </Link>
+          </article>
+
           <button onClick={() => addToCart(productItem)}>
             Add to basket
           </button>
