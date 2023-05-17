@@ -21,6 +21,9 @@ const SellerHomepage = ({CartItem, isAuthenticated, setIsAuthenticated}) => {
             <div className="button" >
                 <a href = "/announcedrop"> Add a drop announcement </a>
             </div>
+            <div className="button" >
+                <a href = "/announceauction"> Add an auction announcement </a>
+            </div>
             <div className="button" onClick={logout} >
                 <a href = "/"> Logout </a>
             </div>

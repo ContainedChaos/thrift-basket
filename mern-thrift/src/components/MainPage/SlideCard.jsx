@@ -3,6 +3,7 @@ import Sdata from "./Sdata"
 import Slider from "react-slick"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
+import { Link } from "react-router-dom"
 
 const SlideCard = () => {
   const settings = {
@@ -25,7 +26,18 @@ const SlideCard = () => {
                 <div className='left'>
                   <h1>{value.title}</h1>
                   <p>{value.desc}</p>
-                  <button className='btn-primary'>Browse Collections</button>
+                  
+                  
+                  
+
+                <Link to={`/allproducts`} key={index}>
+                  <div className="box f_flex" key={index}
+              // onClick={() => handleCategoryClick(value.cateSlug)} 
+              >
+              <button className='btn-primary'>Browse Collections</button>
+            </div>
+            </Link>
+
                 </div>
                 <div className='right'>
                   <img src={value.cover} alt='' />
