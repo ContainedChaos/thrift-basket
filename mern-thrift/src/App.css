@@ -92,7 +92,7 @@ button {
   width: 77%;
 }
 .category {
-  box-shadow: rgb(43 52 69 / 10%) 0px 4px 16px;
+  box-shadow: rgba(43, 52, 69, 0.44) 0px 4px 16px;
   background-color: #fff;
   width: 23%;
   height: 510px;
@@ -350,4 +350,27 @@ button {
 #flashcard-img {
   height: 100%;
   width: 100%;
+}
+
+.navlinkk {
+  margin-left: 290px;
+}
+
+.slick-dots {
+  display: flex;
+  justify-content: center;
+}
+
+.slick-dots li {
+  margin: 0 5px;
+  margin-top: -150px;
+}
+
+.slick-dots li button:before {
+  font-size: 10px;
+  color: #fff;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #000;
 }

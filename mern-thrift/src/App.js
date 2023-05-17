@@ -13,6 +13,7 @@ import FlashCard from './components/flashDeals/FlashCard';
 import AnnounceDrop from './components/AnnounceDrop/AnnounceDrop';
 import SeeAnnouncements from './components/SeeAnnouncements/SeeAnnouncements';
 import CategoryPage from './components/CategoryPage/CategoryPage';
+import Head from './common/header/Head';
 
 
 import React, { useState } from "react"
@@ -97,7 +98,6 @@ function App() {
     <>
     <DataProvider>
       <Router>
-      {/* <Header CartItem={CartItem} isAuthenticated={isAuthenticated}/> */}
         <Routes>
           <Route path='/' element={<Pages productItems={productItems} addToCart={addToCart} shopItems={shopItems} CartItem={CartItem}/>}/>
           <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} CartItem={CartItem}/>}/>

@@ -1,5 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
+import "./Navbar.css";
+import Head from "./Head";
 
 const Navbar = ({ CartItem, isAuthenticated }) => {
   // fixed Header
@@ -51,6 +53,7 @@ const Navbar = ({ CartItem, isAuthenticated }) => {
 
           <div class='search'>
             <div className='icon f_flex width'>
+            
               <div className='icons'>
               {(window.localStorage.getItem("isAuthenticated") === "true") ? (
                 <Link to='/userprofile'>
@@ -70,6 +73,7 @@ const Navbar = ({ CartItem, isAuthenticated }) => {
           </div>
         </div>
       </header>
+      <Head/>
     </>
   )
 }
