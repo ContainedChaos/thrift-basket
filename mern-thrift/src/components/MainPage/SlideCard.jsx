@@ -4,6 +4,7 @@ import Slider from "react-slick"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 const SlideCard = () => {
   const settings = {
@@ -16,6 +17,8 @@ const SlideCard = () => {
       return <ul style={{ margin: "0px" }}>{dots}</ul>
     },
   }
+
+  const nav = useNavigate();
   return (
     <>
       <Slider {...settings}>

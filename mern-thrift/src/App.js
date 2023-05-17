@@ -109,7 +109,7 @@ function App() {
           {/* </Route> */}
           <Route path='/cart' element={<Cart CartItem={CartItem} addToCart={addToCart} decreaseQty={decreaseQty} removeFromCart={removeFromCart}/>}/>
           <Route path='/flashproducts' element={<FlashCard addToCart={addToCart} />}/>
-          <Route path='/allproducts' element={<AllProducts addToCart={addToCart} />}/>
+          <Route path='/allproducts' element={<AllProducts addToCart={addToCart} CartItem={CartItem}/>}/>
           {/* <Route path='/auctionpage' element={<Auctionpage />}/> */}
         </Routes>
       <Footer />
