@@ -35,41 +35,28 @@ function App() {
   const { productItems } = Data
   const { shopItems } = Sdata
 
-  //Step 2 :
   const [CartItem, setCartItem] = useState([])
 
-  //Step 4 :
   const addToCart = (product) => {
-    const productExit = CartItem.find((item) => item.id === product.id)
-    if (productExit) {
-      setCartItem(CartItem.map((item) => (item.id === product.id ? { ...productExit, qty: productExit.qty + 1 } : item)))
+    const productExist = CartItem.find((item) => item._id === product._id)
+    if (productExist) {
+      setCartItem(CartItem.map((item) => (item._id === product._id ? { ...productExist, qty: productExist.qty + 1 } : item)))
     } else {
       setCartItem([...CartItem, { ...product, qty: 1 }])
     }
   }
 
   const removeFromCart = (product) => {
-    const productExit = CartItem.find((item) => item.id === product.id)
-    setCartItem(CartItem.filter((item) => item.id !== product.id))
+    const productExist = CartItem.find((item) => item._id === product._id)
+    setCartItem(CartItem.filter((item) => item._id !== product._id))
   }
 
-  // Stpe: 6
   const decreaseQty = (product) => {
-    // if hamro product alredy cart xa bhane  find garna help garxa
-    const productExit = CartItem.find((item) => item.id === product.id)
-
-    // if product is exit and its qty is 1 then we will run a fun  setCartItem
-    // inside  setCartItem we will run filter to check if item.id is match to product.id
-    // if the item.id is doesnt match to product.id then that items are display in cart
-    // else
-    if (productExit.qty === 1) {
-      setCartItem(CartItem.filter((item) => item.id !== product.id))
+    const productExist = CartItem.find((item) => item._id === product._id)
+    if (productExist.qty === 1) {
+      setCartItem(CartItem.filter((item) => item._id !== product._id))
     } else {
-      // if product is exit and qty  of that produt is not equal to 1
-      // then will run function call setCartItem
-      // inside setCartItem we will run map method
-      // this map() will check if item.id match to produt.id  then we have to desc the qty of product by 1
-      setCartItem(CartItem.map((item) => (item.id === product.id ? { ...productExit, qty: productExit.qty - 1 } : item)))
+      setCartItem(CartItem.map((item) => (item._id === product._id ? { ...productExist, qty: productExist.qty - 1 } : item)))
     }
   }
 
@@ -108,7 +95,7 @@ function App() {
             <Route path='/category/:type' element={<CategoryPage productItems={productItems} addToCart={addToCart} CartItem={CartItem} />}/>
           {/* </Route> */}
           <Route path='/cart' element={<Cart CartItem={CartItem} addToCart={addToCart} decreaseQty={decreaseQty} removeFromCart={removeFromCart}/>}/>
-          <Route path='/flashproducts' element={<FlashCard addToCart={addToCart} />}/>
+          <Route path='/flashproducts' element={<FlashCard addToCart={addToCart} CartItem={CartItem} />}/>
           <Route path='/allproducts' element={<AllProducts addToCart={addToCart} CartItem={CartItem}/>}/>
           {/* <Route path='/auctionpage' element={<Auctionpage />}/> */}
         </Routes>

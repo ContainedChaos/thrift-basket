@@ -4,6 +4,7 @@ import axios from "axios";
 import {useParams} from 'react-router-dom';
 import Navbar from "../../common/header/Navbar";
 import { Link } from "react-router-dom";
+import "./CategoryPage.css";
 
 const CategoryPage = (({addToCart, CartItem}) => {
   const { type } = useParams();
@@ -31,28 +32,30 @@ const CategoryPage = (({addToCart, CartItem}) => {
   return (
     <>
     <Navbar CartItem={CartItem}/>
-
+    <div className="page-header">
+      <h1>{type}</h1>
+    </div>
+    <div className="product-grid">
       {
       productItems.map((product, index) => {
 
         return(
-        <div key={index}>
-
-          <article key={product._id}>
-              <Link to={`/productdetails/${product._id}`}>
-                  <h3>{product.name}</h3>
-              </Link>
-          </article>
-
-          <p>{product.desc}</p>
+        <div key={index} className="product-card">
 
           <article key={product._id}>
               <Link to={`/productdetails/${product._id}`}>
                  <img id="flashcard-img" src={dest+product.fileName} alt='' />
                   {/* <img id="flashcard-img" src={`data:image/png;base64,${base64String}`} alt="Uploaded" /> */}
-
               </Link>
           </article>
+
+          <article key={product._id}>
+              <Link to={`/productdetails/${product._id}`}>
+                  <h3 className="product-name">{product.name}</h3>
+              </Link>
+          </article>
+
+          <h3 className="product-price">BDT {product.price}.00</h3>
 
           <button onClick={() => addToCart(product)}>
               <i className='fa fa-plus'></i>
@@ -61,6 +64,7 @@ const CategoryPage = (({addToCart, CartItem}) => {
         </div>)
 
         })}
+        </div>
     </>
   )
 })
