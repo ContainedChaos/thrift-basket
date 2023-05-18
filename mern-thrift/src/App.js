@@ -34,23 +34,28 @@ function App() {
   
   const { productItems } = Data
   const { shopItems } = Sdata
+<<<<<<< HEAD
+=======
+
+>>>>>>> 31786de30ece4a24bf7116d0cf41fe6648f7cd4b
   const [CartItem, setCartItem] = useState([])
 
   const addToCart = (product) => {
-    const productExit = CartItem.find((item) => item.id === product.id)
-    if (productExit) {
-      setCartItem(CartItem.map((item) => (item.id === product.id ? { ...productExit, qty: productExit.qty + 1 } : item)))
+    const productExist = CartItem.find((item) => item._id === product._id)
+    if (productExist) {
+      setCartItem(CartItem.map((item) => (item._id === product._id ? { ...productExist, qty: productExist.qty + 1 } : item)))
     } else {
       setCartItem([...CartItem, { ...product, qty: 1 }])
     }
   }
 
   const removeFromCart = (product) => {
-    const productExit = CartItem.find((item) => item.id === product.id)
-    setCartItem(CartItem.filter((item) => item.id !== product.id))
+    const productExist = CartItem.find((item) => item._id === product._id)
+    setCartItem(CartItem.filter((item) => item._id !== product._id))
   }
 
   const decreaseQty = (product) => {
+<<<<<<< HEAD
 
     const productExit = CartItem.find((item) => item.id === product.id)
 
@@ -58,6 +63,13 @@ function App() {
       setCartItem(CartItem.filter((item) => item.id !== product.id))
     } else {
       setCartItem(CartItem.map((item) => (item.id === product.id ? { ...productExit, qty: productExit.qty - 1 } : item)))
+=======
+    const productExist = CartItem.find((item) => item._id === product._id)
+    if (productExist.qty === 1) {
+      setCartItem(CartItem.filter((item) => item._id !== product._id))
+    } else {
+      setCartItem(CartItem.map((item) => (item._id === product._id ? { ...productExist, qty: productExist.qty - 1 } : item)))
+>>>>>>> 31786de30ece4a24bf7116d0cf41fe6648f7cd4b
     }
   }
 
@@ -96,7 +108,7 @@ function App() {
             <Route path='/category/:type' element={<CategoryPage productItems={productItems} addToCart={addToCart} CartItem={CartItem} />}/>
           {/* </Route> */}
           <Route path='/cart' element={<Cart CartItem={CartItem} addToCart={addToCart} decreaseQty={decreaseQty} removeFromCart={removeFromCart}/>}/>
-          <Route path='/flashproducts' element={<FlashCard addToCart={addToCart} />}/>
+          <Route path='/flashproducts' element={<FlashCard addToCart={addToCart} CartItem={CartItem} />}/>
           <Route path='/allproducts' element={<AllProducts addToCart={addToCart} CartItem={CartItem}/>}/>
           {/* <Route path='/auctionpage' element={<Auctionpage />}/> */}
         </Routes>
