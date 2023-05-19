@@ -31,10 +31,9 @@ import AnnounceAuction from './components/AnnounceAuction/AnnounceAuction';
 import AllProducts from "./components/AllProducts/AllProducts";
 
 function App() {
-  //Step 1 :
+  
   const { productItems } = Data
   const { shopItems } = Sdata
-
   const [CartItem, setCartItem] = useState([])
 
   const addToCart = (product) => {

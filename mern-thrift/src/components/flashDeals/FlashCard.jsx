@@ -81,10 +81,6 @@ const FlashCard = ({ addToCart, CartItem}) => {
 
                   </Link>
                   </article>
-                  <div className='product-like'>
-                    <label>0</label> <br />
-                    <i className='fa-regular fa-heart' onClick={increment}></i>
-                  </div>
                 </div>
                 <div className='product-details'>
                 <article key={productItem._id}>
