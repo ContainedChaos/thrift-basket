@@ -43,7 +43,7 @@ logOut = () => {
     render(){
         return(
             <>
-            <Navbar CartItem={this.props.CartItem} />
+            <Navbar userCart={this.props.userCart} />
             <div className="user-profile">
                 <h2>My Profile</h2>
                 <label className="attribute">Name:</label> <label className="info">{this.state.userData.name}</label><br/>

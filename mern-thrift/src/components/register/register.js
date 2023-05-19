@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom"
 import Validation from "./validation"
 import Navbar from "../../common/header/Navbar"
 
-const Register = ({CartItem}) => {
+const Register = ({userCart}) => {
 
     const nav = useNavigate()
 
@@ -60,7 +60,7 @@ const Register = ({CartItem}) => {
 
     return (
         <>
-        <Navbar CartItem={CartItem}/>
+        <Navbar userCart={userCart}/>
         <div className="register">
             <h1>Register</h1>
             <input type="text" name="name" value={user.name} placeholder="Your Name" onChange={ handleChange }></input>

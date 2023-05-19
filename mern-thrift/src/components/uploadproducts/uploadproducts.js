@@ -4,7 +4,7 @@ import axios from "axios"
 import { useNavigate } from 'react-router-dom';
 import Navbar from "../../common/header/Navbar"
 
-const Uploadproducts = ({CartItem, isAuthenticated, setIsAuthenticated}) => {
+const Uploadproducts = ({userCart, isAuthenticated, setIsAuthenticated}) => {
 
     const nav = useNavigate();
 
@@ -54,7 +54,7 @@ const Uploadproducts = ({CartItem, isAuthenticated, setIsAuthenticated}) => {
 
     return (
         <>
-        <Navbar CartItem={CartItem} isAuthenticated={isAuthenticated}/>
+        <Navbar userCart={userCart} isAuthenticated={isAuthenticated}/>
         <div className="upload">
             <h1>Add Product</h1>
             <div class="form-container">

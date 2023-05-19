@@ -5,10 +5,10 @@ import TopCate from "../components/top/TopCate"
 import Wrapper from "../components/wrapper/Wrapper"
 import "./pages.css";
 
-const Pages = ({productItems, CartItem, addToCart, shopItems}) => {
+const Pages = ({userCart, productItems, addToCart}) => {
   return (
     <>
-    <Home CartItem={CartItem}/>
+    <Home userCart={userCart} />
     <FlashDeals productItems={productItems} addToCart={addToCart}/>
     <TopCate />
     {/* <NewArrivals /> */}

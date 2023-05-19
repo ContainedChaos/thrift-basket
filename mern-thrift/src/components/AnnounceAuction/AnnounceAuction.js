@@ -4,7 +4,7 @@ import axios from "axios"
 import { useNavigate } from 'react-router-dom';
 import Navbar from "../../common/header/Navbar"
 
-const AnnounceAuction = ({CartItem, isAuthenticated, setIsAuthenticated}) => {
+const AnnounceAuction = ({userCart, isAuthenticated, setIsAuthenticated}) => {
 
     const nav = useNavigate();
 
@@ -56,7 +56,7 @@ const AnnounceAuction = ({CartItem, isAuthenticated, setIsAuthenticated}) => {
 
     return (
         <>
-        <Navbar CartItem={CartItem} isAuthenticated={isAuthenticated}/>
+        <Navbar userCart={userCart} isAuthenticated={isAuthenticated}/>
         <div className="announceauction">
             <h1>Auction Announcement</h1>
 

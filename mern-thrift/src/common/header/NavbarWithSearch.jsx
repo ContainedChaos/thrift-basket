@@ -4,7 +4,7 @@ import Head from "./Head";
 import "./Navbar.css";
 import "./Header.css";
 
-const NavbarWithSearch = ({ CartItem, isAuthenticated }) => {
+const NavbarWithSearch = ({ userCart }) => {
   return (
     <>
       <header className='header'>
@@ -74,7 +74,7 @@ const NavbarWithSearch = ({ CartItem, isAuthenticated }) => {
                 )}
                 <Link to='/cart'>
                   <i className='fa fa-shopping-bag icon-circle'></i>
-                  <span>{CartItem.length === 0 ? "0" : CartItem.length}</span>
+                  <span>{userCart.length}</span>
                 </Link>
                 {(window.localStorage.getItem("isAuthenticated") === "true") ? (
                 <Link to='/'>

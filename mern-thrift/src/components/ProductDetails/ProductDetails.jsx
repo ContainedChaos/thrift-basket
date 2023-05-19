@@ -6,7 +6,7 @@ import {useParams} from 'react-router-dom';
 import Navbar from "../../common/header/Navbar";
 import { Link } from "react-router-dom"
 
-const ProductDetails = ({addToCart, CartItem}) => {
+const ProductDetails = ({addToCart, userCart}) => {
   const {productId} = useParams();
   const [productItem, setProductItem] = useState([]);
   const [uploader, setUploader] = useState([]);
@@ -34,7 +34,7 @@ const ProductDetails = ({addToCart, CartItem}) => {
 
   return (
     <>
-    <Navbar CartItem={CartItem}/>
+    <Navbar userCart={userCart}/>
     
     <div className="overall-container">
       <div className="product-details-container">

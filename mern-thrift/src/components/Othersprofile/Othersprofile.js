@@ -6,7 +6,7 @@ import axios from "axios";
 import {useParams} from 'react-router-dom';
 import { Link } from "react-router-dom"
 
-const Othersprofile = ({addToCart, CartItem}) => {
+const Othersprofile = ({addToCart, userCart}) => {
   const {username} = useParams();
   const [user, setUser] = useState([]);
   const [products, setProducts] = useState([]);
@@ -37,7 +37,7 @@ const Othersprofile = ({addToCart, CartItem}) => {
 
   return (
     <>
-    <Navbar CartItem={CartItem} />
+    <Navbar userCart={userCart} />
             <div className="user-profile">
                 <h2>Profile</h2>
                 <label className="attribute">Name:</label> <label className="info">{user.name}</label><br/>

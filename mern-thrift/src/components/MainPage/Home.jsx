@@ -5,10 +5,10 @@ import "./Home.css"
 import SlideCard from "./SlideCard"
 import SliderHome from "./Slider"
 
-const Home = ({CartItem }) => {
+const Home = ({ userCart }) => {
   return (
     <>
-    <NavbarWithSearch CartItem={CartItem}/>
+    <NavbarWithSearch userCart={userCart}/>
       <section className='home'>
         <div className='container d_flex'>
           <Categories />

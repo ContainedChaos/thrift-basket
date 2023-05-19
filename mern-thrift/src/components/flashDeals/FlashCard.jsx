@@ -25,7 +25,7 @@ const SamplePrevArrow = (props) => {
     </div>
   )
 }
-const FlashCard = ({ addToCart, CartItem}) => {
+const FlashCard = ({ addToCart}) => {
   const [productItems, setProductItems] = useState([]);
   // const [imageSrc, setImageSrc] = useState('');
   const [count, setCount] = useState(0)

@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { DataContext } from "../../context/DataProvider";
 import Navbar from "../../common/header/Navbar";
 
-const Login = ({ CartItem, setIsAuthenticated}) => {
+const Login = ({setIsAuthenticated, userCart}) => {
 
     const nav = useNavigate();
 
@@ -57,7 +57,7 @@ const Login = ({ CartItem, setIsAuthenticated}) => {
 
     return (
         <>
-        <Navbar CartItem={CartItem}/>
+        <Navbar userCart={userCart}/>
         <div className="login">
             <h1>Login</h1>
             <input type="text" name="email" value={user.email} onChange={handleChange} placeholder="Enter your Email"></input>

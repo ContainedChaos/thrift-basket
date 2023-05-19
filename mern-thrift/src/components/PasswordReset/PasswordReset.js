@@ -8,7 +8,7 @@ import './PasswordReset.css'
 import axios from 'axios';
 import Navbar from '../../common/header/Navbar';
 
-const PasswordReset = ({CartItem}) => {
+const PasswordReset = ({userCart={userCart}}) => {
 
     const [errors, setError] = useState({})
 
@@ -58,7 +58,7 @@ const PasswordReset = ({CartItem}) => {
     
     return (
         <>
-        <Navbar CartItem={CartItem}/>
+        <Navbar userCart={userCart}/>
         <div className="passreset">
             <h1>Enter Your New Password</h1>
             {/* {message ? <p style={{ color: "green", fontWeight: "bold" }}>Password reset link sent successfully to your email</p> : ""} */}

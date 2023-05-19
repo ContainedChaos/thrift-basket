@@ -3,7 +3,7 @@ import "./homepage.css"
 import { useLocation, useNavigate } from "react-router-dom"
 import Navbar from "../../common/header/Navbar"
 
-const SellerHomepage = ({CartItem, isAuthenticated, setIsAuthenticated}) => {
+const SellerHomepage = ({userCart, isAuthenticated, setIsAuthenticated}) => {
     
     const logout = () => {
         setIsAuthenticated(false);
@@ -12,7 +12,7 @@ const SellerHomepage = ({CartItem, isAuthenticated, setIsAuthenticated}) => {
 
     return (
         <>
-        <Navbar CartItem={CartItem} isAuthenticated={isAuthenticated}/>
+        <Navbar userCart={userCart} isAuthenticated={isAuthenticated}/>
         <div className="homepage">
             <h1>Welcome SELLER</h1>
             <div className="button" >

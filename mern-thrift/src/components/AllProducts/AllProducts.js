@@ -5,7 +5,7 @@ import {useParams} from 'react-router-dom';
 import Navbar from "../../common/header/Navbar";
 import { Link } from "react-router-dom";
 
-const AllProducts = (({addToCart, CartItem}) => {
+const AllProducts = (({addToCart, userCart}) => {
   const [productItems, setProductItems] = useState([]);
   const [count, setCount] = useState(0)
   const increment = () => {
@@ -29,7 +29,7 @@ const AllProducts = (({addToCart, CartItem}) => {
 
   return (
     <>
-    <Navbar CartItem={CartItem}/>
+    <Navbar userCart={userCart}/>
     <h1 className="page-header">All Products</h1>
     <div className="product-grid">
       {

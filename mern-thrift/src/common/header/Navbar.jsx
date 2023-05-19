@@ -4,7 +4,7 @@ import "./Navbar.css";
 import Head from "./Head";
 import "./Header.css";
 
-const Navbar = ({ CartItem, isAuthenticated }) => {
+const Navbar = ({ userCart}) => {
   // fixed Header
   // window.addEventListener("scroll", function () {
   //   const search = document.querySelector(".search")
@@ -90,7 +90,7 @@ const Navbar = ({ CartItem, isAuthenticated }) => {
                 )}
                 <Link to='/cart'>
                   <i className='fa fa-shopping-bag icon-circle'></i>
-                  <span>{CartItem.length === 0 ? "0" : CartItem.length}</span>
+                  <span>{userCart.length}</span>
                 </Link>
                 {(window.localStorage.getItem("isAuthenticated") === "true") ? (
                 <Link to='/'>

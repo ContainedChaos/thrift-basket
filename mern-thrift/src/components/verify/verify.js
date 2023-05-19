@@ -4,7 +4,7 @@ import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import Navbar from "../../common/header/Navbar"
 
-const Verify = ({CartItem}) => {
+const Verify = ({userCart}) => {
 
     const nav = useNavigate()
 
@@ -36,7 +36,7 @@ const Verify = ({CartItem}) => {
 
     return (
         <>
-        <Navbar CartItem={CartItem}/>
+        <Navbar userCart={userCart}/>
         <div className="verify">
             <h1>Verify</h1>
             <input type="text" name="otp" value={user.otp} placeholder="Type your OTP" onChange={ handleChange }></input>

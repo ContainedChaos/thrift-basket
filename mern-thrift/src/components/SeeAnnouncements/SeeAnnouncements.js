@@ -8,7 +8,7 @@ import axios from "axios"
 import Navbar from "../../common/header/Navbar"
 
 
-const SeeAnnouncements = ({CartItem}) => {
+const SeeAnnouncements = ({userCart}) => {
   const [announcements, setAnnouncements] = useState([]);
   // const [imageSrc, setImageSrc] = useState('');
   const [count, setCount] = useState(0)
@@ -32,7 +32,7 @@ const SeeAnnouncements = ({CartItem}) => {
 
   return (
     <>
-    <Navbar CartItem={CartItem}/>
+    <Navbar userCart={userCart}/>
     {
       announcements.map((announcement) => {
         // const imageSrc = `data:${productItem.contentType};base64,${productItem.data.toString('base64')}`;

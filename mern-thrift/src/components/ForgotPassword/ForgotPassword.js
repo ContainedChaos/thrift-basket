@@ -5,7 +5,7 @@ import "./ForgotPassword.css"
 import { useNavigate } from 'react-router';
 import Navbar from '../../common/header/Navbar';
 
-const ForgotPassword = ({CartItem}) => {
+const ForgotPassword = ({userCart}) => {
 
     const nav = useNavigate();
 
@@ -36,7 +36,7 @@ const ForgotPassword = ({CartItem}) => {
 
     return (
         <>
-        <Navbar CartItem={CartItem}/>
+        <Navbar userCart={userCart}/>
         <div className="forgotPass">
             <h1>Enter Your Email</h1>
             {/* {message ? <p style={{ color: "green", fontWeight: "bold" }}>Password reset link sent successfully to your email</p> : ""} */}

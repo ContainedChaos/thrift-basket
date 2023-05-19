@@ -6,7 +6,7 @@ import Navbar from "../../common/header/Navbar";
 import { Link } from "react-router-dom";
 import "./CategoryPage.css";
 
-const CategoryPage = (({addToCart, CartItem}) => {
+const CategoryPage = (({addToCart, userCart}) => {
   const { type } = useParams();
   const [productItems, setProductItems] = useState([]);
   const [count, setCount] = useState(0)
@@ -31,7 +31,7 @@ const CategoryPage = (({addToCart, CartItem}) => {
 
   return (
     <>
-    <Navbar CartItem={CartItem}/>
+    <Navbar userCart={userCart}/>
     <div className="page-header">
       <h1>{type}</h1>
     </div>
