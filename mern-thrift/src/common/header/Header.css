@@ -20,26 +20,6 @@
   width: auto;
   height: auto;
 }
-.search-box {
-  width: 190%;
-  border: 0px solid rgba(0, 0, 0, 0.1);
-  /*padding: 10px;*/
-  border-radius: 50px;
-  background: #ffffffd7;
-}
-.search-box i {
-  width: 5%;
-  text-align: center;
-  font-size: 20px;
-  opacity: 0.5;
-  padding: 15px 20px;
-  font-size: 17px;
-}
-.search-box input {
-  width: 100%;
-  padding: 10px;
-  background-color: #ffffff00;
-}
 ::placeholder {
   font-size: 15px;
 }
@@ -51,8 +31,9 @@
 }
 .icons {
   position: relative;
+  margin-top: 15px;
 }
-.search .icons span {
+.icons span {
   position: absolute;
   top: 0px;
   right: 0px;
@@ -131,7 +112,7 @@ header ul li:hover {
 }
 
 .navlink ul {
-  margin-right: -290px;
+  margin-right: -450px;
 }
 
 @media (max-width: 768px) {

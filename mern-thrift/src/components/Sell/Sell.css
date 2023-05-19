@@ -1,0 +1,163 @@
+/* .sellcontainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 110px 100px 110px;
+}
+
+.sellimage-container {
+  flex: 1;
+}
+
+.thrift-image {
+  width: 90%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.544);
+}
+
+.sellerbuttons-wrapper {
+  margin-top: -435px;
+}
+
+.sellerbuttons-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  margin-left: auto;
+}
+
+.thrift-button {
+  margin-right: 10px;
+  padding: 10px 20px;
+  background-color: #994000;
+  color: #ffffff;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.544);
+  transition: transform 0.3s ease;
+}
+
+.thrift-button:last-child {
+  margin-right: 0;
+}
+
+.thrift-button:not(:last-child) {
+  margin-right: 20px;
+}
+
+.thrift-button:hover {
+  background-color: #cc793e;
+  transform: scale(1.05);
+}
+
+.inspiring-section {
+  margin-left: 20px;
+  align-self: flex-start;
+}
+
+.inspiring-title {
+  font-size: 24px;
+  color: #994000;
+  margin-bottom: 10px;
+}
+
+.inspiring-paragraph {
+  font-size: 16px;
+  color: #555555;
+  line-height: 1.5;
+} */
+
+.sellcontainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px 110px 100px 110px;
+  margin-top: 5px;
+}
+
+ .sellimage-container {
+  flex: 1;
+  width: 50%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.544);
+}
+
+.thrift-image {
+  width:500px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.544);
+}
+
+.sellerbuttons-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-left: 20px;
+  margin-top: -15px;
+  margin-left: 50px;
+}
+
+.sellerbuttons-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 20px;
+  margin-right: 60px;
+}
+
+.thrift-button {
+  margin-right: 20px;
+  padding: 10px 20px;
+  background-color: #994000;
+  color: #ffffff;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.544);
+  transition: transform 0.3s ease;
+}
+
+.thrift-button:last-child {
+  margin-right: 50px;
+}
+
+.inspiring-section {
+  margin-top: 55px;
+  text-align: left;
+}
+
+.inspiring-title {
+  font-size: 40px;
+  color: #aa4700;
+  margin-bottom: 20px;
+}
+
+.inspiring-paragraph {
+  font-size: 20px;
+  color: #333333;
+  margin-top: 10px;
+  line-height: 2;
+  width: 650px;
+  margin-bottom: 20px;
+} 
+
+.thrift-button:hover {
+  background-color: #cc793e;
+  transform: scale(1.05);
+}
+
+
+.preloved-word {
+  font-family: 'Love Ya Like A Sister', cursive;
+  font-size: 50px;
+  margin-left: 5px;
+  color:#e00047;
+}

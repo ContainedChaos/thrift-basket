@@ -29,6 +29,7 @@ import SellerHomepage from './components/homepage/sellerHomepage';
 import Uploadproducts from './components/uploadproducts/uploadproducts';
 import AnnounceAuction from './components/AnnounceAuction/AnnounceAuction';
 import AllProducts from "./components/AllProducts/AllProducts";
+import Sell from "./components/Sell/Sell";
 
 function App() {
   
@@ -78,6 +79,7 @@ function App() {
           <Route path='/' element={<Pages productItems={productItems} addToCart={addToCart} shopItems={shopItems} CartItem={CartItem}/>}/>
           <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} CartItem={CartItem}/>}/>
           <Route path="/register" element={<Register CartItem={CartItem}/>}/>
+          <Route path="/sell" element={<Sell CartItem={CartItem}/>}/>
           <Route path="/verify" element={<Verify CartItem={CartItem}/>}/>
           <Route path="/forgotpassword" element={<ForgotPassword CartItem={CartItem}/>}/>
           <Route path="/passwordreset" element={<PasswordReset CartItem={CartItem}/>}/>

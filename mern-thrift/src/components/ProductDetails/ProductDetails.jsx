@@ -5,10 +5,12 @@ import {useParams} from 'react-router-dom';
 // import productItems from '../Data';
 import Navbar from "../../common/header/Navbar";
 import { Link } from "react-router-dom"
+import MessageBox from "../MessageBox/MessageBox";
 
 const ProductDetails = ({addToCart, CartItem}) => {
   const {productId} = useParams();
   const [productItem, setProductItem] = useState([]);
+  const [showMessageBox, setShowMessageBox] = useState(false);
   const [uploader, setUploader] = useState([]);
   let myProductId = Number(productId);
   // const product = productItem.find((product) => product.id === myProductId);
@@ -27,6 +29,14 @@ const ProductDetails = ({addToCart, CartItem}) => {
         console.error(error);
       });
   }, [productId]);
+
+  const handleOpenMessageBox = () => {
+    setShowMessageBox(true);
+  };
+
+  const handleCloseMessageBox = () => {
+    setShowMessageBox(false);
+  };
 
   const dest = `http://localhost:3000/images/uploads/`;
 
@@ -64,13 +74,26 @@ const ProductDetails = ({addToCart, CartItem}) => {
                 <h3>{uploader}</h3>
               </Link>
           </article>
-
-          <button onClick={() => addToCart(productItem)}>
-            Add to basket
-          </button>
+          {(window.localStorage.getItem("isAuthenticated") === "true" && window.localStorage.getItem("isBuyer") === "true") ? (
+                      <button onClick={() => addToCart(productItem)}>
+                      Add to Basket
+                    </button>
+                    ) :null}
+                    {(window.localStorage.getItem("isAuthenticated") !== "true") ? (
+                      <button onClick={handleOpenMessageBox}>
+                      Add to Basket
+                    </button>
+                    ) :null}
         </div> 
       </div>  
       </div> 
+
+      {showMessageBox && (
+        <MessageBox
+          message="Please login first"
+          onClose={handleCloseMessageBox}
+        />
+      )}
     </>
   )
 }

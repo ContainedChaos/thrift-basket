@@ -1,5 +1,5 @@
 import React from "react"
-import NavbarWithSearch from "../../common/header/NavbarWithSearch"
+import Navbar from "../../common/header/Navbar"
 import Categories from "./Categories"
 import "./Home.css"
 import SlideCard from "./SlideCard"
@@ -8,7 +8,7 @@ import SliderHome from "./Slider"
 const Home = ({CartItem }) => {
   return (
     <>
-    <NavbarWithSearch CartItem={CartItem}/>
+    <Navbar CartItem={CartItem}/>
       <section className='home'>
         <div className='container d_flex'>
           <Categories />
