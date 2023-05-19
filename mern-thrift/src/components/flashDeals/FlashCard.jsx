@@ -60,13 +60,6 @@ const FlashCard = ({ addToCart, CartItem}) => {
     <Slider {...settings}>
     {
       productItems.map((productItem) => {
-        // const imageSrc = `data:${productItem.contentType};base64,${productItem.data.toString('base64')}`;
-        // const base64String = btoa(String.fromCharCode(...new Uint8Array(productItem.data)));
-        // const imageSrc = URL.createObjectURL(
-        //   new Blob([productItem.data], { type: productItem.contentType })
-        // );
-        // const destination="./public/uploads/";
-        // const imageSrc=destination+productItem.fileName;
 
         
       return(
