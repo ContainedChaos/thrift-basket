@@ -40,6 +40,7 @@ body {
 .d_flex {
   display: flex;
   justify-content: space-between;
+  max-height: 600px;
 }
 .c_flex {
   display: flex;
@@ -117,6 +118,7 @@ button {
 .category .box:hover {
   background-color: #f7e0d3;
   cursor: pointer;
+  transform: translateY(-5px);
 }
 
 /*---------category----------*/
@@ -356,21 +358,6 @@ button {
   margin-left: 290px;
 }
 
-.slick-dots {
-  display: flex;
-  justify-content: center;
-}
-
-.slick-dots li {
-  margin: 0 5px;
-  margin-top: -150px;
-}
-
-.slick-dots li button:before {
-  font-size: 10px;
-  color: #fff;
-}
-
-.slick-dots li.slick-active button:before {
-  color: #000;
+.box .mtop:hover {
+  transform: translateY(-5px);
 }

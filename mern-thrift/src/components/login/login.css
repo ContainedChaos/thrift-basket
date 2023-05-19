@@ -40,7 +40,6 @@
 
 .login > .button:hover {
     background: rgb(168, 103, 84);
-    border: 2px solid rgb(86, 36, 21);
     color: rgb(255, 255, 255);
     font-size: 1.25rem;
     padding: 0.5rem;
@@ -65,7 +64,6 @@
 
 .login .reg_link:hover {
     background: rgb(168, 103, 84);
-    border: 2px solid rgb(86, 36, 21);
     color: #fff;
     font-size: 1.25rem;
     padding: 0.5rem;
