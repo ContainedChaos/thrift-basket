@@ -1,6 +1,7 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import "./App.css"
 import { BrowserRouter as Router, Routes, Route, Outlet, Navigate } from "react-router-dom"
+import axios from "axios";
 
 import Homepage from './components/homepage/homepage';
 import Login from './components/login/login';
@@ -36,29 +37,165 @@ function App() {
   const { productItems } = Data
   const { shopItems } = Sdata
   const [CartItem, setCartItem] = useState([])
+  const [userCart, setUserCart] = useState([]);
+
+  // useEffect(() => {
+  //   fetchUserCart();
+  // }, []);
+
+  // const fetchUserCart = async () => {
+  //   try {
+  //     const token = localStorage.getItem("accessToken");
+  //     const response = await axios.get("http://localhost:9002/cart", {
+  //       headers: {
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //     });
+  //     // const cartData = response.data;
+  //     setUserCart(response.data);
+  //     console.log(userCart)
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
+  
+  console.log(userCart)
 
   const addToCart = (product) => {
-    const productExist = CartItem.find((item) => item._id === product._id)
-    if (productExist) {
-      setCartItem(CartItem.map((item) => (item._id === product._id ? { ...productExist, qty: productExist.qty + 1 } : item)))
+    
+    const productExistIndex = userCart.findIndex((item) => item.productId.toString() === product._id.toString());
+    console.log(productExistIndex)
+    if (productExistIndex !== -1) {
+      const updatedUserCart = [...userCart];
+      updatedUserCart[productExistIndex].quantity += 1;
+      setUserCart(updatedUserCart);
+      console.log(updatedUserCart[productExistIndex])
+      const updatedProduct = { ...product, quantity: updatedUserCart[productExistIndex].quantity };
+      addToCartAPI(updatedProduct);
     } else {
-      setCartItem([...CartItem, { ...product, qty: 1 }])
+      const updatedProduct = { ...product, quantity: 1 };
+      setUserCart([...userCart, updatedProduct]);
+      addToCartAPI(updatedProduct);
     }
-  }
+  };
+  
+  
+  const addToCartFromCart = (product) => {
+    
+    const productExistIndex = userCart.findIndex((item) => item.productId.toString() === product.productId.toString());
+    
+    console.log(productExistIndex)
+    
+    if (productExistIndex !== -1) {
+      const updatedUserCart = [...userCart];
+      updatedUserCart[productExistIndex].quantity += 1;
+      setUserCart(updatedUserCart);
+      
+      const updatedProduct = { ...product, quantity: updatedUserCart[productExistIndex].quantity };
+      addToCartFromCartAPI(updatedProduct);
+    } else {
+      const updatedProduct = { ...product, quantity: 1 };
+      setUserCart([...userCart, updatedProduct]);
+      addToCartFromCartAPI(updatedProduct);
+    }
+
+    
+  };
+  
+  const addToCartFromCartAPI = async (product) => {
+    try {
+      const token = localStorage.getItem("accessToken");
+      const { productId, name, price, quantity } = product;
+      const data = { productId, name, price, quantity };
+
+      const response = await axios.post("http://localhost:9002/cart/addfromcart", data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setUserCart(response.data);
+      // window.location.reload()
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const addToCartAPI = async (product) => {
+    try {
+      const token = localStorage.getItem("accessToken");
+      const { _id, name, price, quantity } = product;
+      const data = { _id, name, price, quantity };
+
+      const response = await axios.post("http://localhost:9002/cart/add", data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setUserCart(response.data);
+      // window.location.reload()
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const removeFromCart = (product) => {
-    const productExist = CartItem.find((item) => item._id === product._id)
-    setCartItem(CartItem.filter((item) => item._id !== product._id))
-  }
+    const updatedUserCart = userCart.filter((item) => item.productId !== product.productId);
+    setUserCart(updatedUserCart);
+    console.log(updatedUserCart)
+    removeFromCartAPI(product);
+  };
+
+  const removeFromCartAPI = async (product) => {
+    try {
+      const token = localStorage.getItem("accessToken");
+      const { productId } = product;
+      const data = { productId };
+      console.log(data)
+      const response = await axios.post("http://localhost:9002/cart/remove", data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setUserCart(response.data);
+      // window.location.reload()
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const decreaseQty = (product) => {
-    const productExist = CartItem.find((item) => item._id === product._id)
-    if (productExist.qty === 1) {
-      setCartItem(CartItem.filter((item) => item._id !== product._id))
+    const productExist = userCart.find((item) => item.productId === product.productId);
+    if (productExist.quantity === 1) {
+      removeFromCart(product);
     } else {
-      setCartItem(CartItem.map((item) => (item._id === product._id ? { ...productExist, qty: productExist.qty - 1 } : item)))
+      const updatedUserCart = userCart.map((item) =>
+        item.productId === product.productId ? { ...item, quantity: item.quantity - 1 } : item
+      );
+      setUserCart(updatedUserCart);
+      console.log(updatedUserCart)
+      decreaseQtyAPI(product);
     }
-  }
+  };
+
+  const decreaseQtyAPI = async (product) => {
+    try {
+      const token = localStorage.getItem("accessToken");
+      const { productId } = product;
+      const data = { productId };
+      const response = await axios.post("http://localhost:9002/cart/decreaseqty", data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setUserCart(response.data);
+      // window.location.reload()
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  
+  
 
   const [ user, setLoginUser] = useState({})
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -89,13 +226,13 @@ function App() {
           <Route path="/announceauction" element={<AnnounceAuction setIsAuthenticated={setIsAuthenticated} CartItem={CartItem}/>}/>
           <Route path="/announcedrop" element={<AnnounceDrop setIsAuthenticated={setIsAuthenticated} CartItem={CartItem}/>}/>
           <Route path="/announcements" element={<SeeAnnouncements CartItem={CartItem}/>}/>
-          <Route path='/productdetails/:productId' element={<ProductDetails productItems={productItems} addToCart={addToCart} CartItem={CartItem} />}/>
+          <Route path='/productdetails/:productId' element={<ProductDetails addToCart={addToCart} CartItem={CartItem} />}/>
           {/* <Route path='/' element={<PrivateRoute isAuthenticated={isAuthenticated} />} > */}
             <Route path="/homepage" element={<Homepage setIsAuthenticated={setIsAuthenticated} CartItem={CartItem}/>}/>
             <Route path="/sellerhomepage" element={<SellerHomepage setIsAuthenticated={setIsAuthenticated} CartItem={CartItem} />}/>
-            <Route path='/category/:type' element={<CategoryPage productItems={productItems} addToCart={addToCart} CartItem={CartItem} />}/>
+            <Route path='/category/:type' element={<CategoryPage  addToCart={addToCart} CartItem={CartItem} />}/>
           {/* </Route> */}
-          <Route path='/cart' element={<Cart CartItem={CartItem} addToCart={addToCart} decreaseQty={decreaseQty} removeFromCart={removeFromCart}/>}/>
+          <Route path='/cart' element={<Cart CartItem = {CartItem} userCart={userCart} setUserCart={setUserCart} addToCartFromCart={addToCartFromCart} decreaseQty={decreaseQty} removeFromCart={removeFromCart} />}/>
           <Route path='/flashproducts' element={<FlashCard addToCart={addToCart} CartItem={CartItem} />}/>
           <Route path='/allproducts' element={<AllProducts addToCart={addToCart} CartItem={CartItem}/>}/>
           {/* <Route path='/auctionpage' element={<Auctionpage />}/> */}
