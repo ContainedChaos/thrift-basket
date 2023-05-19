@@ -30,28 +30,29 @@ const AllProducts = (({addToCart, CartItem}) => {
   return (
     <>
     <Navbar CartItem={CartItem}/>
-
+    <h1 className="page-header">All Products</h1>
+    <div className="product-grid">
       {
       productItems.map((product, index) => {
 
         return(
-        <div key={index}>
+        <div key={index} className="product-card">
 
-          <article key={product._id}>
-              <Link to={`/productdetails/${product._id}`}>
-                  <h3>{product.name}</h3>
-              </Link>
-          </article>
-
-          <p>{product.desc}</p>
-
-          <article key={product._id}>
+<article key={product._id}>
               <Link to={`/productdetails/${product._id}`}>
                  <img id="flashcard-img" src={dest+product.fileName} alt='' />
                   {/* <img id="flashcard-img" src={`data:image/png;base64,${base64String}`} alt="Uploaded" /> */}
 
               </Link>
           </article>
+
+          <article key={product._id}>
+              <Link to={`/productdetails/${product._id}`}>
+                  <h3 className="product-name">{product.name}</h3>
+              </Link>
+          </article>
+
+          <h3 className="product-price">BDT {product.price}.00</h3>
 
           <button onClick={() => addToCart(product)}>
               <i className='fa fa-plus'></i>
@@ -60,6 +61,7 @@ const AllProducts = (({addToCart, CartItem}) => {
         </div>)
 
         })}
+        </div>
     </>
   )
 })

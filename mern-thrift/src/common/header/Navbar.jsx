@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "react-router-dom"
 import "./Navbar.css";
 import Head from "./Head";
+import "./Header.css";
 
 const Navbar = ({ CartItem, isAuthenticated }) => {
   // fixed Header
@@ -16,8 +17,8 @@ const Navbar = ({ CartItem, isAuthenticated }) => {
       <header className='header'>
         <div className='container d_flex'>
           <div className='categories d_flex'>
-            <h4>
-              ThriftBasket
+          <h4 id="thriftbasket">
+            <Link to="/" id="thriftbasket">ThriftBasket</Link>
             </h4>
           </div>
 
@@ -35,16 +36,39 @@ const Navbar = ({ CartItem, isAuthenticated }) => {
               <li>
                 <Link to='/'>home</Link>
               </li>
-              <li>
+              
               {(window.localStorage.getItem("isAuthenticated") === "true") ? (
+                <li>
                 <Link to='/userprofile'>my profile</Link>
-              ) : (
-                <Link to='/login'>my profile</Link>
-              )}
+                </li>
+              ) : null}
+              
+              {(window.localStorage.getItem("isAuthenticated") !== "true") ? (
+                <li>
+                <Link to='/register'>Become a Member</Link>
+                </li>
+              ) : null}
+              {(window.localStorage.getItem("isAuthenticated") === "true" && window.localStorage.getItem("isBuyer") === "true") ? (
+                <li className="dropdown">
+                <span>Explore</span>
+                <ul className="dropdown-menu">
+                  <li>
+                    <Link to="/page1">Page 1</Link>
+                  </li>
+                  <li>
+                    <Link to="/page2">Page 2</Link>
+                  </li>
+                  <li>
+                    <Link to="/page3">Page 3</Link>
+                  </li>
+                </ul>
               </li>
-              <li>
-                <Link to='/'>track my order</Link>
+                ) : null}
+                {(window.localStorage.getItem("isAuthenticated") === "true" && window.localStorage.getItem("isBuyer") === "false") ? (
+                <li>
+                <Link to='/'>More?</Link>
               </li>
+                ) : null}
               <li>
                 <Link to='/'>contact</Link>
               </li>
@@ -68,6 +92,11 @@ const Navbar = ({ CartItem, isAuthenticated }) => {
                   <i className='fa fa-shopping-bag icon-circle'></i>
                   <span>{CartItem.length === 0 ? "0" : CartItem.length}</span>
                 </Link>
+                {(window.localStorage.getItem("isAuthenticated") === "true") ? (
+                <Link to='/'>
+                  <i className='fas fa-sign-out icon-circle'></i>
+                </Link>
+                ) : null }
               </div>
             </div>
           </div>
