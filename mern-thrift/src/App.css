@@ -355,7 +355,8 @@ button {
 }
 
 .navlinkk {
-  margin-left: 290px;
+  justify-content: right;
+  margin-right: -380px;
 }
 
 .box .mtop:hover {

@@ -1,17 +1,17 @@
-import React from "react"
+import React, {Component} from "react"
 import { Link } from "react-router-dom"
 import "./Navbar.css";
 import Head from "./Head";
 import "./Header.css";
 
-const Navbar = ({ userCart}) => {
-  // fixed Header
-  // window.addEventListener("scroll", function () {
-  //   const search = document.querySelector(".search")
-  //   search.classList.toggle("active", window.scrollY > 100)
-  // })
+class Navbar extends Component {
+  logOut = () => {
+    window.localStorage.clear();
+    window.location.href = "./";
+  }
 
-  // Toogle Menu
+  render() {
+    const { userCart } = this.props;
   return (
     <>
       <header className='header'>
@@ -31,51 +31,35 @@ const Navbar = ({ userCart}) => {
           </div> 
         ) : <></>} */}
 
-          <div className='navlink'>
+          <div className='navlinkk'>
             <ul className="link f_flex capitalize">
               <li>
                 <Link to='/'>home</Link>
               </li>
               
-              {(window.localStorage.getItem("isAuthenticated") === "true") ? (
+              {(window.localStorage.getItem("isAuthenticated") === "true" && window.localStorage.getItem("isBuyer") === "false") ? (
                 <li>
-                <Link to='/userprofile'>my profile</Link>
+                <Link to='/sell'>Get Thrifty</Link>
                 </li>
               ) : null}
               
               {(window.localStorage.getItem("isAuthenticated") !== "true") ? (
                 <li>
-                <Link to='/register'>Become a Member</Link>
+                <Link to='/register'>Get Thrifty</Link>
                 </li>
               ) : null}
-              {(window.localStorage.getItem("isAuthenticated") === "true" && window.localStorage.getItem("isBuyer") === "true") ? (
-                <li className="dropdown">
-                <span>Explore</span>
-                <ul className="dropdown-menu">
-                  <li>
-                    <Link to="/page1">Page 1</Link>
-                  </li>
-                  <li>
-                    <Link to="/page2">Page 2</Link>
-                  </li>
-                  <li>
-                    <Link to="/page3">Page 3</Link>
-                  </li>
-                </ul>
-              </li>
-                ) : null}
-                {(window.localStorage.getItem("isAuthenticated") === "true" && window.localStorage.getItem("isBuyer") === "false") ? (
+              {(window.localStorage.getItem("isAuthenticated") === "true"  && window.localStorage.getItem("isBuyer") === "true") ? (
                 <li>
-                <Link to='/'>More?</Link>
-              </li>
-                ) : null}
+                <Link to='/buy'>Get Thrifty</Link>
+                </li>
+              ) : null}
               <li>
-                <Link to='/'>contact</Link>
+                <Link to='/'>About</Link>
               </li>
             </ul>
           </div>
 
-          <div class='search'>
+          <div class=''>
             <div className='icon f_flex width'>
             
               <div className='icons'>
@@ -88,14 +72,14 @@ const Navbar = ({ userCart}) => {
                   <i className='fa fa-user icon-circle'></i>
                 </Link>
                 )}
-                <Link to='/cart'>
+                {(window.localStorage.getItem("isAuthenticated") !== "true" || window.localStorage.getItem("isBuyer") === "true") ? (
+                  <Link to='/cart'>
                   <i className='fa fa-shopping-bag icon-circle'></i>
                   <span>{userCart.length}</span>
                 </Link>
+                ) : null}
                 {(window.localStorage.getItem("isAuthenticated") === "true") ? (
-                <Link to='/'>
-                  <i className='fas fa-sign-out icon-circle'></i>
-                </Link>
+                  <i className='fas fa-sign-out icon-circle' style={{cursor: "pointer"}} onClick={this.logOut}></i>
                 ) : null }
               </div>
             </div>
@@ -105,6 +89,7 @@ const Navbar = ({ userCart}) => {
       <Head/>
     </>
   )
+}
 }
 
 export default Navbar

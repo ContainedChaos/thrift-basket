@@ -4,9 +4,11 @@ import axios from "axios";
 import {useParams} from 'react-router-dom';
 import Navbar from "../../common/header/Navbar";
 import { Link } from "react-router-dom";
+import MessageBox from "../MessageBox/MessageBox";
 
 const AllProducts = (({addToCart, userCart}) => {
   const [productItems, setProductItems] = useState([]);
+  const [showMessageBox, setShowMessageBox] = useState(false);
   const [count, setCount] = useState(0)
   const increment = () => {
     setCount(count + 1)
@@ -23,6 +25,14 @@ const AllProducts = (({addToCart, userCart}) => {
         console.error(error);
       });
   }, []); 
+
+  const handleOpenMessageBox = () => {
+    setShowMessageBox(true);
+  };
+
+  const handleCloseMessageBox = () => {
+    setShowMessageBox(false);
+  };
   
 
   const dest = `http://localhost:3000/images/uploads/`;
@@ -54,14 +64,28 @@ const AllProducts = (({addToCart, userCart}) => {
 
           <h3 className="product-price">BDT {product.price}.00</h3>
 
-          <button onClick={() => addToCart(product)}>
-              <i className='fa fa-plus'></i>
-          </button>
+          {(window.localStorage.getItem("isAuthenticated") === "true" && window.localStorage.getItem("isBuyer") === "true") ? (
+                      <button onClick={() => addToCart(product)}>
+                      <i className='fa fa-plus'></i>
+                    </button>
+                    ) :null}
+                    {(window.localStorage.getItem("isAuthenticated") !== "true") ? (
+                      <button onClick={handleOpenMessageBox}>
+                      <i className='fa fa-plus'></i>
+                    </button>
+                    ) :null}
 
         </div>)
 
         })}
         </div>
+
+        {showMessageBox && (
+        <MessageBox
+          message="Please login first"
+          onClose={handleCloseMessageBox}
+        />
+      )}
     </>
   )
 })

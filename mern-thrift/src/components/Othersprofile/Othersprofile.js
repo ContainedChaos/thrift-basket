@@ -5,9 +5,11 @@ import {useEffect, useState} from "react"
 import axios from "axios";
 import {useParams} from 'react-router-dom';
 import { Link } from "react-router-dom"
+import MessageBox from "../MessageBox/MessageBox";
 
 const Othersprofile = ({addToCart, userCart}) => {
   const {username} = useParams();
+  const [showMessageBox, setShowMessageBox] = useState(false);
   const [user, setUser] = useState([]);
   const [products, setProducts] = useState([]);
   const [count, setCount] = useState(0)
@@ -30,6 +32,14 @@ const Othersprofile = ({addToCart, userCart}) => {
         console.error(error);
       });
   }, [username]);
+
+  const handleOpenMessageBox = () => {
+    setShowMessageBox(true);
+  };
+
+  const handleCloseMessageBox = () => {
+    setShowMessageBox(false);
+  };
 
   const dest = `http://localhost:3000/images/uploads/`;
 
@@ -69,13 +79,26 @@ const Othersprofile = ({addToCart, userCart}) => {
               </Link>
           </article>
 
-          <button onClick={() => addToCart(product)}>
-              <i className='fa fa-plus'></i>
-          </button>
+          {(window.localStorage.getItem("isAuthenticated") === "true" && window.localStorage.getItem("isBuyer") === "true") ? (
+                      <button onClick={() => addToCart(product)}>
+                      <i className='fa fa-plus'></i>
+                    </button>
+                    ) :null}
+                    {(window.localStorage.getItem("isAuthenticated") !== "true") ? (
+                      <button onClick={handleOpenMessageBox}>
+                      <i className='fa fa-plus'></i>
+                    </button>
+                    ) :null}
 
         </div>)
 
         })}
+        {showMessageBox && (
+        <MessageBox
+          message="Please login first"
+          onClose={handleCloseMessageBox}
+        />
+      )}
 
     </>
   )

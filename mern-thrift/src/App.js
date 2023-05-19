@@ -31,6 +31,7 @@ import Uploadproducts from './components/uploadproducts/uploadproducts';
 import AnnounceAuction from './components/AnnounceAuction/AnnounceAuction';
 import AllProducts from "./components/AllProducts/AllProducts";
 import Proceed from "./components/Proceed/Proceed";
+import Sell from "./components/Sell/Sell";
 
 function App() {
   

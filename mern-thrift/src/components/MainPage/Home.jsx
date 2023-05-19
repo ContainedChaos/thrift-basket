@@ -1,5 +1,5 @@
 import React from "react"
-import NavbarWithSearch from "../../common/header/NavbarWithSearch"
+import Navbar from "../../common/header/Navbar"
 import Categories from "./Categories"
 import "./Home.css"
 import SlideCard from "./SlideCard"

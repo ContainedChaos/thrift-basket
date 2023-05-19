@@ -44,14 +44,14 @@ const Login = ({setIsAuthenticated, userCart}) => {
             setIsAuthenticated(true);
             window.localStorage.setItem("isAuthenticated", true)
             alert(res.data.message)
-            if (res.data.message === "Login Successful" && res.data.role === "buyer") {
-                nav("/homepage")
+            if (res.data.message === "Login Successful") {
+                nav("/")
                 // nav("/userprofile")
             }
-            else if(res.data.message === "Login Successful" && res.data.role === "seller")
-            {
-                nav("/sellerhomepage")
-            }
+            // else if(res.data.message === "Login Successful" && res.data.role === "seller")
+            // {
+            //     nav("/sellerhomepage")
+            // }
         })
     }
 

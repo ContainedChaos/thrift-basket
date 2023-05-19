@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Head from "./Head";
 import "./Navbar.css";
@@ -21,37 +21,21 @@ const NavbarWithSearch = ({ userCart }) => {
                 <Link to='/'>home</Link>
               </li>
               
-                {(window.localStorage.getItem("isAuthenticated") === "true") ? (
+                {(window.localStorage.getItem("isAuthenticated") === "true" && window.localStorage.getItem("isBuyer") === "false") ? (
                   <li>
-                  <Link to='/userprofile'>my profile</Link>
+                  <Link to='/sell'>Get Thrifty</Link>
                   </li>
                 ) : null}
               
               {(window.localStorage.getItem("isAuthenticated") !== "true") ? (
                 <li>
-                <Link to='/register'>Become a Member</Link>
+                <Link to='/register'>Get Thrifty</Link>
                 </li>
               ) : null}
              
-              {(window.localStorage.getItem("isAuthenticated") === "true" && window.localStorage.getItem("isBuyer") === "true") ? (
-                <li className="dropdown">
-                  <span>Explore</span>
-                  <ul className="dropdown-menu">
-                    <li>
-                      <Link to="/page1">Upcoming Drops</Link>
-                    </li>
-                    <li>
-                      <Link to="/page2">Upcoming Auctions</Link>
-                    </li>
-                    <li>
-                      <Link to="/page3">???</Link>
-                    </li>
-                  </ul>
-                </li>
-              ) : null}
-              {(window.localStorage.getItem("isAuthenticated") === "true" && window.localStorage.getItem("isBuyer") === "false") ? (
+             {(window.localStorage.getItem("isAuthenticated") === "true"  && window.localStorage.getItem("isBuyer") === "true") ? (
                 <li>
-                  <Link to='/'>More?</Link>
+                <Link to='/buy'>Get Thrifty</Link>
                 </li>
               ) : null}
               <li>
@@ -60,7 +44,7 @@ const NavbarWithSearch = ({ userCart }) => {
             </ul>
           </div>
 
-          <div className='search'>
+          <div className=''>
             <div className='icon f_flex width'>
               <div className='icons'>
                 {(window.localStorage.getItem("isAuthenticated") === "true") ? (
@@ -72,14 +56,14 @@ const NavbarWithSearch = ({ userCart }) => {
                     <i className='fa fa-user icon-circle'></i>
                   </Link>
                 )}
-                <Link to='/cart'>
+                {(window.localStorage.getItem("isAuthenticated") !== "true" || window.localStorage.getItem("isBuyer") === "true") ? (
+                  <Link to='/cart'>
                   <i className='fa fa-shopping-bag icon-circle'></i>
                   <span>{userCart.length}</span>
                 </Link>
+                ) : null}
                 {(window.localStorage.getItem("isAuthenticated") === "true") ? (
-                <Link to='/'>
-                  <i className='fas fa-sign-out icon-circle'></i>
-                </Link>
+                  <i className='fas fa-sign-out icon-circle' style={{cursor: "pointer"}} onClick={this.logOut}></i>
                 ) : null }
               </div>
             </div>
@@ -90,5 +74,6 @@ const NavbarWithSearch = ({ userCart }) => {
     </>
   );
 };
+
 
 export default NavbarWithSearch;
