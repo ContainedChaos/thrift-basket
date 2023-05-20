@@ -45,7 +45,6 @@ const Cart = ({ userCart, setUserCart, addToCartFromCart, decreaseQty, removeFro
 
   return (
     <>
-      <Navbar userCart={userCart} />
       <section className="cart-items">
         <div className="container d_flex">
           <div className="cart-details">

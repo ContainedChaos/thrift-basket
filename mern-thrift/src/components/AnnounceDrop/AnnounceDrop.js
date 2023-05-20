@@ -53,7 +53,6 @@ const AnnounceDrops = ({userCart, isAuthenticated, setIsAuthenticated}) => {
 
     return (
         <>
-        <Navbar userCart={userCart} isAuthenticated={isAuthenticated}/>
         <div className="uploadannouncement">
             <h1>Drop Announcement</h1>
 

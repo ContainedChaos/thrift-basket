@@ -85,10 +85,15 @@ import "./Header.css";
                   <i className='fa fa-user icon-circle'></i>
                 </Link>
                 )}
-                {(window.localStorage.getItem("isAuthenticated") !== "true" || window.localStorage.getItem("isBuyer") === "true") ? (
+                {(window.localStorage.getItem("isBuyer") === "true") ? (
                   <Link to='/cart'>
                   <i className='fa fa-shopping-bag icon-circle'></i>
                   <span>{userCart.length}</span>
+                </Link>
+                ) : null}
+                {(window.localStorage.getItem("isAuthenticated") !== "true") ? (
+                  <Link to='/cart'>
+                  <i className='fa fa-shopping-bag icon-circle'></i>
                 </Link>
                 ) : null}
                 {(window.localStorage.getItem("isAuthenticated") === "true") ? (

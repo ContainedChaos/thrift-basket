@@ -36,7 +36,6 @@ const Verify = ({userCart}) => {
 
     return (
         <>
-        <Navbar userCart={userCart}/>
         <div className="verify">
             <h1>Verify</h1>
             <input type="text" name="otp" value={user.otp} placeholder="Type your OTP" onChange={ handleChange }></input>

@@ -57,7 +57,6 @@ const Login = ({setIsAuthenticated, userCart}) => {
 
     return (
         <>
-        <Navbar userCart={userCart}/>
         <div className="login">
             <h1>Login</h1>
             <input type="text" name="email" value={user.email} onChange={handleChange} placeholder="Enter your Email"></input>

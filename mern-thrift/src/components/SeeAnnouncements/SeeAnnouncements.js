@@ -32,7 +32,6 @@ const SeeAnnouncements = ({userCart}) => {
 
   return (
     <>
-    <Navbar userCart={userCart}/>
     {
       announcements.map((announcement) => {
         // const imageSrc = `data:${productItem.contentType};base64,${productItem.data.toString('base64')}`;

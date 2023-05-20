@@ -36,7 +36,6 @@ const ForgotPassword = ({userCart}) => {
 
     return (
         <>
-        <Navbar userCart={userCart}/>
         <div className="forgotPass">
             <h1>Enter Your Email</h1>
             {/* {message ? <p style={{ color: "green", fontWeight: "bold" }}>Password reset link sent successfully to your email</p> : ""} */}

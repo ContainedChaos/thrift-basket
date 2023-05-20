@@ -8,7 +8,6 @@ import SliderHome from "./Slider"
 const Home = ({ userCart }) => {
   return (
     <>
-    <Navbar userCart={userCart}/>
       <section className='home'>
         <div className='container d_flex'>
           <Categories />

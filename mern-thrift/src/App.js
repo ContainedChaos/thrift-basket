@@ -219,6 +219,7 @@ function App() {
     <>
     <DataProvider>
       <Router>
+        <Navbar CartItem={CartItem}/>
         <Routes>
           <Route path='/' element={<Pages productItems={productItems} addToCart={addToCart} userCart={userCart} />}/>
           <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} userCart={userCart}/>}/>

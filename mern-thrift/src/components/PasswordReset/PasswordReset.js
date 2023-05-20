@@ -58,7 +58,6 @@ const PasswordReset = ({userCart={userCart}}) => {
     
     return (
         <>
-        <Navbar userCart={userCart}/>
         <div className="passreset">
             <h1>Enter Your New Password</h1>
             {/* {message ? <p style={{ color: "green", fontWeight: "bold" }}>Password reset link sent successfully to your email</p> : ""} */}

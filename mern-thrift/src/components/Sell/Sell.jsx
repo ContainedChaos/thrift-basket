@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 const Sell = ({CartItem}) => {
   return (
     <>
-    <Navbar CartItem={CartItem}/>
     <div className="sellcontainer">
       <div className="sellimage-container">
         <img
