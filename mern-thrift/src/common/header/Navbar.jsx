@@ -4,14 +4,20 @@ import "./Navbar.css";
 import Head from "./Head";
 import "./Header.css";
 
-class Navbar extends Component {
-  logOut = () => {
-    window.localStorage.clear();
-    window.location.href = "./";
-  }
 
-  render() {
-    const { userCart } = this.props;
+  const  Navbar = ({ userCart }) => {
+
+  //   const storedUserCart = localStorage.getItem('userCart');
+  // const initialUserCart = storedUserCart ? JSON.parse(storedUserCart) : [];
+
+  // const [userCart, setUserCart] = useState(initialUserCart);
+
+      
+      const logOut = () => {
+        window.localStorage.clear();
+        window.location.href = "./";
+      }
+
   return (
     <>
       <header className='header'>
@@ -53,15 +59,22 @@ class Navbar extends Component {
                 <Link to='/buy'>Get Thrifty</Link>
                 </li>
               ) : null}
+              {(window.localStorage.getItem("isBuyer") === "true") ? (
+                <li>
+                <Link to='/purchases'>My Orders</Link>
+                </li>
+              ) : null}
+              {(window.localStorage.getItem("isAuthenticated") === "true"  && window.localStorage.getItem("isBuyer") === "false") ? (
+                <li>
+                <Link to='/sales'>My Sales</Link>
+                </li>
+              ) : null}
               <li>
                 <Link to='/'>About</Link>
               </li>
             </ul>
           </div>
-
-          <div class=''>
-            <div className='icon f_flex width'>
-            
+            <div className="icons-container">
               <div className='icons'>
               {(window.localStorage.getItem("isAuthenticated") === "true") ? (
                 <Link to='/userprofile'>
@@ -79,17 +92,15 @@ class Navbar extends Component {
                 </Link>
                 ) : null}
                 {(window.localStorage.getItem("isAuthenticated") === "true") ? (
-                  <i className='fas fa-sign-out icon-circle' style={{cursor: "pointer"}} onClick={this.logOut}></i>
+                  <i className='fas fa-sign-out icon-circle' style={{cursor: "pointer"}} onClick={logOut}></i>
                 ) : null }
               </div>
             </div>
-          </div>
-        </div>
+            </div>
       </header>
       <Head/>
     </>
   )
-}
 }
 
 export default Navbar

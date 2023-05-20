@@ -16,6 +16,8 @@ const Othersprofile = ({addToCart, userCart}) => {
   const increment = () => {
     setCount(count + 1)
   }
+
+  const [orders, setOrders] = useState(0)
   // const product = productItem.find((product) => product.id === myProductId);
   // const {id, discount, cover, name, price, description} = product;
   // console.log(cover);
@@ -27,6 +29,7 @@ const Othersprofile = ({addToCart, userCart}) => {
         console.log(response.data);
         setUser(response.data.user);
         setProducts(response.data.products);
+        setOrders(response.data.orders);
       })
       .catch((error) => {
         console.error(error);
@@ -54,7 +57,7 @@ const Othersprofile = ({addToCart, userCart}) => {
                 <label className="attribute">Email:</label> <label className="info">{user.email}</label><br/>
                 <label className="attribute">Phone:</label> <label className="info">{user.phone}</label><br/>
                 <label className="attribute">Role:</label> <label className="info">{user.role}</label><br/>
-
+                <label className="attribute">Orders:</label> <label className="info">{orders}</label><br/>
             </div>
 
             {
