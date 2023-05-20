@@ -5,7 +5,13 @@ import Head from "./Head";
 import "./Header.css";
 
 
-    const  Navbar = ({ userCart}) => {
+  const  Navbar = ({ userCart }) => {
+
+  //   const storedUserCart = localStorage.getItem('userCart');
+  // const initialUserCart = storedUserCart ? JSON.parse(storedUserCart) : [];
+
+  // const [userCart, setUserCart] = useState(initialUserCart);
+
       
       const logOut = () => {
         window.localStorage.clear();
@@ -46,7 +52,12 @@ import "./Header.css";
               ) : null}
               {(window.localStorage.getItem("isBuyer") === "true") ? (
                 <li>
-                <Link to='/myorders'>My Orders</Link>
+                <Link to='/purchases'>My Orders</Link>
+                </li>
+              ) : null}
+              {(window.localStorage.getItem("isAuthenticated") === "true"  && window.localStorage.getItem("isBuyer") === "false") ? (
+                <li>
+                <Link to='/sales'>My Sales</Link>
                 </li>
               ) : null}
               <li>

@@ -24,7 +24,10 @@ const Cart = ({ userCart, setUserCart, addToCartFromCart, decreaseQty, removeFro
       console.error(error);
     }
   };
-  
+
+  localStorage.setItem('userCart', JSON.stringify(userCart));
+
+  // Step: 7 Calculate total price of items
   const totalPrice = userCart.reduce(
     (price, item) => price + item.quantity * item.price,
     0

@@ -28,6 +28,8 @@ import AllProducts from "./components/AllProducts/AllProducts";
 import Proceed from "./components/Proceed/Proceed";
 import Sell from "./components/Sell/Sell";
 import LoggedOutCart from "./common/LoggedOutCart/LoggedOutCart";
+import Purchases from "./components/Purchase/Purchases";
+import Sales from "./components/Sales/Sales";
 
 function App() {
   
@@ -89,6 +91,7 @@ function App() {
         },
       });
       setUserCart(response.data);
+      localStorage.setItem('userCart', JSON.stringify(response.data));
       // window.location.reload()
     } catch (error) {
       console.error(error);
@@ -107,6 +110,7 @@ function App() {
         },
       });
       setUserCart(response.data);
+      localStorage.setItem('userCart', JSON.stringify(response.data));
       // window.location.reload()
     } catch (error) {
       console.error(error);
@@ -132,6 +136,7 @@ function App() {
         },
       });
       setUserCart(response.data);
+      localStorage.setItem('userCart', JSON.stringify(response.data));
       // window.location.reload()
     } catch (error) {
       console.error(error);
@@ -163,6 +168,7 @@ function App() {
         },
       });
       setUserCart(response.data);
+      localStorage.setItem('userCart', JSON.stringify(response.data));
       // window.location.reload()
     } catch (error) {
       console.error(error);
@@ -211,6 +217,8 @@ function App() {
           <Route path='/cart' element={<Cart userCart={userCart} setUserCart={setUserCart} addToCartFromCart={addToCartFromCart} decreaseQty={decreaseQty} removeFromCart={removeFromCart} />}/>
           <Route path='/flashproducts' element={<FlashCard addToCart={addToCart} />}/>
           <Route path='/allproducts' element={<AllProducts addToCart={addToCart} userCart={userCart}/>}/>
+          <Route path='/purchases' element={< Purchases />}/>
+          <Route path='/sales' element={< Sales />}/>
           {/* <Route path='/auctionpage' element={<Auctionpage />}/> */}
         </Routes>
       <Footer />
