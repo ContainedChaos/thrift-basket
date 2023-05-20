@@ -8,7 +8,6 @@ const Footer = () => {
         <div className='container grid2'>
           <div className='box'>
             <h1>Team ThriftBasket</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
             
           </div>
 
@@ -35,9 +34,8 @@ const Footer = () => {
           <div className='box'>
             <h2>Contact Us</h2>
             <ul>
-              <li>70 Washington Square South, New York, NY 10012, United States </li>
-              <li>Email: uilib.help@gmail.com</li>
-              <li>Phone: +1 1123 456 780</li>
+              <li>Email: thriftbasket.help@gmail.com</li>
+              <li>Phone: +880 1734 234683</li>
             </ul>
           </div>
         </div>

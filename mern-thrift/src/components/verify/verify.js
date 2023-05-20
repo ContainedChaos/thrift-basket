@@ -2,8 +2,9 @@ import React, { useState } from "react"
 import "./verify.css"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
+import Navbar from "../../common/header/Navbar"
 
-const Verify = () => {
+const Verify = ({userCart}) => {
 
     const nav = useNavigate()
 
@@ -34,11 +35,13 @@ const Verify = () => {
     }
 
     return (
+        <>
         <div className="verify">
             <h1>Verify</h1>
             <input type="text" name="otp" value={user.otp} placeholder="Type your OTP" onChange={ handleChange }></input>
             <div className="button" onClick={verify}>Verify</div>
         </div>
+        </>
     )
 }
 

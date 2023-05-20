@@ -1,0 +1,50 @@
+#accounttype {
+  color:rgba(255, 255, 255, 0.893); 
+  background-color: rgba(136, 56, 19, 0.492);
+  margin-top: 5px;
+  padding:5px 10px;
+  border-radius: 5px;
+}
+
+#accounttype2 {
+  color:rgba(255, 255, 255, 0.893); 
+  background-color: rgba(136, 56, 19, 0.492);
+  margin-top: 5px;
+  padding:5px 10px;
+  border-radius: 5px;
+  margin-right: 45px;
+}
+
+.select-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 45px;
+}
+
+.select-container select {
+  padding: 5px;
+  font-size: 16px;
+  border: 1px solid #bbbbbb;
+  border-radius: 4px;
+  color: #333;
+  margin-right: 7px;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+.select-container label {
+  margin-left: 10px;
+  color: #333;
+  cursor: pointer;
+}
+
+.select-container option {
+  background-color: #a8817059;
+  color: #481600;
+}
+
+#thriftbasket {
+  color: whitesmoke;
+  text-decoration: none;
+}

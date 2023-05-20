@@ -1,10 +1,11 @@
 import React from "react"
+import Navbar from "../../common/header/Navbar"
 import Categories from "./Categories"
 import "./Home.css"
 import SlideCard from "./SlideCard"
 import SliderHome from "./Slider"
 
-const Home = () => {
+const Home = ({ userCart }) => {
   return (
     <>
       <section className='home'>

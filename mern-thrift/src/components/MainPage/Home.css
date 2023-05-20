@@ -39,7 +39,6 @@
 }
 .homeSlide .box img {
   width: 100%;
-  height: 100%;
 }
 h5 {
   margin-top: 10px;
@@ -47,3 +46,4 @@ h5 {
   padding: 0 0 15px 0;
   border-bottom: solid 1px rgba(58, 24, 0, 0.64);
 }
+

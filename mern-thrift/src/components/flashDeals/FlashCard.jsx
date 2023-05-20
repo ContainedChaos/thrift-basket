@@ -1,33 +1,35 @@
-import React, { useState } from "react"
-import Slider from "react-slick"
-import "slick-carousel/slick/slick.css"
-import "slick-carousel/slick/slick-theme.css"
+import React, { useState, useEffect } from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import MessageBox from "../MessageBox/MessageBox";
 
 const SampleNextArrow = (props) => {
-  const { onClick } = props
+  const { onClick } = props;
   return (
-    <div className='control-btn' onClick={onClick}>
-      <button className='next'>
-        <i className='fa fa-long-arrow-alt-right'></i>
+    <div className="control-btn" onClick={onClick}>
+      <button className="next">
+        <i className="fa fa-long-arrow-alt-right"></i>
       </button>
     </div>
-  )
-}
+  );
+};
 const SamplePrevArrow = (props) => {
-  const { onClick } = props
+  const { onClick } = props;
   return (
-    <div className='control-btn' onClick={onClick}>
-      <button className='prev'>
-        <i className='fa fa-long-arrow-alt-left'></i>
+    <div className="control-btn" onClick={onClick}>
+      <button className="prev">
+        <i className="fa fa-long-arrow-alt-left"></i>
       </button>
     </div>
   )
 }
-const FlashCard = ({ productItems, addToCart}) => {
-  const [count, setCount] = useState(0)
-  const increment = () => {
-    setCount(count + 1)
-  }
+const FlashCard = ({ addToCart}) => {
+  const [productItems, setProductItems] = useState([]);
+  const [showMessageBox, setShowMessageBox] = useState(false);
+
   const settings = {
     dots: false,
     infinite: true,
@@ -36,48 +38,89 @@ const FlashCard = ({ productItems, addToCart}) => {
     slidesToScroll: 1,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
-  }
+  };
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:9002/flashproducts")
+      .then((response) => {
+        console.log(response.data);
+        setProductItems(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
+  const handleOpenMessageBox = () => {
+    setShowMessageBox(true);
+  };
+
+  const handleCloseMessageBox = () => {
+    setShowMessageBox(false);
+  };
 
   return (
     <>
-    <Slider {...settings}>
-    {
-      productItems.map((productItems) => {
-
-      return(
-            <div className='box'>
-              <div className='product mtop'>
-                <div className='img'>
-                  <span className='discount'>{productItems.discount}% Off</span>
-                  <img src={productItems.cover} alt='' />
-                  <div className='product-like'>
-                    <label>0</label> <br />
-                    <i className='fa-regular fa-heart' onClick={increment}></i>
-                  </div>
+      <Slider {...settings}>
+        {productItems.map((productItem) => (
+          <div className="box">
+            <div className="product mtop">
+              <div className="img">
+                <span className="discount">20% Off</span>
+                <article key={productItem._id}>
+                  <Link to={`/productdetails/${productItem._id}`}>
+                    <img
+                      id="flashcard-img"
+                      src={"./images/uploads/" + productItem.fileName}
+                      alt=""
+                    />
+                  </Link>
+                </article>
+              </div>
+              <div className="product-details">
+                <article key={productItem._id}>
+                  <Link to={`/productdetails/${productItem._id}`}>
+                    <h3>{productItem.name}</h3>
+                  </Link>
+                </article>
+                <div className="rate">
+                  <i className="fa fa-star"></i>
+                  <i className="fa fa-star"></i>
+                  <i className="fa fa-star"></i>
+                  <i className="fa fa-star"></i>
+                  <i className="fa fa-star"></i>
                 </div>
-                <div className='product-details'>
-                  <h3>{productItems.name}</h3>
-                  <div className='rate'>
-                    <i className='fa fa-star'></i>
-                    <i className='fa fa-star'></i>
-                    <i className='fa fa-star'></i>
-                    <i className='fa fa-star'></i>
-                    <i className='fa fa-star'></i>
-                  </div>
-                  <div className='price'>
-                    <h4>{productItems.price}.00</h4> 
-                    <button onClick={() => addToCart(productItems)}>
-                      <i className='fa fa-plus'></i>
+                <div className="price">
+                  <h4>{productItem.price}.00</h4>
+                  {window.localStorage.getItem("isAuthenticated") ===
+                    "true" &&
+                  window.localStorage.getItem("isBuyer") === "true" ? (
+                    <button onClick={() => addToCart(productItem)}>
+                      <i className="fa fa-plus"></i>
                     </button>
-                  </div>
+                  ) : null}
+                  {window.localStorage.getItem("isAuthenticated") !==
+                  "true" ? (
+                    <button onClick={handleOpenMessageBox}>
+                      <i className="fa fa-plus"></i>
+                    </button>
+                  ) : null}
                 </div>
               </div>
-            </div>)
-            })
-          }
-          </Slider>
-            </>
-          )
-}
+            </div>
+          </div>
+        ))}
+      </Slider>
 
-export default FlashCard
+      {showMessageBox && (
+        <MessageBox
+          message="Please login first"
+          onClose={handleCloseMessageBox}
+        />
+      )}
+    </>
+  );
+};
+
+export default FlashCard;

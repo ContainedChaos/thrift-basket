@@ -1,0 +1,88 @@
+
+.announceauction {
+    height: 650px;
+    max-width: 500px;
+    margin-top: 50px;
+    margin-left: 520px;
+    margin-bottom: 120px;
+    padding: 20px 40px;
+    background-color: #fff;
+    box-shadow: 0px 2px 6px rgb(64, 64, 64);
+    border-radius: 15px;
+  }
+  
+  .announceauction h1 {
+    font-size: 24px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #333;
+  }
+  
+  .announceauction input[type="text"],
+  .announceauction input[type="file"],
+  .announceauction textarea {
+    display: block;
+    width: 100%;
+    padding:10px;
+    font-size: 16px;
+    border: 1px solid #bbbbbb;
+    border-radius: 4px;
+    color: #333;
+    margin-bottom: -10px;
+  }
+
+  
+  .announceauction input[type="datetime-local"] {
+    display: block;
+    width: 100%;
+    padding:10px;
+    font-size: 16px;
+    border: 1px solid #bbbbbb;
+    border-radius: 4px;
+    color: #333;
+    margin-bottom: -10px;
+  }
+  
+  .announceauction input[type="file"] {
+    cursor: pointer;
+  }
+  
+  .announceauction textarea {
+    resize: vertical;
+    height: 100px;
+  }
+  
+  .announceauction .button {
+    display: inline-block;
+    background-color: rgb(153, 82, 60);
+    color: #fff;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    margin-left: 160px;
+    margin-top: 15px;
+  }
+  
+  .announceauction .button:hover {
+    background-color: rgb(187, 118, 97);
+  }
+  
+  .announceauction form div {
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .announceauction form div label {
+    width: 100px;
+    text-align: left;
+  }
+  
+  .announceauction form div .datetime-input {
+    flex: 1;
+    margin-bottom: 2px;
+  }
+  

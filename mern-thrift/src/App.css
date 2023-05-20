@@ -40,6 +40,7 @@ body {
 .d_flex {
   display: flex;
   justify-content: space-between;
+  max-height: 600px;
 }
 .c_flex {
   display: flex;
@@ -92,7 +93,7 @@ button {
   width: 77%;
 }
 .category {
-  box-shadow: rgb(43 52 69 / 10%) 0px 4px 16px;
+  box-shadow: rgba(43, 52, 69, 0.44) 0px 4px 16px;
   background-color: #fff;
   width: 23%;
   height: 510px;
@@ -103,11 +104,11 @@ button {
 .category img {
   width: 30px;
   height: 30px;
-  margin-top: 10px;
+  margin-top: 17px;
   object-fit: contain;
 }
 .category span {
-  margin: 10px 20px;
+  margin: 17px 25px;
   text-transform: capitalize;
 }
 .category .box {
@@ -117,11 +118,19 @@ button {
 .category .box:hover {
   background-color: #f7e0d3;
   cursor: pointer;
+  transform: translateY(-5px);
 }
 
 /*---------category----------*/
 .btn-primary {
   background: #e94560;
+  padding: 13px 40px;
+  font-weight: bold;
+  color: #fff;
+  border-radius: 5px;
+}
+.btn-primary:hover {
+  background: #ff8398;
   padding: 13px 40px;
   font-weight: bold;
   color: #fff;
@@ -264,4 +273,20 @@ button {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 10px;
+}
+
+#flashcard-img {
+  height: 100%;
+  width: 100%;
+}
+
+.navlinkk {
+  flex: 1; 
+  display: flex;
+  justify-content: flex-end; 
+  margin-right: 20px; 
+}
+
+.box .mtop:hover {
+  transform: translateY(-5px);
 }

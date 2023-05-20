@@ -1,17 +1,24 @@
-// import './App.css';
-// import React from 'react';
+import React, { useState, useEffect } from "react"
+import "./App.css"
+import { BrowserRouter as Router, Routes, Route, Outlet, Navigate } from "react-router-dom"
+import axios from "axios";
+
 import Homepage from './components/homepage/homepage';
 import Login from './components/login/login';
 import Register from './components/register/register';
 import DataProvider from './context/DataProvider';
 import ForgotPassword from './components/ForgotPassword/ForgotPassword';
 import PasswordReset from './components/PasswordReset/PasswordReset';
-
-
-
-import React, { useState } from "react"
-import "./App.css"
-import { BrowserRouter as Router, Routes, Route, Outlet, Navigate } from "react-router-dom"
+import UserProfile from './components/UserProfile/UserProfile';
+import ProductDetails from './components/ProductDetails/ProductDetails';
+import Navbar from './common/header/Navbar';
+import FlashCard from './components/flashDeals/FlashCard';
+import AnnounceDrop from './components/AnnounceDrop/AnnounceDrop';
+import SeeAnnouncements from './components/SeeAnnouncements/SeeAnnouncements';
+import CategoryPage from './components/CategoryPage/CategoryPage';
+import Head from './common/header/Head';
+import OthersProfile from './components/Othersprofile/Othersprofile';
+// import Auctionpage from './components/Auctionpage/Auctionpage';
 import Header from "./common/header/Header"
 import Pages from "./pages/Pages"
 import Data from "./components/Data"
@@ -19,67 +26,180 @@ import Cart from "./common/Cart/Cart"
 import Footer from "./common/footer/Footer"
 import Sdata from "./components/shops/Sdata"
 import Verify from './components/verify/verify';
+import SellerHomepage from './components/homepage/sellerHomepage';
+import Uploadproducts from './components/uploadproducts/uploadproducts';
+import AnnounceAuction from './components/AnnounceAuction/AnnounceAuction';
+import AllProducts from "./components/AllProducts/AllProducts";
+import Proceed from "./components/Proceed/Proceed";
+import Sell from "./components/Sell/Sell";
 
 function App() {
-  /*
-  step1 :  const { productItems } = Data 
-  lai pass garne using props
   
-  Step 2 : item lai cart ma halne using useState
-  ==> CartItem lai pass garre using props from  <Cart CartItem={CartItem} /> ani import garrxa in cartItem ma
- 
-  Step 3 :  chai flashCard ma xa button ma
-  Step 4 :  addToCart lai chai pass garne using props in pages and cart components
-  */
-
-  //Step 1 :
   const { productItems } = Data
   const { shopItems } = Sdata
-
-  //Step 2 :
   const [CartItem, setCartItem] = useState([])
+  const [userCart, setUserCart] = useState([]);
 
-  //Step 4 :
+  // useEffect(() => {
+  //   fetchUserCart();
+  // }, []);
+
+  // const fetchUserCart = async () => {
+  //   try {
+  //     const token = localStorage.getItem("accessToken");
+  //     const response = await axios.get("http://localhost:9002/cart", {
+  //       headers: {
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //     });
+  //     // const cartData = response.data;
+  //     setUserCart(response.data);
+  //     console.log(userCart)
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
+  
+  console.log(userCart)
+
   const addToCart = (product) => {
-    // if hamro product alredy cart xa bhane  find garna help garxa
-    const productExit = CartItem.find((item) => item.id === product.id)
-    // if productExit chai alredy exit in cart then will run fun() => setCartItem
-    // ani inside => setCartItem will run => map() ani yo map() chai each cart ma
-    // gayara check garxa if item.id ra product.id chai match bhayo bhane
-    // productExit product chai display garxa
-    // ani increase  exits product QTY by 1
-    // if item and product doesnt match then will add new items
-    if (productExit) {
-      setCartItem(CartItem.map((item) => (item.id === product.id ? { ...productExit, qty: productExit.qty + 1 } : item)))
+    
+    const productExistIndex = userCart.findIndex((item) => item.productId.toString() === product._id.toString());
+    console.log(productExistIndex)
+    if (productExistIndex !== -1) {
+      const updatedUserCart = [...userCart];
+      updatedUserCart[productExistIndex].quantity += 1;
+      setUserCart(updatedUserCart);
+      console.log(updatedUserCart[productExistIndex])
+      const updatedProduct = { ...product, quantity: updatedUserCart[productExistIndex].quantity };
+      addToCartAPI(updatedProduct);
     } else {
-      // but if the product doesnt exit in the cart that mean if card is empty
-      // then new product is added in cart  and its qty is initalize to 1
-      setCartItem([...CartItem, { ...product, qty: 1 }])
+      const updatedProduct = { ...product, quantity: 1 };
+      setUserCart([...userCart, updatedProduct]);
+      addToCartAPI(updatedProduct);
     }
-  }
+  };
+  
+  
+  const addToCartFromCart = (product) => {
+    
+    const productExistIndex = userCart.findIndex((item) => item.productId.toString() === product.productId.toString());
+    
+    console.log(productExistIndex)
+    
+    if (productExistIndex !== -1) {
+      const updatedUserCart = [...userCart];
+      updatedUserCart[productExistIndex].quantity += 1;
+      setUserCart(updatedUserCart);
+      
+      const updatedProduct = { ...product, quantity: updatedUserCart[productExistIndex].quantity };
+      addToCartFromCartAPI(updatedProduct);
+    } else {
+      const updatedProduct = { ...product, quantity: 1 };
+      setUserCart([...userCart, updatedProduct]);
+      addToCartFromCartAPI(updatedProduct);
+    }
 
-  // Stpe: 6
+    
+  };
+  
+  const addToCartFromCartAPI = async (product) => {
+    try {
+      const token = localStorage.getItem("accessToken");
+      const { productId, name, price, quantity } = product;
+      const data = { productId, name, price, quantity };
+
+      const response = await axios.post("http://localhost:9002/cart/addfromcart", data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setUserCart(response.data);
+      // window.location.reload()
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const addToCartAPI = async (product) => {
+    try {
+      const token = localStorage.getItem("accessToken");
+      const { _id, name, price, quantity } = product;
+      const data = { _id, name, price, quantity };
+
+      const response = await axios.post("http://localhost:9002/cart/add", data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setUserCart(response.data);
+      // window.location.reload()
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const removeFromCart = (product) => {
+    const updatedUserCart = userCart.filter((item) => item.productId !== product.productId);
+    setUserCart(updatedUserCart);
+    console.log(updatedUserCart)
+    removeFromCartAPI(product);
+  };
+
+  const removeFromCartAPI = async (product) => {
+    try {
+      const token = localStorage.getItem("accessToken");
+      const { productId } = product;
+      const data = { productId };
+      console.log(data)
+      const response = await axios.post("http://localhost:9002/cart/remove", data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setUserCart(response.data);
+      // window.location.reload()
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const decreaseQty = (product) => {
-    // if hamro product alredy cart xa bhane  find garna help garxa
-    const productExit = CartItem.find((item) => item.id === product.id)
-
-    // if product is exit and its qty is 1 then we will run a fun  setCartItem
-    // inside  setCartItem we will run filter to check if item.id is match to product.id
-    // if the item.id is doesnt match to product.id then that items are display in cart
-    // else
-    if (productExit.qty === 1) {
-      setCartItem(CartItem.filter((item) => item.id !== product.id))
+    const productExist = userCart.find((item) => item.productId === product.productId);
+    if (productExist.quantity === 1) {
+      removeFromCart(product);
     } else {
-      // if product is exit and qty  of that produt is not equal to 1
-      // then will run function call setCartItem
-      // inside setCartItem we will run map method
-      // this map() will check if item.id match to produt.id  then we have to desc the qty of product by 1
-      setCartItem(CartItem.map((item) => (item.id === product.id ? { ...productExit, qty: productExit.qty - 1 } : item)))
+      const updatedUserCart = userCart.map((item) =>
+        item.productId === product.productId ? { ...item, quantity: item.quantity - 1 } : item
+      );
+      setUserCart(updatedUserCart);
+      console.log(updatedUserCart)
+      decreaseQtyAPI(product);
     }
-  }
+  };
+
+  const decreaseQtyAPI = async (product) => {
+    try {
+      const token = localStorage.getItem("accessToken");
+      const { productId } = product;
+      const data = { productId };
+      const response = await axios.post("http://localhost:9002/cart/decreaseqty", data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setUserCart(response.data);
+      // window.location.reload()
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  
+  
 
   const [ user, setLoginUser] = useState({})
-  const [isAuthenticated, isUserAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const PrivateRoute = ( {isAuthenticated, ...props}) => {
 
     return isAuthenticated ?
@@ -93,18 +213,31 @@ function App() {
     <>
     <DataProvider>
       <Router>
-      <Header CartItem={CartItem}/>
+        <Navbar CartItem={CartItem}/>
         <Routes>
-          <Route path='/' element={<Pages productItems={productItems} addToCart={addToCart} shopItems={shopItems}/>}/>
-          <Route path="/login" element={<Login isUserAuthenticated={isUserAuthenticated}/>}/>
-          <Route path="/register" element={<Register/>}/>
-          <Route path="/verify" element={<Verify/>}/>
-          <Route path="/forgotpassword" element={<ForgotPassword/>}/>
-          <Route path="/passwordreset" element={<PasswordReset/>}/>
+          <Route path='/' element={<Pages productItems={productItems} addToCart={addToCart} userCart={userCart} />}/>
+          <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} userCart={userCart}/>}/>
+          <Route path="/register" element={<Register userCart={userCart}/>}/>
+          <Route path="/verify" element={<Verify userCart={userCart}/>}/>
+          <Route path="/forgotpassword" element={<ForgotPassword userCart={userCart}/>}/>
+          <Route path="/passwordreset" element={<PasswordReset userCart={userCart}/>}/>
+          <Route path="/userprofile" element={<UserProfile userCart={userCart}/>}/>
+          <Route path="/proceed/:totalPrice" element={<Proceed userCart={userCart}/>}/>
+          <Route path="/profile/:username" element={<OthersProfile addToCart={addToCart} userCart={userCart}/>}/>
+          <Route path="/uploadproducts" element={<Uploadproducts setIsAuthenticated={setIsAuthenticated} userCart={userCart}/>}/>
+          <Route path="/announceauction" element={<AnnounceAuction setIsAuthenticated={setIsAuthenticated} userCart={userCart}/>}/>
+          <Route path="/announcedrop" element={<AnnounceDrop setIsAuthenticated={setIsAuthenticated} userCart={userCart}/>}/>
+          <Route path="/announcements" element={<SeeAnnouncements userCart={userCart}/>}/>
+          <Route path='/productdetails/:productId' element={<ProductDetails addToCart={addToCart} userCart={userCart} />}/>
           {/* <Route path='/' element={<PrivateRoute isAuthenticated={isAuthenticated} />} > */}
-            <Route path="/homepage" element={<Homepage isUserAuthenticated={isUserAuthenticated}/>}/>
+            <Route path="/homepage" element={<Homepage setIsAuthenticated={setIsAuthenticated} userCart={userCart}/>}/>
+            <Route path="/sellerhomepage" element={<SellerHomepage setIsAuthenticated={setIsAuthenticated} userCart={userCart} />}/>
+            <Route path='/category/:type' element={<CategoryPage  addToCart={addToCart} userCart={userCart} />}/>
           {/* </Route> */}
-          <Route path='/cart' element={<Cart CartItem={CartItem} addToCart={addToCart} decreaseQty={decreaseQty} />}/>
+          <Route path='/cart' element={<Cart userCart={userCart} setUserCart={setUserCart} addToCartFromCart={addToCartFromCart} decreaseQty={decreaseQty} removeFromCart={removeFromCart} />}/>
+          <Route path='/flashproducts' element={<FlashCard addToCart={addToCart} />}/>
+          <Route path='/allproducts' element={<AllProducts addToCart={addToCart} userCart={userCart}/>}/>
+          {/* <Route path='/auctionpage' element={<Auctionpage />}/> */}
         </Routes>
       <Footer />
       </Router>

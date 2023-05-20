@@ -1,0 +1,65 @@
+
+.uploadannouncement {
+    height: 600px;
+    max-width: 500px;
+    margin-top: 50px;
+    margin-left: 520px;
+    margin-bottom: 120px;
+    padding: 20px 40px;
+    background-color: #fff;
+    box-shadow: 0px 2px 6px rgb(64, 64, 64);
+    border-radius: 15px;
+  }
+  
+  .uploadannouncement h1 {
+    font-size: 24px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #333;
+  }
+  
+  .uploadannouncement input[type="text"],
+  .uploadannouncement input[type="datetime-local"],
+  .uploadannouncement input[type="file"],
+  .uploadannouncement textarea {
+    display: block;
+    width: 100%;
+    padding:10px;
+    font-size: 16px;
+    border: 1px solid #bbbbbb;
+    border-radius: 4px;
+    color: #333;
+    margin-bottom: -10px;
+  }
+  
+  .uploadannouncement input[type="file"] {
+    cursor: pointer;
+  }
+  
+  .uploadannouncement textarea {
+    resize: vertical;
+    height: 100px;
+  }
+  
+  .uploadannouncement .button {
+    display: inline-block;
+    background-color: rgb(153, 82, 60);
+    color: #fff;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    margin-left: 160px;
+    margin-top: 15px;
+  }
+  
+  .uploadannouncement .button:hover {
+    background-color: rgb(187, 118, 97);
+  }
+  
+  .uploadannouncement form div {
+    margin-bottom: 30px;
+  }
+  

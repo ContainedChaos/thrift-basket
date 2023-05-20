@@ -1,0 +1,87 @@
+.user-profile {
+    width: 450px;
+    height: 350px;
+    background: #fff;
+    border: 1px solid #dddfe2;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+    border-radius: 8px;
+    padding: 1rem;
+    align-items: center;
+    margin-top: 130px;
+    margin-bottom: 190px;
+    margin-left: 520px;
+}
+
+.user-profile .attribute {
+    margin-left: 60px;
+    margin-top: 30px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.user-profile h2 {
+    margin-left: 135px;
+}
+
+.profile-button {
+    background: #a36043;
+    color: #fff;
+    border: 1px solid #a36043;
+    font-size: 1.25rem;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+    width: 90px;
+    margin-left: 700px;
+    margin-top: -150px;
+    margin-bottom: 180px;
+}
+
+.profile-button:hover {
+    background: #b9846d;
+    color: #fff;
+    border: 2px solid #000000;
+    font-size: 1.25rem;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+    width: 90px;
+    margin-left: 700px;
+    margin-top: -150px;
+    margin-bottom: 180px;
+}
+
+.profile-button a {
+    color: white;
+}
+
+#logoutbtn {
+    background: #a36043;
+    color: #fff;
+    border: 1px solid #a36043;
+    font-size: 1.25rem;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+    margin-left: 160px;
+}
+
+#logoutbtn:hover {
+    background: #b9846d;
+    color: #fff;
+    border: 2px solid #000000;
+    font-size: 1.25rem;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+    margin-left: 160px;
+}
+

@@ -13,6 +13,9 @@ const Validation = (user) => {
         errors.email = "Email is required"
     }
 
+    else if (user.email.search(/[@]/) < 0)
+    errors.email = "Email is not valid"
+
     if (!user.password) {
         errors.password = "Password is required"
     }
