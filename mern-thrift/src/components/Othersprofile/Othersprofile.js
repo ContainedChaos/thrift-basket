@@ -12,6 +12,7 @@ const Othersprofile = ({addToCart, userCart}) => {
   const [showMessageBox, setShowMessageBox] = useState(false);
   const [user, setUser] = useState([]);
   const [products, setProducts] = useState([]);
+  const [reviews, setReviewss] = useState([]);
   const [count, setCount] = useState(0)
   const increment = () => {
     setCount(count + 1)
@@ -30,6 +31,7 @@ const Othersprofile = ({addToCart, userCart}) => {
         setUser(response.data.user);
         setProducts(response.data.products);
         setOrders(response.data.orders);
+        setReviewss(response.data.reviews)
       })
       .catch((error) => {
         console.error(error);
@@ -91,10 +93,15 @@ const Othersprofile = ({addToCart, userCart}) => {
                       <i className='fa fa-plus'></i>
                     </button>
                     ) :null}
-
+          
         </div>)
 
         })}
+        {reviews.map((review, index) => (
+        <div key={index}>
+          <h1>{review.review}</h1>
+        </div>
+      ))}
         {showMessageBox && (
         <MessageBox
           message="Please login first"
