@@ -15,7 +15,7 @@ import "./Header.css";
       
       const logOut = () => {
         window.localStorage.clear();
-        window.location.href = "./";
+        window.location.href = "http://localhost:3000/";
       }
 
   return (

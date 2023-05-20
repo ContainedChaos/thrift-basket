@@ -34,6 +34,7 @@ import Proceed from "./components/Proceed/Proceed";
 import Sell from "./components/Sell/Sell";
 import Purchases from "./components/Purchase/Purchases";
 import Sales from "./components/Sales/Sales";
+import SeeReviews from "./components/SeeReviews/SeeReviews";
 
 function App() {
   
@@ -219,7 +220,7 @@ function App() {
     <>
     <DataProvider>
       <Router>
-        <Navbar CartItem={CartItem}/>
+        <Navbar userCart={userCart}/>
         <Routes>
           <Route path='/' element={<Pages productItems={productItems} addToCart={addToCart} userCart={userCart} />}/>
           <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} userCart={userCart}/>}/>
@@ -245,6 +246,7 @@ function App() {
           <Route path='/allproducts' element={<AllProducts addToCart={addToCart} userCart={userCart}/>}/>
           <Route path='/purchases' element={< Purchases />}/>
           <Route path='/sales' element={< Sales />}/>
+          <Route path='/seereviews' element={< SeeReviews />}/>
           {/* <Route path='/auctionpage' element={<Auctionpage />}/> */}
         </Routes>
       <Footer />

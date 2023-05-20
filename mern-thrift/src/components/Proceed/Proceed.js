@@ -59,7 +59,6 @@ const Proceed = ({userCart}) => {
 
     return (
         <>
-        <Navbar userCart={userCart}/>
         <div className="proceed">
             <h1>Proceed</h1>
             <input type="text" name="name" value={user.name} placeholder="Your Name" onChange={ handleChange }></input>
