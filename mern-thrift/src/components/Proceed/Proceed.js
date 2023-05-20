@@ -60,16 +60,16 @@ const Proceed = ({userCart}) => {
     return (
         <>
         <div className="proceed">
-            <h1>Proceed</h1>
+            <h1>Checkout</h1>
             <input type="text" name="name" value={user.name} placeholder="Your Name" onChange={ handleChange }></input>
 
             <input type="text" name="email" value={user.email} placeholder="Your Email" onChange={ handleChange }></input>
             
             <input type="text" name="phone" value={user.phone} placeholder="Your Phone Number" onChange={ handleChange }></input>
             
-            <input type="text" name="address" value={user.address} placeholder="Your Address" onChange={ handleChange }></input>
+            <textarea name="address" value={user.address} placeholder="Your Address" onChange={ handleChange }></textarea>
 
-            <div className="button" onClick={proceed} >Checkout</div>
+            <div className="button" onClick={proceed} >Proceed to Payment</div>
         </div>
         </>
     )

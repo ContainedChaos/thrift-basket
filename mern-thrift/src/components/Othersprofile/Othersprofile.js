@@ -50,57 +50,62 @@ const Othersprofile = ({addToCart, userCart}) => {
 
   return (
     <>
-            <div className="user-profile">
-                <h2>Profile</h2>
-                <label className="attribute">Name:</label> <label className="info">{user.name}</label><br/>
-                <label className="attribute">Email:</label> <label className="info">{user.email}</label><br/>
-                <label className="attribute">Phone:</label> <label className="info">{user.phone}</label><br/>
-                <label className="attribute">Role:</label> <label className="info">{user.role}</label><br/>
-                <label className="attribute">Orders:</label> <label className="info">{orders}</label><br/>
-            </div>
+            <div className="others-profile-container">
+      <div className="profile-container">
+        <h2>Profile</h2>
+        <label className="mattribute">Name:</label>
+        <label className="info">{user.name}</label>
+        <br />
+        <label className="mattribute">Email:</label>
+        <label className="info">{user.email}</label>
+        <br />
+        <label className="mattribute">Phone:</label>
+        <label className="info">{user.phone}</label>
+        <br />
+        <label className="mattribute">Role:</label>
+        <label className="info">{user.role}</label>
+        <br />
+        <label className="mattribute">Orders:</label>
+        <label className="info">{orders}</label>
+        <br />
+      </div>
 
-            {
-      products.map((product, index) => {
-
-        return(
-        <div key={index}>
-
-          <article key={product._id}>
+      <div className="profile-product-container">
+        {products.map((product, index) => (
+          <div key={index} className="profile-product-card">
+            <article key={product._id}>
               <Link to={`/productdetails/${product._id}`}>
-                  <h3>{product.name}</h3>
+                <h3>{product.name}</h3>
               </Link>
-          </article>
+            </article>
 
-          <p>{product.desc}</p>
+            <p>{product.desc}</p>
 
-          <article key={product._id}>
+            <article key={product._id}>
               <Link to={`/productdetails/${product._id}`}>
-                 <img id="flashcard-img" src={dest+product.fileName} alt='' />
-                  {/* <img id="flashcard-img" src={`data:image/png;base64,${base64String}`} alt="Uploaded" /> */}
-
+                <img id="profile-product-img" src={dest + product.fileName} alt="" />
               </Link>
-          </article>
+            </article>
 
-          {(window.localStorage.getItem("isAuthenticated") === "true" && window.localStorage.getItem("isBuyer") === "true") ? (
-                      <button onClick={() => addToCart(product)}>
-                      <i className='fa fa-plus'></i>
-                    </button>
-                    ) :null}
-                    {(window.localStorage.getItem("isAuthenticated") !== "true") ? (
-                      <button onClick={handleOpenMessageBox}>
-                      <i className='fa fa-plus'></i>
-                    </button>
-                    ) :null}
+            {window.localStorage.getItem("isAuthenticated") === "true" &&
+            window.localStorage.getItem("isBuyer") === "true" ? (
+              <button onClick={() => addToCart(product)}>
+                <i className="fa fa-plus"></i>
+              </button>
+            ) : null}
+            {window.localStorage.getItem("isAuthenticated") !== "true" ? (
+              <button onClick={handleOpenMessageBox}>
+                <i className="fa fa-plus"></i>
+              </button>
+            ) : null}
+          </div>
+        ))}
+      </div>
 
-        </div>)
-
-        })}
-        {showMessageBox && (
-        <MessageBox
-          message="Please login first"
-          onClose={handleCloseMessageBox}
-        />
+      {showMessageBox && (
+        <MessageBox message="Please login first" onClose={handleCloseMessageBox} />
       )}
+    </div>
 
     </>
   )

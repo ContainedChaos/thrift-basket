@@ -16,7 +16,7 @@ const Sell = ({CartItem}) => {
       </div>
       <div className="sellerbuttons-wrapper">
       <div className="inspiring-section">
-            <h2 className="inspiring-title">Unleash the magic of <span className="preloved-word">preloved</span></h2>
+            <h2 className="inspiring-title">Unleash the magic of <span className="preloved-word">Preloved</span></h2>
             <p className="inspiring-paragraph">
               Embrace the joy of thrifting, where treasures find new homes and
               stories unfold. By selling your preloved items, you're not just 

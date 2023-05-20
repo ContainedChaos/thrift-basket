@@ -34,6 +34,10 @@ const dest = `http://localhost:3000/images/uploads/`;
 
 return (
   <>
+  <div className="page-header">
+      <h1>My Orders</h1>
+    </div>
+    <div className="product-grid">
     {purchases.map((order, index) => (
       <div className="box" key={index}>
         <article key={{index}}>
@@ -56,6 +60,7 @@ return (
         ))}
       </div>
     ))}
+    </div>
   </>
 );
 

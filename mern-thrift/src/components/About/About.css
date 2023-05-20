@@ -1,0 +1,31 @@
+.about-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  margin-right: 115px;
+  margin-left: 115px;
+}
+
+.about-content {
+  flex: 1;
+  max-width: 650px;
+}
+
+.about-content h2 {
+  font-size: 70px;
+  margin-bottom: 0.5rem;
+  margin-top: -100px;
+  color:rgb(125, 48, 20);
+}
+
+.about-content p {
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.about-image img {
+  width: 500px;
+  height: auto;
+  margin-bottom: 100px;
+}
