@@ -30,6 +30,7 @@ import Sell from "./components/Sell/Sell";
 import LoggedOutCart from "./common/LoggedOutCart/LoggedOutCart";
 import Purchases from "./components/Purchase/Purchases";
 import Sales from "./components/Sales/Sales";
+import SeeReviews from "./components/SeeReviews/SeeReviews";
 import Buy from "./components/Buy/Buy";
 import About from "./components/About/About";
 import PaymentSuccess from "./components/PaymentSuccess/PaymentSuccess";
@@ -225,6 +226,7 @@ function App() {
           <Route path='/allproducts' element={<AllProducts addToCart={addToCart} userCart={userCart}/>}/>
           <Route path='/purchases' element={< Purchases />}/>
           <Route path='/sales' element={< Sales />}/>
+          <Route path='/seereviews' element={< SeeReviews />}/>
           {/* <Route path='/auctionpage' element={<Auctionpage />}/> */}
         </Routes>
       <Footer />
