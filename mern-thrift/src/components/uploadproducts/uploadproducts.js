@@ -54,7 +54,6 @@ const Uploadproducts = ({CartItem, isAuthenticated, setIsAuthenticated}) => {
 
     return (
         <>
-        <Navbar CartItem={CartItem} isAuthenticated={isAuthenticated}/>
         <div className="upload">
             <h1>Add Product</h1>
             <div class="form-container">

@@ -47,7 +47,6 @@ const Othersprofile = ({addToCart, CartItem}) => {
 
   return (
     <>
-    <Navbar CartItem={CartItem} />
             <div className="user-profile">
                 <h2>Profile</h2>
                 <label className="attribute">Name:</label> <label className="info">{user.name}</label><br/>

@@ -42,7 +42,6 @@ const CategoryPage = (({addToCart, CartItem}) => {
 
   return (
     <>
-    <Navbar CartItem={CartItem}/>
     <div className="page-header">
       <h1>{type}</h1>
     </div>

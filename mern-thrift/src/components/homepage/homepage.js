@@ -12,7 +12,6 @@ const Homepage = ({CartItem, setIsAuthenticated}) => {
 
     return (
         <>
-        <Navbar CartItem={CartItem} />
         <div className="homepage">
             <h1>Welcome</h1>
             <div className="button" >

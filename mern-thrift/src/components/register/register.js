@@ -60,7 +60,6 @@ const Register = ({CartItem}) => {
 
     return (
         <>
-        <Navbar CartItem={CartItem}/>
         <div className="register">
             <h1>Register</h1>
             <input type="text" name="name" value={user.name} placeholder="Your Name" onChange={ handleChange }></input>

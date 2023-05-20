@@ -275,88 +275,16 @@ button {
   grid-gap: 10px;
 }
 
-
-.overall-container {
-  display: flex;
-  background: linear-gradient(to right, #ffe2d3, #ffffff);
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-.product-details-container {
-  width: 80%;
-  height: 80%;
-  margin: 100px auto;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  align-items: center;
-  border: 2px solid rgb(255, 255, 255);
-  background: linear-gradient(to right, rgb(255, 255, 255) 50%, #ffe2d3 50%);
-}
-
-.product-image-grid {
-  grid-column: 1 / 2;
-}
-
-.product-details-grid {
-  grid-column: 2 / 3;
-  margin-right: 180px;
-  margin-top: -100px;
-  margin-left: 20px;
-}
-
-.product-details-grid h2 {
-  margin-bottom: 15px;
-  margin-top: 50px;
-}
-
-.product-details-grid p {
-  margin-bottom: 30px;
-}
-
-.product-details-grid .product-price {
-  color: #ff2348;
-  margin-bottom: 25px;
-}
-
-#product-image {
-  width: 100%;
-  height: 100%;
-}
-
-.product-details-grid .rate i {
-  font-size: 20px;
-  color: #ffca43;
-  margin: 5px 5px 5px 0;
-  margin-bottom: 20px;
-}
-
-.product-details-grid button {
-  background: #e83e5a;
-  color: white;
-  font-size: 20px;
-  transition: 0.15s;
-  border: 1px solid rgb(3 0 71 / 9%);
-  width: 200px;
-  height: 50px;
-  border-radius: 5px;
-}
-.product-details-grid button:hover {
-  cursor: pointer;
-  background-color: #e95a72;
-  border: 3px solid white;
-  color: #fff;
-}
 #flashcard-img {
   height: 100%;
   width: 100%;
 }
 
 .navlinkk {
-  justify-content: right;
-  margin-right: -380px;
+  flex: 1; 
+  display: flex;
+  justify-content: flex-end; 
+  margin-right: 20px; 
 }
 
 .box .mtop:hover {

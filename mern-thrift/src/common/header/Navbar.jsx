@@ -4,14 +4,14 @@ import "./Navbar.css";
 import Head from "./Head";
 import "./Header.css";
 
-class Navbar extends Component {
-  logOut = () => {
-    window.localStorage.clear();
-    window.location.href = "./";
-  }
 
-  render() {
-    const { CartItem, isAuthenticated } = this.props;
+    const  Navbar = ({ CartItem, isAuthenticated }) => {
+      
+      const logOut = () => {
+        window.localStorage.clear();
+        window.location.href = "./";
+      }
+
   return (
     <>
       <header className='header'>
@@ -53,15 +53,17 @@ class Navbar extends Component {
                 <Link to='/buy'>Get Thrifty</Link>
                 </li>
               ) : null}
+              {(window.localStorage.getItem("isBuyer") === "true") ? (
+                <li>
+                <Link to='/myorders'>My Orders</Link>
+                </li>
+              ) : null}
               <li>
                 <Link to='/'>About</Link>
               </li>
             </ul>
           </div>
-
-          <div class=''>
-            <div className='icon f_flex width'>
-            
+            <div className="icons-container">
               <div className='icons'>
               {(window.localStorage.getItem("isAuthenticated") === "true") ? (
                 <Link to='/userprofile'>
@@ -72,24 +74,27 @@ class Navbar extends Component {
                   <i className='fa fa-user icon-circle'></i>
                 </Link>
                 )}
-                {(window.localStorage.getItem("isAuthenticated") !== "true" || window.localStorage.getItem("isBuyer") === "true") ? (
+                {(window.localStorage.getItem("isBuyer") === "true") ? (
                   <Link to='/cart'>
                   <i className='fa fa-shopping-bag icon-circle'></i>
                   <span>{CartItem.length === 0 ? "0" : CartItem.length}</span>
                 </Link>
                 ) : null}
+                {(window.localStorage.getItem("isAuthenticated") !== "true") ? (
+                  <Link to='/cart'>
+                  <i className='fa fa-shopping-bag icon-circle'></i>
+                </Link>
+                ) : null}
                 {(window.localStorage.getItem("isAuthenticated") === "true") ? (
-                  <i className='fas fa-sign-out icon-circle' style={{cursor: "pointer"}} onClick={this.logOut}></i>
+                  <i className='fas fa-sign-out icon-circle' style={{cursor: "pointer"}} onClick={logOut}></i>
                 ) : null }
               </div>
             </div>
-          </div>
-        </div>
+            </div>
       </header>
       <Head/>
     </>
   )
-}
 }
 
 export default Navbar

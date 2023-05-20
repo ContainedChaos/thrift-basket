@@ -39,7 +39,6 @@ const AllProducts = (({addToCart, CartItem}) => {
 
   return (
     <>
-    <Navbar CartItem={CartItem}/>
     <h1 className="page-header">All Products</h1>
     <div className="product-grid">
       {

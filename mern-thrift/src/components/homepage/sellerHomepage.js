@@ -12,7 +12,6 @@ const SellerHomepage = ({CartItem, isAuthenticated, setIsAuthenticated}) => {
 
     return (
         <>
-        <Navbar CartItem={CartItem} isAuthenticated={isAuthenticated}/>
         <div className="homepage">
             <h1>Welcome SELLER</h1>
             <div className="button" >

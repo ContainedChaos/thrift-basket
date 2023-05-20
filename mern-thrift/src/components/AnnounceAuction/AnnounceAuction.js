@@ -56,7 +56,6 @@ const AnnounceAuction = ({CartItem, isAuthenticated, setIsAuthenticated}) => {
 
     return (
         <>
-        <Navbar CartItem={CartItem} isAuthenticated={isAuthenticated}/>
         <div className="announceauction">
             <h1>Auction Announcement</h1>
 

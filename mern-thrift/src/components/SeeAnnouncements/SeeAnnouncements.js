@@ -32,7 +32,6 @@ const SeeAnnouncements = ({CartItem}) => {
 
   return (
     <>
-    <Navbar CartItem={CartItem}/>
     {
       announcements.map((announcement) => {
         // const imageSrc = `data:${productItem.contentType};base64,${productItem.data.toString('base64')}`;

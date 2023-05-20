@@ -6,6 +6,7 @@ import {useParams} from 'react-router-dom';
 import Navbar from "../../common/header/Navbar";
 import { Link } from "react-router-dom"
 import MessageBox from "../MessageBox/MessageBox";
+import "./ProductDetails.css";
 
 const ProductDetails = ({addToCart, CartItem}) => {
   const {productId} = useParams();
@@ -30,6 +31,10 @@ const ProductDetails = ({addToCart, CartItem}) => {
       });
   }, [productId]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const handleOpenMessageBox = () => {
     setShowMessageBox(true);
   };
@@ -44,18 +49,15 @@ const ProductDetails = ({addToCart, CartItem}) => {
 
   return (
     <>
-    <Navbar CartItem={CartItem}/>
-    
-    <div className="overall-container">
-      <div className="product-details-container">
-        <div className="product-image-grid">
+      <div className="product-details-container2">
+        <div className="product-image-container2">
           
-        <img id="product-image" src={dest+productItem.fileName} alt='not found' />
+        <img id="product-image2" src={dest+productItem.fileName} alt='not found' />
           {/* <img id="product-image" src={"./images/uploads/"+productItem.fileName} alt='not found' /> */}
         </div>
-        <div className="product-details-grid">
+        <div className="product-details2">
           <h2>{productItem.name}</h2>
-                  <div className='rate'>
+                  <div className='rate2'>
                     <i className='fa fa-star'></i>
                     <i className='fa fa-star'></i>
                     <i className='fa fa-star'></i>
@@ -65,15 +67,14 @@ const ProductDetails = ({addToCart, CartItem}) => {
             <p>
             {productItem.desc}
             </p>
-          <div className="product-price">
+
+            
+          <div className="product-price2">
           <h4>BDT {productItem.price}.00</h4>
           </div>
           
-          <article key={uploader}>
-              <Link to={`/profile/${uploader}`}>
-                <h3>{uploader}</h3>
-              </Link>
-          </article>
+
+          
           {(window.localStorage.getItem("isAuthenticated") === "true" && window.localStorage.getItem("isBuyer") === "true") ? (
                       <button onClick={() => addToCart(productItem)}>
                       Add to Basket
@@ -84,9 +85,16 @@ const ProductDetails = ({addToCart, CartItem}) => {
                       Add to Basket
                     </button>
                     ) :null}
+                    <article key={uploader}>
+  <div className="added-by">
+    <h4>View more products by this seller here: </h4>
+    <Link to={`/profile/${uploader}`}>
+      <h3>{uploader}</h3>
+    </Link>
+  </div>
+</article>
         </div> 
       </div>  
-      </div> 
 
       {showMessageBox && (
         <MessageBox
