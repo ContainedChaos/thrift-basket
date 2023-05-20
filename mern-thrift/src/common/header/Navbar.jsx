@@ -28,15 +28,6 @@ import "./Header.css";
             </h4>
           </div>
 
-        {/* {isAuthenticated ? (
-          <div className="search">
-            <div className='search-box f_flex'>
-              <i className='fa fa-search'></i>
-              <input type='text' placeholder='Search and hit enter...' />
-            </div>
-          </div> 
-        ) : <></>} */}
-
           <div className='navlinkk'>
             <ul className="link f_flex capitalize">
               <li>
@@ -92,7 +83,7 @@ import "./Header.css";
                 </Link>
                 ) : null}
                 {(window.localStorage.getItem("isAuthenticated") !== "true") ? (
-                  <Link to='/cart'>
+                  <Link to='/loggedoutcart'>
                   <i className='fa fa-shopping-bag icon-circle'></i>
                 </Link>
                 ) : null}

@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from "react"
+import React, { useState} from "react"
 import "./App.css"
 import { BrowserRouter as Router, Routes, Route, Outlet, Navigate } from "react-router-dom"
 import axios from "axios";
-
-import Homepage from './components/homepage/homepage';
 import Login from './components/login/login';
 import Register from './components/register/register';
 import DataProvider from './context/DataProvider';
@@ -16,22 +14,20 @@ import FlashCard from './components/flashDeals/FlashCard';
 import AnnounceDrop from './components/AnnounceDrop/AnnounceDrop';
 import SeeAnnouncements from './components/SeeAnnouncements/SeeAnnouncements';
 import CategoryPage from './components/CategoryPage/CategoryPage';
-import Head from './common/header/Head';
 import OthersProfile from './components/Othersprofile/Othersprofile';
 // import Auctionpage from './components/Auctionpage/Auctionpage';
-import Header from "./common/header/Header"
 import Pages from "./pages/Pages"
 import Data from "./components/Data"
 import Cart from "./common/Cart/Cart"
 import Footer from "./common/footer/Footer"
 import Sdata from "./components/shops/Sdata"
 import Verify from './components/verify/verify';
-import SellerHomepage from './components/homepage/sellerHomepage';
 import Uploadproducts from './components/uploadproducts/uploadproducts';
 import AnnounceAuction from './components/AnnounceAuction/AnnounceAuction';
 import AllProducts from "./components/AllProducts/AllProducts";
 import Proceed from "./components/Proceed/Proceed";
 import Sell from "./components/Sell/Sell";
+import LoggedOutCart from "./common/LoggedOutCart/LoggedOutCart";
 import Purchases from "./components/Purchase/Purchases";
 import Sales from "./components/Sales/Sales";
 import SeeReviews from "./components/SeeReviews/SeeReviews";
@@ -39,29 +35,7 @@ import SeeReviews from "./components/SeeReviews/SeeReviews";
 function App() {
   
   const { productItems } = Data
-  const { shopItems } = Sdata
-  const [CartItem, setCartItem] = useState([])
   const [userCart, setUserCart] = useState([]);
-
-  // useEffect(() => {
-  //   fetchUserCart();
-  // }, []);
-
-  // const fetchUserCart = async () => {
-  //   try {
-  //     const token = localStorage.getItem("accessToken");
-  //     const response = await axios.get("http://localhost:9002/cart", {
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //     });
-  //     // const cartData = response.data;
-  //     setUserCart(response.data);
-  //     console.log(userCart)
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
   
   console.log(userCart)
 
@@ -223,6 +197,7 @@ function App() {
         <Navbar userCart={userCart}/>
         <Routes>
           <Route path='/' element={<Pages productItems={productItems} addToCart={addToCart} userCart={userCart} />}/>
+          <Route path="/sell" element={<Sell userCart={userCart}/>}/>
           <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} userCart={userCart}/>}/>
           <Route path="/register" element={<Register userCart={userCart}/>}/>
           <Route path="/verify" element={<Verify userCart={userCart}/>}/>
@@ -237,10 +212,9 @@ function App() {
           <Route path="/announcements" element={<SeeAnnouncements userCart={userCart}/>}/>
           <Route path='/productdetails/:productId' element={<ProductDetails addToCart={addToCart} userCart={userCart} />}/>
           {/* <Route path='/' element={<PrivateRoute isAuthenticated={isAuthenticated} />} > */}
-            <Route path="/homepage" element={<Homepage setIsAuthenticated={setIsAuthenticated} userCart={userCart}/>}/>
-            <Route path="/sellerhomepage" element={<SellerHomepage setIsAuthenticated={setIsAuthenticated} userCart={userCart} />}/>
             <Route path='/category/:type' element={<CategoryPage  addToCart={addToCart} userCart={userCart} />}/>
           {/* </Route> */}
+          <Route path='/loggedoutcart' element={<LoggedOutCart userCart={userCart}/>}/>
           <Route path='/cart' element={<Cart userCart={userCart} setUserCart={setUserCart} addToCartFromCart={addToCartFromCart} decreaseQty={decreaseQty} removeFromCart={removeFromCart} />}/>
           <Route path='/flashproducts' element={<FlashCard addToCart={addToCart} />}/>
           <Route path='/allproducts' element={<AllProducts addToCart={addToCart} userCart={userCart}/>}/>

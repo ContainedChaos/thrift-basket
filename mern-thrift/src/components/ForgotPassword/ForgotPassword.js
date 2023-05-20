@@ -1,11 +1,9 @@
 import React, { useState } from 'react'
-import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
 import "./ForgotPassword.css"
 import { useNavigate } from 'react-router';
-import Navbar from '../../common/header/Navbar';
 
-const ForgotPassword = ({userCart}) => {
+const ForgotPassword = () => {
 
     const nav = useNavigate();
 
@@ -27,11 +25,7 @@ const ForgotPassword = ({userCart}) => {
                 .then(res => {
                     alert(res.data.message)
                     nav("/passwordreset")
-
-                    //setLoginUser(res.data.user)
                 })
-
-        // }
     }
 
     return (

@@ -6,14 +6,10 @@ import Navbar from "../../common/header/Navbar";
 import { Link } from "react-router-dom";
 import MessageBox from "../MessageBox/MessageBox";
 
-const AllProducts = (({addToCart, userCart}) => {
+const AllProducts = (({addToCart}) => {
   const [productItems, setProductItems] = useState([]);
   const [showMessageBox, setShowMessageBox] = useState(false);
-  const [count, setCount] = useState(0)
-  const increment = () => {
-    setCount(count + 1)
-  }
-
+ 
   useEffect(() => {
     axios
       .get("http://localhost:9002/allproducts")
@@ -50,8 +46,6 @@ const AllProducts = (({addToCart, userCart}) => {
 <article key={product._id}>
               <Link to={`/productdetails/${product._id}`}>
                  <img id="flashcard-img" src={dest+product.fileName} alt='' />
-                  {/* <img id="flashcard-img" src={`data:image/png;base64,${base64String}`} alt="Uploaded" /> */}
-
               </Link>
           </article>
 
@@ -73,9 +67,7 @@ const AllProducts = (({addToCart, userCart}) => {
                       <i className='fa fa-plus'></i>
                     </button>
                     ) :null}
-
         </div>)
-
         })}
         </div>
 

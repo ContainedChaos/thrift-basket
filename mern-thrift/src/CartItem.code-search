@@ -1,0 +1,27 @@
+# Query: CartItem
+# ContextLines: 1
+
+11 results - 4 files
+
+mern-thrift\src\App.js:
+  39    const { shopItems } = Sdata
+  41    const [userCart, setUserCart] = useState([]);
+
+mern-thrift\src\common\header\Header.jsx:
+   6  
+   7: const Header = ({ userCart , isAuthenticated}) => {
+   8    return (
+  13      </>
+
+mern-thrift\src\common\header\Search.jsx:
+   3  
+   4: const Search = ({ userCart}) => {
+   5    // fixed Header
+
+  29                  
+  31                </Link>
+
+mern-thrift\src\components\Sell\Sell.jsx:
+  5  
+  6: const Sell = ({userCart}) => {
+  7    return (

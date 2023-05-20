@@ -1,21 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect} from "react";
 import axios from "axios";
 import "./style.css";
-import Navbar from "../header/Navbar";
 import { Link } from "react-router-dom";
 
 const Cart = ({ userCart, setUserCart, addToCartFromCart, decreaseQty, removeFromCart }) => {
-  // const [userCart, setUserCart] = useState([]);
 
   useEffect(() => {
     fetchUserCart();
   }, []);
-
-  // useEffect(() => {
-  //   console.log(userCart);
-  // }, [userCart]);
   
-
   const fetchUserCart = async () => {
     try {
       const token = localStorage.getItem("accessToken");
