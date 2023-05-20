@@ -1,0 +1,14 @@
+.proceed {
+    width: 450px;
+    height: 630px;
+    background: #fff;
+    border: 1px solid #dddfe2;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+    border-radius: 8px;
+    padding: 1rem;
+    align-items: center;
+    text-align: center;
+    margin-top: 90px;
+    margin-bottom: 90px;
+    margin-left: 520px;
+}

@@ -8,7 +8,7 @@ import { Link } from "react-router-dom"
 import MessageBox from "../MessageBox/MessageBox";
 import "./ProductDetails.css";
 
-const ProductDetails = ({addToCart, CartItem}) => {
+const ProductDetails = ({addToCart, userCart}) => {
   const {productId} = useParams();
   const [productItem, setProductItem] = useState([]);
   const [showMessageBox, setShowMessageBox] = useState(false);

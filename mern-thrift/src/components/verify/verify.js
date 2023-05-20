@@ -4,7 +4,7 @@ import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import Navbar from "../../common/header/Navbar"
 
-const Verify = ({CartItem}) => {
+const Verify = ({userCart}) => {
 
     const nav = useNavigate()
 

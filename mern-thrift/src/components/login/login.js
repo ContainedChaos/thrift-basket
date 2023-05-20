@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { DataContext } from "../../context/DataProvider";
 import Navbar from "../../common/header/Navbar";
 
-const Login = ({ CartItem, setIsAuthenticated}) => {
+const Login = ({setIsAuthenticated, userCart}) => {
 
     const nav = useNavigate();
 

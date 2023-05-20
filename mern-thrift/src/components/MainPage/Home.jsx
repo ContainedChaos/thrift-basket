@@ -5,7 +5,7 @@ import "./Home.css"
 import SlideCard from "./SlideCard"
 import SliderHome from "./Slider"
 
-const Home = ({CartItem }) => {
+const Home = ({ userCart }) => {
   return (
     <>
       <section className='home'>

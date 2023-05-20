@@ -24,9 +24,9 @@ const SamplePrevArrow = (props) => {
         <i className="fa fa-long-arrow-alt-left"></i>
       </button>
     </div>
-  );
-};
-const FlashCard = ({ addToCart, CartItem }) => {
+  )
+}
+const FlashCard = ({ addToCart}) => {
   const [productItems, setProductItems] = useState([]);
   const [showMessageBox, setShowMessageBox] = useState(false);
 

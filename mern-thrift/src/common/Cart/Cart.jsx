@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./style.css";
 import Navbar from "../header/Navbar";
+import { Link } from "react-router-dom";
 
-const Cart = ({ userCart, setUserCart, CartItem, addToCartFromCart, decreaseQty, removeFromCart }) => {
+const Cart = ({ userCart, setUserCart, addToCartFromCart, decreaseQty, removeFromCart }) => {
   // const [userCart, setUserCart] = useState([]);
 
   useEffect(() => {
@@ -102,7 +103,9 @@ const Cart = ({ userCart, setUserCart, CartItem, addToCartFromCart, decreaseQty,
               <h3>BDT {totalPrice}.00</h3>
             </div>
             <button>
-              <a href="/login">Proceed to checkout</a>
+            <Link to={`/proceed/${totalPrice}`}>
+              Proceed to checkout
+              </Link>
             </button>
           </div>
         </div>

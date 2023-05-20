@@ -5,7 +5,7 @@ import "./ForgotPassword.css"
 import { useNavigate } from 'react-router';
 import Navbar from '../../common/header/Navbar';
 
-const ForgotPassword = ({CartItem}) => {
+const ForgotPassword = ({userCart}) => {
 
     const nav = useNavigate();
 

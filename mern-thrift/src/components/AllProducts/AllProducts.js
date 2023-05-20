@@ -6,7 +6,7 @@ import Navbar from "../../common/header/Navbar";
 import { Link } from "react-router-dom";
 import MessageBox from "../MessageBox/MessageBox";
 
-const AllProducts = (({addToCart, CartItem}) => {
+const AllProducts = (({addToCart, userCart}) => {
   const [productItems, setProductItems] = useState([]);
   const [showMessageBox, setShowMessageBox] = useState(false);
   const [count, setCount] = useState(0)

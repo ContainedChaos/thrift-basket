@@ -8,7 +8,7 @@ import axios from "axios"
 import Navbar from "../../common/header/Navbar"
 
 
-const SeeAnnouncements = ({CartItem}) => {
+const SeeAnnouncements = ({userCart}) => {
   const [announcements, setAnnouncements] = useState([]);
   // const [imageSrc, setImageSrc] = useState('');
   const [count, setCount] = useState(0)

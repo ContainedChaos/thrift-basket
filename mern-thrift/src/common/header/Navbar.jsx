@@ -77,7 +77,7 @@ import "./Header.css";
                 {(window.localStorage.getItem("isBuyer") === "true") ? (
                   <Link to='/cart'>
                   <i className='fa fa-shopping-bag icon-circle'></i>
-                  <span>{CartItem.length === 0 ? "0" : CartItem.length}</span>
+                  <span>{userCart.length}</span>
                 </Link>
                 ) : null}
                 {(window.localStorage.getItem("isAuthenticated") !== "true") ? (

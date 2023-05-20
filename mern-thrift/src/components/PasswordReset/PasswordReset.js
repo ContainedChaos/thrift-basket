@@ -8,7 +8,7 @@ import './PasswordReset.css'
 import axios from 'axios';
 import Navbar from '../../common/header/Navbar';
 
-const PasswordReset = ({CartItem}) => {
+const PasswordReset = ({userCart={userCart}}) => {
 
     const [errors, setError] = useState({})
 

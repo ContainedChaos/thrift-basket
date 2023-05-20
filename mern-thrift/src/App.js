@@ -30,6 +30,7 @@ import SellerHomepage from './components/homepage/sellerHomepage';
 import Uploadproducts from './components/uploadproducts/uploadproducts';
 import AnnounceAuction from './components/AnnounceAuction/AnnounceAuction';
 import AllProducts from "./components/AllProducts/AllProducts";
+import Proceed from "./components/Proceed/Proceed";
 import Sell from "./components/Sell/Sell";
 
 function App() {
@@ -214,28 +215,28 @@ function App() {
       <Router>
         <Navbar CartItem={CartItem}/>
         <Routes>
-          <Route path='/' element={<Pages productItems={productItems} addToCart={addToCart} shopItems={shopItems} CartItem={CartItem}/>}/>
-          <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} CartItem={CartItem}/>}/>
-          <Route path="/register" element={<Register CartItem={CartItem}/>}/>
-          <Route path="/sell" element={<Sell CartItem={CartItem}/>}/>
-          <Route path="/verify" element={<Verify CartItem={CartItem}/>}/>
-          <Route path="/forgotpassword" element={<ForgotPassword CartItem={CartItem}/>}/>
-          <Route path="/passwordreset" element={<PasswordReset CartItem={CartItem}/>}/>
-          <Route path="/userprofile" element={<UserProfile CartItem={CartItem}/>}/>
-          <Route path="/profile/:username" element={<OthersProfile addToCart={addToCart} CartItem={CartItem}/>}/>
-          <Route path="/uploadproducts" element={<Uploadproducts setIsAuthenticated={setIsAuthenticated} CartItem={CartItem}/>}/>
-          <Route path="/announceauction" element={<AnnounceAuction setIsAuthenticated={setIsAuthenticated} CartItem={CartItem}/>}/>
-          <Route path="/announcedrop" element={<AnnounceDrop setIsAuthenticated={setIsAuthenticated} CartItem={CartItem}/>}/>
-          <Route path="/announcements" element={<SeeAnnouncements CartItem={CartItem}/>}/>
-          <Route path='/productdetails/:productId' element={<ProductDetails addToCart={addToCart} CartItem={CartItem} />}/>
+          <Route path='/' element={<Pages productItems={productItems} addToCart={addToCart} userCart={userCart} />}/>
+          <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} userCart={userCart}/>}/>
+          <Route path="/register" element={<Register userCart={userCart}/>}/>
+          <Route path="/verify" element={<Verify userCart={userCart}/>}/>
+          <Route path="/forgotpassword" element={<ForgotPassword userCart={userCart}/>}/>
+          <Route path="/passwordreset" element={<PasswordReset userCart={userCart}/>}/>
+          <Route path="/userprofile" element={<UserProfile userCart={userCart}/>}/>
+          <Route path="/proceed/:totalPrice" element={<Proceed userCart={userCart}/>}/>
+          <Route path="/profile/:username" element={<OthersProfile addToCart={addToCart} userCart={userCart}/>}/>
+          <Route path="/uploadproducts" element={<Uploadproducts setIsAuthenticated={setIsAuthenticated} userCart={userCart}/>}/>
+          <Route path="/announceauction" element={<AnnounceAuction setIsAuthenticated={setIsAuthenticated} userCart={userCart}/>}/>
+          <Route path="/announcedrop" element={<AnnounceDrop setIsAuthenticated={setIsAuthenticated} userCart={userCart}/>}/>
+          <Route path="/announcements" element={<SeeAnnouncements userCart={userCart}/>}/>
+          <Route path='/productdetails/:productId' element={<ProductDetails addToCart={addToCart} userCart={userCart} />}/>
           {/* <Route path='/' element={<PrivateRoute isAuthenticated={isAuthenticated} />} > */}
-            <Route path="/homepage" element={<Homepage setIsAuthenticated={setIsAuthenticated} CartItem={CartItem}/>}/>
-            <Route path="/sellerhomepage" element={<SellerHomepage setIsAuthenticated={setIsAuthenticated} CartItem={CartItem} />}/>
-            <Route path='/category/:type' element={<CategoryPage  addToCart={addToCart} CartItem={CartItem} />}/>
+            <Route path="/homepage" element={<Homepage setIsAuthenticated={setIsAuthenticated} userCart={userCart}/>}/>
+            <Route path="/sellerhomepage" element={<SellerHomepage setIsAuthenticated={setIsAuthenticated} userCart={userCart} />}/>
+            <Route path='/category/:type' element={<CategoryPage  addToCart={addToCart} userCart={userCart} />}/>
           {/* </Route> */}
-          <Route path='/cart' element={<Cart CartItem = {CartItem} userCart={userCart} setUserCart={setUserCart} addToCartFromCart={addToCartFromCart} decreaseQty={decreaseQty} removeFromCart={removeFromCart} />}/>
-          <Route path='/flashproducts' element={<FlashCard addToCart={addToCart} CartItem={CartItem} />}/>
-          <Route path='/allproducts' element={<AllProducts addToCart={addToCart} CartItem={CartItem}/>}/>
+          <Route path='/cart' element={<Cart userCart={userCart} setUserCart={setUserCart} addToCartFromCart={addToCartFromCart} decreaseQty={decreaseQty} removeFromCart={removeFromCart} />}/>
+          <Route path='/flashproducts' element={<FlashCard addToCart={addToCart} />}/>
+          <Route path='/allproducts' element={<AllProducts addToCart={addToCart} userCart={userCart}/>}/>
           {/* <Route path='/auctionpage' element={<Auctionpage />}/> */}
         </Routes>
       <Footer />

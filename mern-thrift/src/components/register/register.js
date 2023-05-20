@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom"
 import Validation from "./validation"
 import Navbar from "../../common/header/Navbar"
 
-const Register = ({CartItem}) => {
+const Register = ({userCart}) => {
 
     const nav = useNavigate()
 

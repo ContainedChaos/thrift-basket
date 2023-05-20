@@ -7,7 +7,7 @@ import {useParams} from 'react-router-dom';
 import { Link } from "react-router-dom"
 import MessageBox from "../MessageBox/MessageBox";
 
-const Othersprofile = ({addToCart, CartItem}) => {
+const Othersprofile = ({addToCart, userCart}) => {
   const {username} = useParams();
   const [showMessageBox, setShowMessageBox] = useState(false);
   const [user, setUser] = useState([]);

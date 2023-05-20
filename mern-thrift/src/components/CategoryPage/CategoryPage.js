@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import "./CategoryPage.css";
 import MessageBox from "../MessageBox/MessageBox";
 
-const CategoryPage = (({addToCart, CartItem}) => {
+const CategoryPage = (({addToCart, userCart}) => {
   const { type } = useParams();
   const [productItems, setProductItems] = useState([]);
   
