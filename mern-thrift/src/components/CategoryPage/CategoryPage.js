@@ -1,24 +1,17 @@
-// CategoryPage component
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import {useParams} from 'react-router-dom';
-import Navbar from "../../common/header/Navbar";
 import { Link } from "react-router-dom";
 import "./CategoryPage.css";
 import MessageBox from "../MessageBox/MessageBox";
 
-const CategoryPage = (({addToCart, userCart}) => {
+const CategoryPage = (({addToCart}) => {
   const { type } = useParams();
   const [productItems, setProductItems] = useState([]);
   
   const [showMessageBox, setShowMessageBox] = useState(false);
-  const [count, setCount] = useState(0)
-  const increment = () => {
-    setCount(count + 1)
-  }
 
   useEffect(() => {
-    // Fetch products for the category from the backend
     axios
       .get(`http://localhost:9002/category/${type}`)
       .then((response) => {
@@ -55,7 +48,6 @@ const CategoryPage = (({addToCart, userCart}) => {
           <article key={product._id}>
               <Link to={`/productdetails/${product._id}`}>
                  <img id="flashcard-img" src={dest+product.fileName} alt='' />
-                  {/* <img id="flashcard-img" src={`data:image/png;base64,${base64String}`} alt="Uploaded" /> */}
               </Link>
           </article>
 

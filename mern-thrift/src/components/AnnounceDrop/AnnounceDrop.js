@@ -2,25 +2,18 @@ import React, { useState } from "react"
 import "./announcedrop.css"
 import axios from "axios"
 import { useNavigate } from 'react-router-dom';
-import Navbar from "../../common/header/Navbar"
 
-const AnnounceDrops = ({userCart, isAuthenticated, setIsAuthenticated}) => {
+const AnnounceDrops = () => {
 
-    const nav = useNavigate();
-
-    const [file, setFile] = useState(null);
-    const [title, setTitle] = useState("");
+  const nav = useNavigate();
+  const [file, setFile] = useState(null);
+  const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [dateTime, setDateTime] = useState("");
   const [priceRange, setPriceRange] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Perform any necessary actions with the form data
-    // For example, send the data to a server or update the state in the parent component
-
-    // Reset the form fields
     setTitle("");
     setDescription("");
     setDateTime("");
@@ -100,7 +93,5 @@ const AnnounceDrops = ({userCart, isAuthenticated, setIsAuthenticated}) => {
         </>
     )
 }
-
-{/* <div className="button" onClick={() => isUserAuthenticated(false)} >Logout</div> */}
 
 export default AnnounceDrops

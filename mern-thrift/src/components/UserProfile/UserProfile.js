@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import Navbar from "../../common/header/Navbar"; 
 import "./UserProfile.css";
-import logout from "../../components/homepage/homepage"
 
 export default class UserProfile extends Component{
 constructor(props){

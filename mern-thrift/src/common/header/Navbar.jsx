@@ -5,11 +5,11 @@ import Head from "./Head";
 import "./Header.css";
 
 
-    const  Navbar = ({ CartItem, isAuthenticated }) => {
+    const  Navbar = ({ userCart}) => {
       
       const logOut = () => {
         window.localStorage.clear();
-        window.location.href = "./";
+        window.location.href = "http://localhost:3000/";
       }
 
   return (
@@ -21,15 +21,6 @@ import "./Header.css";
             <Link to="/" id="thriftbasket">ThriftBasket</Link>
             </h4>
           </div>
-
-        {/* {isAuthenticated ? (
-          <div className="search">
-            <div className='search-box f_flex'>
-              <i className='fa fa-search'></i>
-              <input type='text' placeholder='Search and hit enter...' />
-            </div>
-          </div> 
-        ) : <></>} */}
 
           <div className='navlinkk'>
             <ul className="link f_flex capitalize">
@@ -81,7 +72,7 @@ import "./Header.css";
                 </Link>
                 ) : null}
                 {(window.localStorage.getItem("isAuthenticated") !== "true") ? (
-                  <Link to='/cart'>
+                  <Link to='/loggedoutcart'>
                   <i className='fa fa-shopping-bag icon-circle'></i>
                 </Link>
                 ) : null}
