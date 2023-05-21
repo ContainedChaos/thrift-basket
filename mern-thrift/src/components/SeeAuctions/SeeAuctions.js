@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import Slider from "react-slick"
-import "./SeeAnnouncements.css"
+import "./SeeAuctions.css"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 import { Link } from "react-router-dom"
@@ -8,8 +8,8 @@ import axios from "axios"
 import Navbar from "../../common/header/Navbar"
 
 
-const SeeAnnouncements = ({userCart}) => {
-  const [announcements, setAnnouncements] = useState([]);
+const SeeAuctions = ({userCart}) => {
+  const [auctions, setAuctions] = useState([]);
   // const [imageSrc, setImageSrc] = useState('');
   const [count, setCount] = useState(0)
   const increment = () => {
@@ -19,10 +19,10 @@ const SeeAnnouncements = ({userCart}) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:9002/announcements")
+      .get("http://localhost:9002/auctions")
       .then((response) => {
         console.log(response.data);
-        setAnnouncements(response.data);
+        setAuctions(response.data);
       })
       .catch((error) => {
         console.error(error);
@@ -33,7 +33,7 @@ const SeeAnnouncements = ({userCart}) => {
     const token = localStorage.getItem("accessToken");
 
     axios
-      .post(`http://localhost:9002/remindme/${announcementId}`, {token})
+      .post(`http://localhost:9002/remindmeforauction/${announcementId}`, {token})
       .then((response) => {
         console.log(response.data);
         // Handle any success actions if needed
@@ -48,7 +48,7 @@ const SeeAnnouncements = ({userCart}) => {
   return (
     <>
     {
-      announcements.map((announcement) => {
+      auctions.map((announcement) => {
         // const imageSrc = `data:${productItem.contentType};base64,${productItem.data.toString('base64')}`;
         // const base64String = btoa(String.fromCharCode(...new Uint8Array(productItem.data)));
         // const imageSrc = URL.createObjectURL(
@@ -72,11 +72,20 @@ const SeeAnnouncements = ({userCart}) => {
                     <h4>{announcement.description}</h4> 
                   </div>
                   <div className='price'>
-                    <h4>{announcement.priceRange}</h4> 
+                    <h4>{announcement.startingPrice}</h4> 
                   </div>
                   <div className='datetime'>
-                    <h4>{new Date(announcement.dateTime).toLocaleString()}</h4> 
+                    <h4>{new Date(announcement.startDate).toLocaleString()}</h4> 
                   </div>
+                  <div className='datetime'>
+                    <h4>{new Date(announcement.endDate).toLocaleString()}</h4> 
+                  </div>
+                  <div className='desc'>
+                   <Link to={`/profile/${announcement.createdBy}`}>
+                    <h4>{announcement.createdBy}</h4> 
+                    </Link>
+                  </div>
+                
                   <button id="remindme" onClick={() => remindMe(announcement._id)}>
               Remind me
             </button>
@@ -90,4 +99,4 @@ const SeeAnnouncements = ({userCart}) => {
           )
 }
 
-export default SeeAnnouncements
+export default SeeAuctions

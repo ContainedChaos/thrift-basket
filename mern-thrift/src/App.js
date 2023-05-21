@@ -31,6 +31,8 @@ import LoggedOutCart from "./common/LoggedOutCart/LoggedOutCart";
 import Purchases from "./components/Purchase/Purchases";
 import Sales from "./components/Sales/Sales";
 import SeeReviews from "./components/SeeReviews/SeeReviews";
+import Buy from "./components/Buy/Buy";
+import SeeAuctions from "./components/SeeAuctions/SeeAuctions";
 
 function App() {
   
@@ -210,6 +212,7 @@ function App() {
           <Route path="/announceauction" element={<AnnounceAuction setIsAuthenticated={setIsAuthenticated} userCart={userCart}/>}/>
           <Route path="/announcedrop" element={<AnnounceDrop setIsAuthenticated={setIsAuthenticated} userCart={userCart}/>}/>
           <Route path="/announcements" element={<SeeAnnouncements userCart={userCart}/>}/>
+          <Route path="/auctions" element={<SeeAuctions userCart={userCart}/>}/>
           <Route path='/productdetails/:productId' element={<ProductDetails addToCart={addToCart} userCart={userCart} />}/>
           {/* <Route path='/' element={<PrivateRoute isAuthenticated={isAuthenticated} />} > */}
             <Route path='/category/:type' element={<CategoryPage  addToCart={addToCart} userCart={userCart} />}/>
@@ -221,6 +224,7 @@ function App() {
           <Route path='/purchases' element={< Purchases />}/>
           <Route path='/sales' element={< Sales />}/>
           <Route path='/seereviews' element={< SeeReviews />}/>
+          <Route path='/buy' element={< Buy />}/>
           {/* <Route path='/auctionpage' element={<Auctionpage />}/> */}
         </Routes>
       <Footer />

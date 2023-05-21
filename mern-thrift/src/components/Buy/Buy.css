@@ -1,0 +1,93 @@
+.buycontainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px 110px 100px 110px;
+    margin-top: 5px;
+    margin-bottom: 100px;
+  }
+  
+   .buyimage-container {
+    flex: 1;
+    width: 50%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  
+  .thrift-image2 {
+    width:500px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.544);
+    margin-left: 45px;
+  }
+  
+  .buyerbuttons-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-left: 20px;
+    margin-top: -15px;
+    margin-left: 50px;
+  }
+  
+  .buyerbuttons-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 20px;
+    margin-right: 60px;
+  }
+  
+  .thrift-button2 {
+    padding: 10px 20px;
+    background-color: #994000;
+    color: #ffffff;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.544);
+    transition: transform 0.3s ease;
+    height: 75px;
+  }
+  
+  .thrift-button2:last-child {
+    margin-right: 50px;
+  }
+  
+  .inspiring-section2 {
+    margin-top: 20px;
+    text-align: left;
+    margin-right: 50px;
+  }
+  
+  .inspiring-title2 {
+    font-size: 40px;
+    color: #aa4700;
+    margin-bottom: 20px;
+    width: 400px;
+  }
+  
+  .inspiring-paragraph2 {
+    font-size: 20px;
+    color: #333333;
+    margin-top: 10px;
+    line-height: 2;
+    width: 650px;
+    margin-bottom: 20px;
+  } 
+  
+  .thrift-button2:hover {
+    background-color: #cc793e;
+    transform: scale(1.05);
+  }
+  
+  .style-word {
+    font-family: 'Love Ya Like A Sister', cursive;
+    font-family: 'Satisfy', cursive;
+    font-size: 50px;
+    margin-left: 5px;
+    color:#ff0353;
+  }
