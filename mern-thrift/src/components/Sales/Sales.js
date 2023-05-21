@@ -29,7 +29,7 @@ const Sales = () => {
       <div className="mysales-page-header">
         <h1>My Sales</h1>
       </div>
-      <div className="order-grid">
+      <div className="sales-order-grid">
         {purchases.map((order, index) => (
           <div key={index} className="order-card">
             <Link to={`/profile/${order[0]}`}>

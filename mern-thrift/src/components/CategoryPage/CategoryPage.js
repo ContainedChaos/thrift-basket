@@ -38,7 +38,7 @@ const CategoryPage = (({addToCart}) => {
     <div className="page-header">
       <h1>{type}</h1>
     </div>
-    <div className="order-grid">
+    <div className="product-grid">
       {
       productItems.map((product, index) => {
 
