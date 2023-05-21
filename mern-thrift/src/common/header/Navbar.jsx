@@ -61,7 +61,7 @@ import "./Header.css";
                 </li>
               ) : null}
               <li>
-                <Link to='/'>About</Link>
+                <Link to='/about'>About</Link>
               </li>
             </ul>
           </div>

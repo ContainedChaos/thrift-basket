@@ -1,6 +1,8 @@
 .proceed {
-    width: 450px;
-    height: 630px;
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 480px;
     background: #fff;
     border: 1px solid #dddfe2;
     box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
@@ -8,7 +10,51 @@
     padding: 1rem;
     align-items: center;
     text-align: center;
-    margin-top: 90px;
-    margin-bottom: 90px;
-    margin-left: 520px;
+    margin-top: 40px;
+    margin-bottom: 200px;
+    margin-left: 560px;
 }
+
+.proceed h1 {
+    font-size: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.proceed input[type="text"] {
+    display: block;
+    width: 80%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #bbbbbb;
+    border-radius: 4px;
+    color: #333;
+    margin-bottom: 15px;
+  }
+
+  .proceed textarea {
+    display: block;
+    width: 80%;
+    padding:10px;
+    font-size: 16px;
+    border: 1px solid #bbbbbb;
+    border-radius: 4px;
+    color: #333;
+    margin-bottom: 30px;
+  }
+
+  .proceed .button {
+    background-color: rgb(255, 67, 67);
+    padding: 15px;
+    border-radius: 7px;
+    color: white;
+    transition: transform 0.3s ease;
+  }
+
+  .proceed .button:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+    background-color: rgb(255, 102, 102);
+  }
+
+  

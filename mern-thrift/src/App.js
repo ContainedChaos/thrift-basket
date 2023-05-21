@@ -33,6 +33,8 @@ import Sales from "./components/Sales/Sales";
 import SeeReviews from "./components/SeeReviews/SeeReviews";
 import Buy from "./components/Buy/Buy";
 import SeeAuctions from "./components/SeeAuctions/SeeAuctions";
+import About from "./components/About/About";
+import PaymentSuccess from "./components/PaymentSuccess/PaymentSuccess";
 
 function App() {
   
@@ -200,6 +202,9 @@ function App() {
         <Routes>
           <Route path='/' element={<Pages productItems={productItems} addToCart={addToCart} userCart={userCart} />}/>
           <Route path="/sell" element={<Sell userCart={userCart}/>}/>
+          <Route path="/buy" element={<Buy userCart={userCart}/>}/>
+          <Route path="/about" element={<About/>}/>
+          <Route path="/paymentsuccess" element={<PaymentSuccess/>}/>
           <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} userCart={userCart}/>}/>
           <Route path="/register" element={<Register userCart={userCart}/>}/>
           <Route path="/verify" element={<Verify userCart={userCart}/>}/>
