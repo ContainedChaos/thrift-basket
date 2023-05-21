@@ -1,0 +1,44 @@
+.myreview-container {
+    background-color: #f2f2f2;
+    padding: 20px;
+    box-shadow:  0 2px 10px rgba(0, 0, 0, 0.544);
+    padding: 50px;
+    border-radius: 5px;
+    width: 700px;
+    margin-left: 400px;
+    margin-top: 30px;
+    margin-bottom: 100px;
+  }
+
+  .myreview-container h2 {
+    margin-left: 240px;
+    margin-bottom: 20px;
+  }
+  
+  .myreview {
+    margin-bottom: 10px;
+  }
+  
+  .myreview p::before,
+  .myreview p::after {
+    content: '"';
+    color: rgb(175, 71, 23);
+    font-size: 30px; 
+    font-family: 'Love Ya Like A Sister', cursive;
+  }
+  
+  
+  .myreview-container h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color:rgb(175, 71, 23);
+  }
+  
+  .myreview p {
+    font-size: 13px;
+    margin-bottom: 20px;
+    font-weight: normal;
+    border: 1px solid rgba(177, 177, 177, 0.63);
+    border-radius: 5px;
+    padding: 10px;
+  }

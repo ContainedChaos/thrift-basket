@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import MessageBox from "../MessageBox/MessageBox";
+import "./seereviews.css";
 
 const SeeReviews = ({ }) => {
 
@@ -36,12 +37,18 @@ console.log(token)
 
 return (
   <>
+  
+  <div className="myreview-container">
+  <h2>My Reviews</h2>
   {reviews.map((review, index) => (
-          <div className="review" key={index}>
+    
+          <div className="myreview" key={index}>
             {/* <h1>Review for {review.sellerId.name}</h1> */}
             <p>{review.review}</p>
           </div>
+          
         ))}
+        </div>
   </>
 );
 

@@ -1,0 +1,97 @@
+.purchases-product-grid {
+    display: flex;
+    flex-wrap: wrap; /* Add flex-wrap to allow wrapping */
+    justify-content: space-between; /* Add to evenly distribute the cards */
+    margin-bottom: 300px;
+    padding: 0 120px 0 120px;
+  }
+  
+  .purchases-product-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 15px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    width: calc(50% - 20px); /* Adjust width to accommodate two cards */
+    margin-bottom: 20px;
+    position: relative;
+    transition: transform 0.3s ease;
+  }
+
+  .purchases-product-card:hover{
+    transform: scale(1.05);
+  }
+  
+  
+  #purchases-product-image {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    margin-bottom: 10px;
+  }
+
+  .purchases-review {
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+  }
+  
+  .purchases-product-card textarea {
+    width: 150px;
+    height: 80px;
+    resize: vertical;
+    margin-bottom: 10px;
+    border-color: #a9a9a9d6;
+    border-radius: 5px;
+    padding:5px;
+  }
+  
+  .purchases-product-card button {
+    background-color: #ed3221;
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .purchases-product-card button:hover {
+    background-color: #ff5e4f;
+  }
+
+  .purchases-product-name {
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    margin-top: 10px;
+  }
+  
+  .purchases-product-quantity {
+    font-size: 15px;
+    color: rgb(0, 0, 0);
+    margin-top: 10px;
+  }
+  
+  .purchases-product-price {
+    font-size: 1.2rem;
+    color: red;
+  }
+
+  .purchases-product-seller {
+    font-size: 15px;
+    color: rgb(0, 0, 0);
+    margin-top: 10px;
+  }
+
+  .purchases-product-seller span:hover {
+    font-size: 15px;
+    color: rgb(25, 0, 216);
+    margin-top: 10px;
+  }
+
+  .purchases-product-details {
+    padding:20px;
+  }
+
+  
+  

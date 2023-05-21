@@ -33,7 +33,7 @@ const Sales = () => {
         {purchases.map((order, index) => (
           <div key={index} className="order-card">
             <Link to={`/profile/${order[0]}`}>
-              <h1 className="orderer-name">Sold to {order[0]}</h1>
+              <h1 className="orderer-name">Sold to <span>{order[0]}</span></h1>
             </Link>
             <div className="order-product-grid">
               {order[1].map((item, itemIndex) => (

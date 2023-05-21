@@ -1,8 +1,11 @@
 footer {
+  clear: both;
+  width: 100%;
   background-color: #0f3460;
   padding: 100px 0;
   color: rgba(255, 255, 255, 0.748);
 }
+
 footer h1 {
   margin-bottom: 30px;
   color: #ffffff;
