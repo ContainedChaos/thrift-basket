@@ -18,6 +18,7 @@ const Head = () => {
           <select onChange={handleSelect}>
             <option value="">Explore your options</option>
             <option value="/uploadproducts">Upload Products</option>
+            <option value="/myproducts">My Products</option>
             <option value="/announcedrop">Announce a Drop</option>
             <option value="/announceauction">Announce an Auction</option>
             <option value="/mydrops">My Drops</option>

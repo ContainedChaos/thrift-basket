@@ -37,6 +37,7 @@ import About from "./components/About/About";
 import PaymentSuccess from "./components/PaymentSuccess/PaymentSuccess";
 import MyDrops from "./components/MyDrops/MyDrops";
 import MyAuctions from "./components/MyAuctions/MyAuctions";
+import MyProducts from "./components/MyProducts/MyProducts";
 
 function App() {
   
@@ -222,6 +223,7 @@ function App() {
           <Route path="/auctions" element={<SeeAuctions userCart={userCart}/>}/>
           <Route path="/mydrops" element={<MyDrops userCart={userCart}/>}/>
           <Route path="/myauctions" element={<MyAuctions userCart={userCart}/>}/>
+          <Route path="/myproducts" element={<MyProducts userCart={userCart}/>}/>
           <Route path='/productdetails/:productId' element={<ProductDetails addToCart={addToCart} userCart={userCart} />}/>
           {/* <Route path='/' element={<PrivateRoute isAuthenticated={isAuthenticated} />} > */}
             <Route path='/category/:type' element={<CategoryPage  addToCart={addToCart} userCart={userCart} />}/>
