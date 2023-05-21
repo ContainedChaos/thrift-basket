@@ -25,7 +25,23 @@ const SeeAnnouncements = ({ userCart }) => {
       .catch((error) => {
         console.error(error);
       });
-  }, []);
+  }, []);  
+
+  const remindMe = (announcementId) => {
+    const token = localStorage.getItem("accessToken");
+
+    axios
+      .post(`http://localhost:9002/remindme/${announcementId}`, {token})
+      .then((response) => {
+        console.log(response.data);
+        // Handle any success actions if needed
+      })
+      .catch((error) => {
+        console.error(error);
+        // Handle any error actions if needed
+      });
+  };
+  
 
   return (
     <>
@@ -55,10 +71,17 @@ const SeeAnnouncements = ({ userCart }) => {
                     <h4 className="price-range">Price Range: </h4>
                     <h4 className="price-range-value">BDT {announcement.priceRange}</h4>
                   </div>
-                  <div className="datetime">
-                    <h4>Date and Time: {new Date(announcement.dateTime).toLocaleString()}</h4>
+                  <div className='datetime'>
+                    <h4>{new Date(announcement.dateTime).toLocaleString()}</h4> 
                   </div>
-                  <button id="remindme">Remind me</button>
+                  <div className='desc'>
+                   <Link to={`/profile/${announcement.uploader}`}>
+                    <h4>{announcement.uploader}</h4> 
+                    </Link>
+                  </div>
+                  <button id="remindme" onClick={() => remindMe(announcement._id)}>
+              Remind me
+            </button>
                 </div>
               </div>
             </li>
