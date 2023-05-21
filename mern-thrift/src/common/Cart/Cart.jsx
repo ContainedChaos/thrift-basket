@@ -98,9 +98,16 @@ const Cart = ({ userCart, setUserCart, addToCartFromCart, decreaseQty, removeFro
               <h3>BDT {totalPrice}.00</h3>
             </div>
             <button>
-            <Link to={`/proceed/${totalPrice}`}>
+              {userCart.length === 0 ? (
+                <Link to={`/`}>
+                Proceed to checkout
+                </Link>
+              ):(
+                <Link to={`/proceed/${totalPrice}`}>
               Proceed to checkout
               </Link>
+              )}
+            
             </button>
           </div>
         </div>
