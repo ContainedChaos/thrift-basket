@@ -99,9 +99,6 @@ const PlaceBid = ({ setIsAuthenticated, userCart }) => {
             <div className="price">
               <h4>{auction.startingPrice}</h4>
             </div>
-            <div className="price">
-              <h4>{auction.currentPrice}</h4>
-            </div>
             <div className="datetime">
               <h4>{new Date(auction.startDate).toLocaleString()}</h4>
             </div>
@@ -117,14 +114,20 @@ const PlaceBid = ({ setIsAuthenticated, userCart }) => {
             <div className="timer">
               <h4>{timeRemaining}</h4>
             </div>
-            <input
-              type="text"
-              name="bid"
-              value={bid}
-              onChange={handleChange}
-              placeholder="Enter your bid"
-            />
-            <button onClick={Bid}>Place Bid</button>
+            {timeRemaining !== "Auction ended" && (
+  <input
+    type="text"
+    name="bid"
+    value={bid}
+    onChange={handleChange}
+    placeholder="Enter your bid"
+  />
+)}
+
+            {timeRemaining !== "Auction ended" && (
+  <button onClick={Bid}>Place Bid</button>
+)}
+
           </div>
         </div>
       </div>

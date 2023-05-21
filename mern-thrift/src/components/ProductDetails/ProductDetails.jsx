@@ -107,9 +107,12 @@ const ProductDetails = ({addToCart, userCart}) => {
 
 {reviews.map((review, index) => (
     
+    
     <div className="myreview" key={index}>
       {/* <h1>Review for {review.sellerId.name}</h1> */}
+      {review.review && (
       <p>{review.review}</p>
+    )}
     </div>
     
   ))}

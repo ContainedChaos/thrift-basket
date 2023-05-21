@@ -77,11 +77,13 @@ const ViewOngoingAuction = ({ setIsAuthenticated, userCart }) => {
                 <div className="price">
                   <h4>{auction.currentPrice}</h4>
                 </div>
-                <div className="price">
-                  {auction.winningBidder && (
-                    <h4>{auction.winningBidder.name}</h4>
-                  )}
-                </div>
+                {auction.winningBidder && (
+          <div className="price">
+            <Link to={`/profile/${auction.winningBidder.name}`}>
+              <h4>{auction.winningBidder.name}</h4>
+            </Link>
+          </div>
+        )}
                 <div className="datetime">
                   <h4>{new Date(auction.endDate).toLocaleString()}</h4>
                 </div>
