@@ -41,7 +41,7 @@ const Othersprofile = ({ addToCart, userCart }) => {
     <div className="others-profile-container">
       <div className="left-section">
       <div className="others-profile">
-        <h2>Profile</h2>
+        <h2>Seller</h2>
         <label className="mattribute">Name:</label>{" "}
         <label className="others-info">{user.name}</label>
         <br />
@@ -51,18 +51,16 @@ const Othersprofile = ({ addToCart, userCart }) => {
         <label className="mattribute">Phone:</label>{" "}
         <label className="others-info">{user.phone}</label>
         <br />
-        <label className="mattribute">Role:</label>{" "}
-        <label className="others-info">{user.role}</label>
-        <br />
         <label className="mattribute">Orders:</label>{" "}
         <label className="others-info">{orders}</label>
         <br />
       </div>
 
       <div className="reviews-container">
+      <h2>Reviews</h2>
         {reviews.map((review, index) => (
           <div className="review" key={index}>
-            <h1>{review.review}</h1>
+            <p>{review.review}</p>
           </div>
         ))}
       </div>
@@ -74,14 +72,6 @@ const Othersprofile = ({ addToCart, userCart }) => {
           <div className="others-profile-product-card" key={index}>
             <article>
               <Link to={`/productdetails/${product._id}`}>
-                <h3>{product.name}</h3>
-              </Link>
-            </article>
-
-            <p>{product.desc}</p>
-
-            <article>
-              <Link to={`/productdetails/${product._id}`}>
                 <img
                   id="others-profile-img"
                   src={dest + product.fileName}
@@ -89,6 +79,14 @@ const Othersprofile = ({ addToCart, userCart }) => {
                 />
               </Link>
             </article>
+
+            <article>
+              <Link to={`/productdetails/${product._id}`}>
+                <h3>{product.name}</h3>
+              </Link>
+            </article>
+
+            <p>BDT {product.price}.00</p>
 
             {window.localStorage.getItem("isAuthenticated") === "true" &&
             window.localStorage.getItem("isBuyer") === "true" ? (

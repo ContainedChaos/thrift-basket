@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: 20px;
+  padding: 30px 100px 300px 100px;
 }
 
 .left-section {
@@ -13,40 +14,97 @@
 .others-profile {
   background-color: #f2f2f2;
   padding: 20px;
+  box-shadow:  0 2px 10px rgba(0, 0, 0, 0.544);
+  padding: 50px;
+  border-radius: 5px;
+}
+
+.others-profile h2 {
+  font-size: 30px;
+  margin-bottom: 15px;
+  color:rgb(175, 71, 23);
+}
+
+.others-profile .mattribute {
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.others-profile .others-info {
+  margin-left: 10px;
 }
 
 .reviews-container {
   background-color: #f2f2f2;
   padding: 20px;
+  box-shadow:  0 2px 10px rgba(0, 0, 0, 0.544);
+  padding: 50px;
+  border-radius: 5px;
 }
 
 .review {
   margin-bottom: 10px;
 }
 
+.review p::before,
+.review p::after {
+  content: '"';
+  color: rgb(175, 71, 23);
+  font-size: 30px; 
+  font-family: 'Love Ya Like A Sister', cursive;
+}
+
+
+.reviews-container h2 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color:rgb(175, 71, 23);
+}
+
+.review p {
+  font-size: 13px;
+  margin-bottom: 20px;
+  font-weight: normal;
+  border: 1px solid rgba(177, 177, 177, 0.63);
+  border-radius: 5px;
+  padding: 10px;
+}
+
 .right-container {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  justify-content: center;
 }
 
 .others-profile-products-container {
   display: grid;
   gap: 20px;
-  width: 100px;
+  width: 100%;
+  height: 200px;
 }
 
 .others-profile-product-card {
-  background-color: #f2f2f2;
+  background-color: #ffffff;
   padding: 20px;
+  box-shadow:  0 2px 10px rgba(0, 0, 0, 0.544);
+  transition: transform 0.3s ease;
+  border-radius: 5px;
+}
+
+.others-profile-product-card:hover {
+  transform: scale(1.05);
 }
 
 .others-profile-product-card h3 {
   margin-top: 0;
+  font-size: 20px;
 }
 
 .others-profile-product-card p {
   margin: 10px 0;
+  font-size: large;
+  color: red;
 }
 
 .others-profile-product-card img {
@@ -63,7 +121,7 @@
 @media screen and (min-width: 768px) {
   .others-profile-products-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   }
 }
 

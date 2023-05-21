@@ -92,7 +92,7 @@ const FlashCard = ({ addToCart}) => {
                   <i className="fa fa-star"></i>
                 </div>
                 <div className="price">
-                  <h4>{productItem.price}.00</h4>
+                  <h4>BDT {productItem.price}.00</h4>
                   {window.localStorage.getItem("isAuthenticated") ===
                     "true" &&
                   window.localStorage.getItem("isBuyer") === "true" ? (

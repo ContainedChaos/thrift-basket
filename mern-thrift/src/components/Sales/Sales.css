@@ -1,0 +1,77 @@
+.mysales-page-header {
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  margin-top: 10px;
+}
+
+.order-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0px 150px 200px 150px;
+}
+
+.order-card {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  gap: 20px;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.order-product-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.order-product-card {
+  border: 1px solid #dcdcdc;
+  border-radius: 5px;
+  padding: 15px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.orderer-name {
+  font-size: 1.5rem;
+  color: rgb(0, 0, 0);
+  margin-top: 10px;
+}
+
+.orderer-name:hover {
+  font-size: 1.5rem;
+  color: rgb(25, 0, 216);
+  margin-top: 10px;
+}
+
+.order-product-name {
+  font-size: 20px;
+  color: rgb(0, 0, 0);
+  margin-top: 10px;
+}
+
+.order-product-quantity {
+  font-size: 15px;
+  color: rgb(0, 0, 0);
+  margin-top: 10px;
+}
+
+.order-product-price {
+  font-size: 1.2rem;
+  color: red;
+}
+
+.order-product-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.order-product-card:hover {
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);
+  transform: translateY(-5px);
+}
