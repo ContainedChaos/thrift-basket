@@ -2,7 +2,11 @@ import React, { useState } from "react"
 import "./uploadproducts.css"
 import axios from "axios"
 import { useNavigate } from 'react-router-dom';
-import Navbar from "../../common/header/Navbar"
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
+
 
 const Uploadproducts = ({userCart, isAuthenticated, setIsAuthenticated}) => {
 
@@ -13,6 +17,9 @@ const Uploadproducts = ({userCart, isAuthenticated, setIsAuthenticated}) => {
     const [price, setPrice] = useState("")
     const [desc, setDesc] = useState("");
     const [category, setCategory] = useState("");
+    const [showMessage, setShowMessage] = useState(false);
+    const [message, setMessage] = useState("");
+
 
     const handleNameChange = (event) => {
         setName(event.target.value);
@@ -46,10 +53,7 @@ const Uploadproducts = ({userCart, isAuthenticated, setIsAuthenticated}) => {
 
         const res = await axios.post("http://localhost:9002/upload", formData);
         console.log(res.data);
-
-        // if (res.data.message === "Uploaded successfully") {
-        //     nav("/")
-        // }
+        toast.success(res.data.message);
     };
 
     return (

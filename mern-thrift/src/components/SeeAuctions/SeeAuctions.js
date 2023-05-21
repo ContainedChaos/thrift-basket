@@ -47,54 +47,55 @@ const SeeAuctions = ({userCart}) => {
 
   return (
     <>
+    <div className="drops-title-container">
+        <h1 className="drops-title">Upcoming Auctions</h1>
+      </div>
+    <div className="see-announcements-container">
+        <ul className="announcements-list">
     {
-      auctions.map((announcement) => {
-        // const imageSrc = `data:${productItem.contentType};base64,${productItem.data.toString('base64')}`;
-        // const base64String = btoa(String.fromCharCode(...new Uint8Array(productItem.data)));
-        // const imageSrc = URL.createObjectURL(
-        //   new Blob([announcement.data], { type: announcement.contentType })
-        // );
-        // localStorage.setItem("url", imageSrc);
-      return(
-            <div className='box'>
-              <div className='product mtop'>
-                <div className='img'>
-                  <img id="flashcard-img" src={"./images/uploads/"+announcement.fileName} alt='' />
-                  {/* <img id="flashcard-img" src={`data:image/png;base64,${base64String}`} alt="Uploaded" /> */}
-                  <div className='product-like'>
-                    <label>0</label> <br />
-                    <i className='fa-regular fa-heart' onClick={increment}></i>
-                  </div>
-                </div>
-                <div className='product-details'>
+      auctions.map((announcement) => (
+        <li key={announcement.id} className="announcement-item">
+        <div className="drop">
+          <div className="drop-img">
+            <img
+              id="drop-announcement-img"
+              src={"./images/uploads/" + announcement.fileName}
+              alt=""
+            />
+          </div>
+                <div className='drop-details'>
                   <h3>{announcement.title}</h3>
                   <div className='desc'>
                     <h4>{announcement.description}</h4> 
                   </div>
                   <div className='price'>
-                    <h4>{announcement.startingPrice}</h4> 
+                    <h4 className="price-range">Price Range: </h4>
+                    <h4 className="price-range-value">BDT {announcement.startingPrice}</h4> 
                   </div>
                   <div className='datetime'>
+                  <i className="fas fa-clock"></i>
                     <h4>{new Date(announcement.startDate).toLocaleString()}</h4> 
                   </div>
                   <div className='datetime'>
+                  <i className="fas fa-clock"></i>
                     <h4>{new Date(announcement.endDate).toLocaleString()}</h4> 
                   </div>
                   <div className='desc'>
                    <Link to={`/profile/${announcement.createdBy}`}>
-                    <h4>{announcement.createdBy}</h4> 
+                    <h4 className="addedby"> Added by {announcement.createdBy}</h4> 
                     </Link>
                   </div>
                 
-                  <button id="remindme" onClick={() => remindMe(announcement._id)}>
+                  <button className="remindme-button" onClick={() => remindMe(announcement._id)}>
               Remind me
             </button>
                 </div>
               </div>
-            </div>)
-            })
+            </li>)
+            )
           }
-        
+        </ul>
+        </div>
             </>
           )
 }

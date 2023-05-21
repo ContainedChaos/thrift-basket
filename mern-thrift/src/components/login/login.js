@@ -3,7 +3,9 @@ import "./login.css"
 import axios from "axios"
 import { useNavigate } from 'react-router-dom';
 import { DataContext } from "../../context/DataProvider";
-import Navbar from "../../common/header/Navbar";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const Login = ({setIsAuthenticated, userCart}) => {
 
@@ -43,7 +45,7 @@ const Login = ({setIsAuthenticated, userCart}) => {
 
             setIsAuthenticated(true);
             window.localStorage.setItem("isAuthenticated", true)
-            alert(res.data.message)
+            toast.success(res.data.message);
             if (res.data.message === "Login Successful") {
                 nav("/")
                 // nav("/userprofile")

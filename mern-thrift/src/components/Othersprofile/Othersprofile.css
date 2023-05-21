@@ -116,6 +116,24 @@
 .others-profile-product-card button {
   display: block;
   margin-top: 10px;
+  width:40px;
+  height:40px;
+  color:rgb(255, 255, 255);
+  background-color: red;
+  border-radius: 7px;
+  margin-left: auto;
+}
+
+.others-profile-product-card button:hover {
+  display: block;
+  margin-top: 10px;
+  width:40px;
+  height:40px;
+  color:rgb(255, 0, 0);
+  background-color: rgb(255, 255, 255);
+  border-radius: 7px;
+  margin-left: auto;
+  border: 1px solid red;
 }
 
 @media screen and (min-width: 768px) {
@@ -125,7 +143,32 @@
   }
 }
 
+.buyer-profile {
+  background-color: #f2f2f2;
+  padding: 20px;
+  box-shadow:  0 2px 10px rgba(0, 0, 0, 0.544);
+  padding: 50px;
+  border-radius: 5px;
+  margin-left: 410px;
+  width:500px;
+  margin-top: 70px;
+  height: 270px;
+}
 
+.buyer-profile h2 {
+  font-size: 30px;
+  margin-bottom: 15px;
+  color:rgb(175, 71, 23);
+}
+
+.buyer-profile .mattribute {
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.buyer-profile .others-info {
+  margin-left: 10px;
+}
 
 
 
