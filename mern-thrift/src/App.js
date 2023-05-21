@@ -35,6 +35,8 @@ import Buy from "./components/Buy/Buy";
 import SeeAuctions from "./components/SeeAuctions/SeeAuctions";
 import About from "./components/About/About";
 import PaymentSuccess from "./components/PaymentSuccess/PaymentSuccess";
+import MyDrops from "./components/MyDrops/MyDrops";
+import MyAuctions from "./components/MyAuctions/MyAuctions";
 
 function App() {
   
@@ -218,6 +220,8 @@ function App() {
           <Route path="/announcedrop" element={<AnnounceDrop setIsAuthenticated={setIsAuthenticated} userCart={userCart}/>}/>
           <Route path="/announcements" element={<SeeAnnouncements userCart={userCart}/>}/>
           <Route path="/auctions" element={<SeeAuctions userCart={userCart}/>}/>
+          <Route path="/mydrops" element={<MyDrops userCart={userCart}/>}/>
+          <Route path="/myauctions" element={<MyAuctions userCart={userCart}/>}/>
           <Route path='/productdetails/:productId' element={<ProductDetails addToCart={addToCart} userCart={userCart} />}/>
           {/* <Route path='/' element={<PrivateRoute isAuthenticated={isAuthenticated} />} > */}
             <Route path='/category/:type' element={<CategoryPage  addToCart={addToCart} userCart={userCart} />}/>

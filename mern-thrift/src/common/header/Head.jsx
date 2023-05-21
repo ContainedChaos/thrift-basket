@@ -20,6 +20,8 @@ const Head = () => {
             <option value="/uploadproducts">Upload Products</option>
             <option value="/announcedrop">Announce a Drop</option>
             <option value="/announceauction">Announce an Auction</option>
+            <option value="/mydrops">My Drops</option>
+            <option value="/myauctions">My Auctions</option>
           </select>
           <label style={{ marginLeft: "10px" }} id="accounttype">
             Seller Account
