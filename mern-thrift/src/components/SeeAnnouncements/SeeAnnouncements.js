@@ -74,6 +74,11 @@ const SeeAnnouncements = ({ userCart }) => {
                   <div className='datetime'>
                     <h4>{new Date(announcement.dateTime).toLocaleString()}</h4> 
                   </div>
+                  <div className='desc'>
+                   <Link to={`/profile/${announcement.uploader}`}>
+                    <h4>{announcement.uploader}</h4> 
+                    </Link>
+                  </div>
                   <button id="remindme" onClick={() => remindMe(announcement._id)}>
               Remind me
             </button>
