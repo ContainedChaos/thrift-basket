@@ -1,0 +1,29 @@
+.mydropsremindme-button {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background-color: #ff4949;
+  border: none;
+  color: #ffffff;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: transform 0.3s ease;
+  max-height: 47px;
+}
+
+.mydropsendedremindme-button {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background-color: #683cbb;
+  border: none;
+  color: #ffffff;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: transform 0.3s ease;
+  max-height: 47px;
+}

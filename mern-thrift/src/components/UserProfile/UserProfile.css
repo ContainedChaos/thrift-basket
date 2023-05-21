@@ -1,19 +1,19 @@
 .user-profile {
     width: 450px;
     height: 350px;
-    background: #fff;
+    background: #f2f2f2;
     border: 1px solid #dddfe2;
     box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
     border-radius: 8px;
     padding: 1rem;
     align-items: center;
-    margin-top: 130px;
+    margin-top: 90px;
     margin-bottom: 190px;
     margin-left: 520px;
 }
 
 .user-profile .attribute {
-    margin-left: 60px;
+    margin-left: 50px;
     margin-top: 30px;
     font-weight: bold;
     margin-right: 10px;
@@ -21,6 +21,7 @@
 
 .user-profile h2 {
     margin-left: 135px;
+    margin-top: 20px;
 }
 
 .profile-button {
@@ -59,4 +60,12 @@
     color: white;
 }
 
+.user-profile button{
+    color:#ffffff;
+    background-color: #a36043;
+    padding:5px;
+    border-radius: 5px;
+    margin-left: 160px;
+    margin-top: 15px;
+}
 

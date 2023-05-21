@@ -47,11 +47,6 @@ const UserProfile = () => {
         <label className="attribute">Role:</label>{" "}
         <label className="info">{userData.role}</label>
         <br />
-        {(window.localStorage.getItem("isBuyer") !== "true") ? (
-            <Link to = '/seereviews'>
-                    <button>My Reviews </button>
-                    </Link>
-                ) : null}
       </div>
     </>
   );

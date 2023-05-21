@@ -38,8 +38,10 @@ const Othersprofile = ({ addToCart, userCart }) => {
   const dest = `http://localhost:3000/images/uploads/`;
 
   return (
+    <>
     <div className="others-profile-container">
       <div className="left-section">
+    {(user.role) === "seller" && 
       <div className="others-profile">
         <h2>Seller</h2>
         <label className="mattribute">Name:</label>{" "}
@@ -54,16 +56,30 @@ const Othersprofile = ({ addToCart, userCart }) => {
         <label className="mattribute">Orders:</label>{" "}
         <label className="others-info">{orders}</label>
         <br />
-      </div>
+      </div>}
 
-      <div className="reviews-container">
+      {(user.role) === "buyer" && 
+      <div className="buyer-profile">
+        <h2>Buyer</h2>
+        <label className="mattribute">Name:</label>{" "}
+        <label className="others-info">{user.name}</label>
+        <br />
+        <label className="mattribute">Email:</label>{" "}
+        <label className="others-info">{user.email}</label>
+        <br />
+        <label className="mattribute">Phone:</label>{" "}
+        <label className="others-info">{user.phone}</label>
+        <br />
+      </div>}
+
+      {/* <div className="reviews-container">
       <h2>Reviews</h2>
         {reviews.map((review, index) => (
           <div className="review" key={index}>
             <p>{review.review}</p>
           </div>
         ))}
-      </div>
+      </div> */}
       </div>
 
 <div className="right-container">
@@ -111,6 +127,7 @@ const Othersprofile = ({ addToCart, userCart }) => {
         />
       )}
     </div>
+    </>
   );
 };
 

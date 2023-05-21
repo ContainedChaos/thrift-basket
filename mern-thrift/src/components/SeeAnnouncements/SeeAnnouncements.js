@@ -6,6 +6,9 @@ import Navbar from "../../common/header/Navbar";
 import "./SeeAnnouncements.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const SeeAnnouncements = ({ userCart }) => {
   const [announcements, setAnnouncements] = useState([]);
@@ -34,7 +37,7 @@ const SeeAnnouncements = ({ userCart }) => {
       .post(`http://localhost:9002/remindme/${announcementId}`, {token})
       .then((response) => {
         console.log(response.data);
-        // Handle any success actions if needed
+        toast.success(response.data.data);
       })
       .catch((error) => {
         console.error(error);
@@ -49,8 +52,6 @@ const SeeAnnouncements = ({ userCart }) => {
         <h1 className="drops-title">Upcoming Drops</h1>
       </div>
     <div className="see-announcements-container">
-      
-      <div className="left-grid">
         <ul className="announcements-list">
           {announcements.map((announcement) => (
             <li key={announcement.id} className="announcement-item">
@@ -72,28 +73,22 @@ const SeeAnnouncements = ({ userCart }) => {
                     <h4 className="price-range-value">BDT {announcement.priceRange}</h4>
                   </div>
                   <div className='datetime'>
+                  <i className="fas fa-clock"></i>
                     <h4>{new Date(announcement.dateTime).toLocaleString()}</h4> 
                   </div>
                   <div className='desc'>
                    <Link to={`/profile/${announcement.uploader}`}>
-                    <h4>{announcement.uploader}</h4> 
+                    <h4 className="addedby">Added by <span>{announcement.uploader}</span></h4> 
                     </Link>
                   </div>
-                  <button id="remindme" onClick={() => remindMe(announcement._id)}>
-              Remind me
-            </button>
+                  <button className="remindme-button" onClick={() => remindMe(announcement._id)}>
+                    Remind me
+                  </button>
                 </div>
               </div>
             </li>
           ))}
         </ul>
-      </div>
-      <div className="right-grid">
-      {/* <div className="imagee-container">
-          <img src="./images/sell/side.jpg" alt="Right Grid Image" className="animated-image" />
-        </div> */}
-</div>
-
     </div>
     </>
   );

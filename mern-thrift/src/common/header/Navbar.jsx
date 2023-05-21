@@ -3,6 +3,8 @@ import { Link } from "react-router-dom"
 import "./Navbar.css";
 import Head from "./Head";
 import "./Header.css";
+import { ToastContainer,toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 
   const  Navbar = ({ userCart }) => {
@@ -17,6 +19,12 @@ import "./Header.css";
         window.localStorage.clear();
         window.location.href = "http://localhost:3000/";
       }
+
+      const handleCartClick = () => {
+        if (window.localStorage.getItem("isAuthenticated") !== "true") {
+          toast.error("Please login first");
+        }
+      };
 
   return (
     <>
@@ -83,7 +91,7 @@ import "./Header.css";
                 </Link>
                 ) : null}
                 {(window.localStorage.getItem("isAuthenticated") !== "true") ? (
-                  <Link to='/loggedoutcart'>
+                  <Link to='/login' onClick={handleCartClick}>
                   <i className='fa fa-shopping-bag icon-circle'></i>
                 </Link>
                 ) : null}
