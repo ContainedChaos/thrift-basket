@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import MessageBox from "../MessageBox/MessageBox";
 import "./MyAuctions.css";
@@ -8,6 +8,8 @@ const MyAuctions = () => {
   const token = localStorage.getItem("accessToken");
   const [auctions, setAuctions] = useState([]);
   const dest = `http://localhost:3000/images/uploads/`;
+
+  const nav = useNavigate()
 
   useEffect(() => {
     axios
@@ -34,14 +36,34 @@ const MyAuctions = () => {
     const auctionEnd = new Date(endDate);
   
     if (auctionStart < currentTime && auctionEnd > currentTime) {
-      return <p>Ongoing</p>;
+      return "Ongoing"
     } else if (auctionStart > currentTime) {
-      return <p>Upcoming</p>;
+      return "Upcoming"
     }
     else if (auctionStart < currentTime && auctionEnd < currentTime) {
-      return <p>Ended</p>
+      return "Ended"
     }
   };
+
+  const start = (auctionId) => {
+
+    axios
+      .post(`http://localhost:9002/startauction/${auctionId}`)
+      .then((response) => {
+        console.log(response.data);
+        response.alert(response.data);
+        // Handle any success actions if needed
+      })
+      .catch((error) => {
+        console.error(error);
+        // Handle any error actions if needed
+      });
+  };
+
+  const view = (auctionId) => {
+    nav(`/viewongoingauction/${auctionId}`)
+  }
+  
 
   return (
     <div>
@@ -58,6 +80,14 @@ const MyAuctions = () => {
           <p>{drop.startDate}</p>
           <p>{drop.endDate}</p>
           <p>{drop.startingPrice}</p>
+          {renderStatus(drop.startDate, drop.endDate) === "Upcoming" && (
+                  <button id="start" onClick={() => start(drop._id)}>
+                    Start
+                  </button>
+                )}
+                  {renderStatus(drop.startDate, drop.endDate) === "Ongoing" && (<button id="view" onClick={() => view(drop._id)}>View</button>)}
+                  {/* {renderStatus(drop.startDate, drop.endDate) === "Ended" && (<button id="view" onClick={() => view(drop._id)}>View</button>)} */}
+
           {renderStatus(drop.startDate, drop.endDate)}
           
           {/* Display other relevant information */}
@@ -65,7 +95,7 @@ const MyAuctions = () => {
       ))}
     </div>
   );
-};
 
+      }
 
 export default MyAuctions;

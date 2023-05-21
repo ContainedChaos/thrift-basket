@@ -15,6 +15,7 @@ import AnnounceDrop from './components/AnnounceDrop/AnnounceDrop';
 import SeeAnnouncements from './components/SeeAnnouncements/SeeAnnouncements';
 import CategoryPage from './components/CategoryPage/CategoryPage';
 import OthersProfile from './components/Othersprofile/Othersprofile';
+import ViewOngoingAuction from "./components/ViewOngoingAuction/ViewOngoingAuction";
 // import Auctionpage from './components/Auctionpage/Auctionpage';
 import Pages from "./pages/Pages"
 import Data from "./components/Data"
@@ -38,6 +39,7 @@ import PaymentSuccess from "./components/PaymentSuccess/PaymentSuccess";
 import MyDrops from "./components/MyDrops/MyDrops";
 import MyAuctions from "./components/MyAuctions/MyAuctions";
 import MyProducts from "./components/MyProducts/MyProducts";
+import PlaceBid from "./components/PlaceBid/PlaceBid";
 
 function App() {
   
@@ -207,6 +209,8 @@ function App() {
           <Route path="/sell" element={<Sell userCart={userCart}/>}/>
           <Route path="/buy" element={<Buy userCart={userCart}/>}/>
           <Route path="/about" element={<About/>}/>
+          <Route path="/placebid/:auctionId" element={<PlaceBid/>}/>
+          <Route path="/viewongoingauction/:auctionId" element={<ViewOngoingAuction/>}/>
           <Route path="/paymentsuccess" element={<PaymentSuccess/>}/>
           <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} userCart={userCart}/>}/>
           <Route path="/register" element={<Register userCart={userCart}/>}/>

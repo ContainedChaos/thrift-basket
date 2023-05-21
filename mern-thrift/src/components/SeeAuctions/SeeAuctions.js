@@ -3,7 +3,8 @@ import Slider from "react-slick"
 import "./SeeAuctions.css"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import moment from 'moment'
 import axios from "axios"
 import Navbar from "../../common/header/Navbar"
 
@@ -15,6 +16,8 @@ const SeeAuctions = ({userCart}) => {
   const increment = () => {
     setCount(count + 1)
   }
+
+  const nav = useNavigate()
 
 
   useEffect(() => {
@@ -43,18 +46,35 @@ const SeeAuctions = ({userCart}) => {
         // Handle any error actions if needed
       });
   };
+
+  const Bid = (auctionId) => {
+    nav(`/placebid/${auctionId}`)
+  };
+
+  const getCurrentTime = () => {
+    return new Date();
+  };
+
+  const renderStatus = (startDate, endDate) => {
+    const currentTime = getCurrentTime();
+    const auctionStart = new Date(startDate);
+    const auctionEnd = new Date(endDate);
+  
+    if (auctionStart < currentTime && auctionEnd > currentTime) {
+      return "Ongoing"
+    } else if (auctionStart > currentTime) {
+      return "Upcoming"
+    }
+    else if (auctionStart < currentTime && auctionEnd < currentTime) {
+      return "Ended"
+    }
+  };
   
 
   return (
     <>
     {
       auctions.map((announcement) => {
-        // const imageSrc = `data:${productItem.contentType};base64,${productItem.data.toString('base64')}`;
-        // const base64String = btoa(String.fromCharCode(...new Uint8Array(productItem.data)));
-        // const imageSrc = URL.createObjectURL(
-        //   new Blob([announcement.data], { type: announcement.contentType })
-        // );
-        // localStorage.setItem("url", imageSrc);
       return(
             <div className='box'>
               <div className='product mtop'>
@@ -85,10 +105,17 @@ const SeeAuctions = ({userCart}) => {
                     <h4>{announcement.createdBy}</h4> 
                     </Link>
                   </div>
+
+                  
                 
+                  {renderStatus(announcement.startDate, announcement.endDate) === "Upcoming" && (
                   <button id="remindme" onClick={() => remindMe(announcement._id)}>
-              Remind me
-            </button>
+                    Remind me
+                  </button>
+                )}
+                  {renderStatus(announcement.startDate, announcement.endDate) === "Ongoing" && (<button id="remindme" onClick={() => Bid(announcement._id)}>Bid</button>)}
+
+            {renderStatus(announcement.startDate, announcement.endDate)}
                 </div>
               </div>
             </div>)

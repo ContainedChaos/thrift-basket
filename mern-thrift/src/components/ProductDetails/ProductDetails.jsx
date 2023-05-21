@@ -13,6 +13,7 @@ const ProductDetails = ({addToCart, userCart}) => {
   const [productItem, setProductItem] = useState([]);
   const [showMessageBox, setShowMessageBox] = useState(false);
   const [uploader, setUploader] = useState([]);
+  const [reviews, setReviews] = useState([]);
   let myProductId = Number(productId);
   // const product = productItem.find((product) => product.id === myProductId);
   // const {id, discount, cover, name, price, description} = product;
@@ -25,6 +26,7 @@ const ProductDetails = ({addToCart, userCart}) => {
         console.log(response.data);
         setProductItem(response.data.product);
         setUploader(response.data.user);
+        setReviews(response.data.reviews);
       })
       .catch((error) => {
         console.error(error);
@@ -102,6 +104,16 @@ const ProductDetails = ({addToCart, userCart}) => {
           onClose={handleCloseMessageBox}
         />
       )}
+
+{reviews.map((review, index) => (
+    
+    <div className="myreview" key={index}>
+      {/* <h1>Review for {review.sellerId.name}</h1> */}
+      <p>{review.review}</p>
+    </div>
+    
+  ))}
+
     </>
   )
 }

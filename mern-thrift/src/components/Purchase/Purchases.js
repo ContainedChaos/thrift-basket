@@ -39,9 +39,11 @@ const Purchases = ({ }) => {
 
   const handleReviewSubmit = (purchaseId) => {
     const reviewText = reviews[purchaseId];
+    const token = localStorage.getItem("accessToken")
     // Send a POST request to write the review
     axios
       .post("http://localhost:9002/reviews", {
+        token,
         purchaseId,
         review: reviewText,
       })
@@ -87,11 +89,11 @@ const Purchases = ({ }) => {
               </div>
               <div className="purchases-review">
               <textarea
-                value={reviews[item[4]] || ""}
-                onChange={(event) => handleReviewChange(event, item[4])}
+                value={reviews[item[0]] || ""}
+                onChange={(event) => handleReviewChange(event, item[0])}
                 placeholder="Write a review..."
               ></textarea>
-              <button onClick={() => handleReviewSubmit(item[4])}>
+              <button onClick={() => handleReviewSubmit(item[0])}>
                 Submit
               </button>
               </div>
