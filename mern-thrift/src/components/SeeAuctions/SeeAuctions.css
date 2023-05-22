@@ -1,0 +1,17 @@
+.upcoming {
+  color:rgb(255, 0, 0);
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.ongoing {
+  color:rgb(27, 199, 0);
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.ended {
+  color:#683cbb;
+  font-weight: 700;
+  font-size: 20px;
+}

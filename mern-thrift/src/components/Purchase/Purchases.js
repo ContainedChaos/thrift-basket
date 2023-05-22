@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import MessageBox from "../MessageBox/MessageBox";
 import "./Purchases.css";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Purchases = ({ }) => {
   const token = localStorage.getItem("accessToken");
@@ -49,10 +51,11 @@ const Purchases = ({ }) => {
       })
       .then((response) => {
         console.log("Review submitted successfully!");
-        // setReviews((prevReviews) => ({
-        //   ...prevReviews,
-        //   [purchaseId]: "",
-        // }));
+        toast.success(response.data.message);
+        setReviews((prevReviews) => ({
+          ...prevReviews,
+          [purchaseId]: "",
+        }));
         // Optionally, you can update the state or show a success message
       })
       .catch((error) => {

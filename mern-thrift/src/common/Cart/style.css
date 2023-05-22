@@ -1,12 +1,19 @@
 .cart-items {
   background: #f6f9fc;
-  height: auto;
   padding: 50px 0;
-  margin-bottom: auto;
+  overflow: auto; 
+  margin-top: 7px;
+}
+
+.cart-items .container {
+  margin-bottom: 100px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .cart-items .cart-details {
   width: 70%;
+  margin-left: 20px;
 }
 
 .cart-items .cart-total {
@@ -14,6 +21,7 @@
   margin-top: 30px;
   margin-left: 30px;
   height: 130px;
+  
 }
 .cart-list {
   background: white;

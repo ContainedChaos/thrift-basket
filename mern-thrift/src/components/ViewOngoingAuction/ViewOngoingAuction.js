@@ -57,40 +57,38 @@ const ViewOngoingAuction = ({ setIsAuthenticated, userCart }) => {
     return (
       <>
         {auction && (
-          <div className="box">
-            <div className="product mtop">
-              <div className="img">
+          <div className="place-bid-container">
+              <div className="place-bid-image">
                 <img
                   id="flashcard-img"
                   src={dest + auction.fileName}
                   alt=""
                 />
               </div>
-              <div className="product-details">
+              <div className="place-bid-details">
                 <h3>{auction.title}</h3>
                 <div className="desc">
                   <h4>{auction.description}</h4>
                 </div>
                 <div className="price">
-                  <h4>{auction.startingPrice}</h4>
+                  <h4>Startting Price: <span>BDT {auction.startingPrice}.00</span></h4>
                 </div>
                 <div className="price">
-                  <h4>{auction.currentPrice}</h4>
+                  <h4>Current Price: <span>BDT {auction.currentPrice}.00</span></h4>
                 </div>
                 <div className="price">
                   {auction.winningBidder && (
-                    <h4>{auction.winningBidder.name}</h4>
+                    <h4>Winning Bidder: <span>{auction.winningBidder.name}</span></h4>
                   )}
                 </div>
                 <div className="datetime">
-                  <h4>{new Date(auction.endDate).toLocaleString()}</h4>
+                  <h4>Ends at: {new Date(auction.endDate).toLocaleString()}</h4>
                 </div>
                 <div className="timer">
                   <h4>{timeRemaining}</h4>
                 </div>
               </div>
             </div>
-          </div>
         )}
       </>
     );

@@ -39,7 +39,7 @@ const Cart = ({ userCart, setUserCart, addToCartFromCart, decreaseQty, removeFro
   return (
     <>
       <section className="cart-items">
-        <div className="container d_flex">
+        <div className="container">
           <div className="cart-details">
             {userCart.length === 0 && (
               <h1 className="no-items product">Your basket is empty </h1>

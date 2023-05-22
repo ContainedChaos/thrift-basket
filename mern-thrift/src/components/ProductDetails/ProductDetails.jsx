@@ -105,6 +105,8 @@ const ProductDetails = ({addToCart, userCart}) => {
         />
       )}
 
+<div className="myreview-container">
+<h2>Reviews</h2>
 {reviews.map((review, index) => (
     
     <div className="myreview" key={index}>
@@ -113,6 +115,7 @@ const ProductDetails = ({addToCart, userCart}) => {
     </div>
     
   ))}
+  </div>
 
     </>
   )

@@ -26,23 +26,26 @@ const MyProducts = () => {
 
 
   return (
-    <div>
+    <>
+    <div className="page-header">
       <h1>My Products</h1>
+      </div>
+      <div className="product-grid">
       {prods.map((prod) => (
-        <div key={prod._id}>
-          <img
-                    className="order-product-image"
+        <div key={prod._id} className="product-card">
+          <img id="flashcard-img"
                     src={dest + prod.fileName}
                     alt="not found"
                   />
-          <h2>{prod.name}</h2>
-          <p>{prod.desc}</p>
-          <p>{prod.price}</p>
+          <h3 className="product-name">{prod.name}</h3>
+          {/* <p>{prod.desc}</p> */}
+          <h3 className="product-price">BDT {prod.price}.00</h3>
           
           {/* Display other relevant information */}
         </div>
       ))}
     </div>
+    </>
   );
 };
 

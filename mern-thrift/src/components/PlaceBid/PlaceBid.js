@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import "./PlaceBid.css";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const PlaceBid = ({ setIsAuthenticated, userCart }) => {
   const { auctionId } = useParams();
@@ -59,11 +62,13 @@ const PlaceBid = ({ setIsAuthenticated, userCart }) => {
       })
       .then((response) => {
         console.log("Bid submitted successfully");
-        window.location.reload()
+        toast.success(response.data.message);
+        window.location.reload();
         // Handle the response or show a success message to the user
       })
       .catch((error) => {
         console.error(error);
+        toast.error(error.response.data.message);
         // Handle the error or show an error message to the user
       });
   };
@@ -86,33 +91,29 @@ const PlaceBid = ({ setIsAuthenticated, userCart }) => {
 
   return (
     <>
-      <div className="box">
-        <div className="product mtop">
-          <div className="img">
+     <div className="place-bid-container">
+        <div className="place-bid-image">
             <img id="flashcard-img" src={dest + auction.fileName} alt="" />
           </div>
-          <div className="product-details">
+          <div className="place-bid-details">
             <h3>{auction.title}</h3>
             <div className="desc">
               <h4>{auction.description}</h4>
             </div>
             <div className="price">
-              <h4>{auction.startingPrice}</h4>
-            </div>
-            <div className="price">
-              <h4>{auction.currentPrice}</h4>
+              <h4>Starting Price: <span>BDT {auction.startingPrice}.00</span></h4>
             </div>
             <div className="datetime">
-              <h4>{new Date(auction.startDate).toLocaleString()}</h4>
+              <h4>Began at: {new Date(auction.startDate).toLocaleString()}</h4>
             </div>
-            <div className="datetime">
-              <h4>{new Date(auction.endDate).toLocaleString()}</h4>
+            <div className="datetimee">
+              <h4>Ends at: {new Date(auction.endDate).toLocaleString()}</h4>
             </div>
             <div className="price">
-  {auction.winningBidder && <h4>{auction.winningBidder.name}</h4>}
+  {auction.winningBidder && <h4>Winning bidder: {auction.winningBidder.name}</h4>}
 </div>
 <div className="price">
-  <h4>{auction.currentPrice !== null ? auction.currentPrice : "N/A"}</h4>
+  <h4>Current Price: <span>BDT {auction.currentPrice !== null ? auction.currentPrice : "N/A"}.00</span></h4>
 </div>
             <div className="timer">
               <h4>{timeRemaining}</h4>
@@ -127,7 +128,6 @@ const PlaceBid = ({ setIsAuthenticated, userCart }) => {
             <button onClick={Bid}>Place Bid</button>
           </div>
         </div>
-      </div>
     </>
   );
 };

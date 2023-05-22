@@ -3,6 +3,7 @@
   grid-template-columns: 1fr 2fr;
   gap: 20px;
   padding: 30px 100px 300px 100px;
+  margin-bottom: 3000px;
 }
 
 .left-section {

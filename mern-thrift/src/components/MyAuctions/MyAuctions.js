@@ -66,36 +66,64 @@ const MyAuctions = () => {
   
 
   return (
-    <div>
-      <h1>My Auctions</h1>
+    <>
+      <div className="drops-title-container">
+      <h1 className="drops-title">My Auctions</h1>
+      </div>
+       <div className="see-announcements-container">
+       <ul className="announcements-list">
       {auctions.map((drop) => (
-        <div key={drop._id}>
-          <img
-                    className="order-product-image"
-                    src={dest + drop.fileName}
-                    alt="not found"
-                  />
-          <h2>{drop.title}</h2>
-          <p>{drop.description}</p>
-          <p>{drop.startDate}</p>
-          <p>{drop.endDate}</p>
-          <p>{drop.startingPrice}</p>
+        <li key={drop.id} className="announcement-item">
+        <div className="drop">
+              <div className="drop-img">
+        <img
+                  className="order-product-image"
+                  src={dest + drop.fileName}
+                  alt="not found"
+                />
+                </div>
+                <div className="drop-details">
+          <h3>{drop.title}</h3>
+          <div className="desc">
+          <h4>{drop.description}</h4>
+          </div>
+          <div className="datetime">
+            <i className="fas fa-clock"></i>
+          <h4>{drop.startDate}</h4>
+          </div>
+          <div className="datetime">
+            <i className="fas fa-clock"></i>
+          <h4>{drop.endDate}</h4>
+          </div>
+          <div className="price">
+            <h4 className="price-range">Price Range: </h4>
+          <h4 className="price-range-value">BDT {drop.startingPrice}</h4>
+          </div>
           {renderStatus(drop.startDate, drop.endDate) === "Upcoming" && (
-                  <button id="start" onClick={() => start(drop._id)}>
+                  <button className="remindme-button" onClick={() => start(drop._id)}>
                     Start
                   </button>
                 )}
-                  {renderStatus(drop.startDate, drop.endDate) === "Ongoing" && (<button id="view" onClick={() => view(drop._id)}>View</button>)}
+                
+                  {renderStatus(drop.startDate, drop.endDate) === "Ongoing" && (<button className="remindme-button" onClick={() => view(drop._id)}>View</button>)}
                   {/* {renderStatus(drop.startDate, drop.endDate) === "Ended" && (<button id="view" onClick={() => view(drop._id)}>View</button>)} */}
 
-          {renderStatus(drop.startDate, drop.endDate)}
+                  <div className="status">
+                  {renderStatus(drop.startDate, drop.endDate) === "Ongoing" && (<p className="ongoing">{renderStatus(drop.startDate, drop.endDate)}</p>)}
+                  {renderStatus(drop.startDate, drop.endDate) === "Upcoming" && (<p className="upcoming">{renderStatus(drop.startDate, drop.endDate)}</p>)}
+                  {renderStatus(drop.startDate, drop.endDate) === "Ended" && (<p className="ended">{renderStatus(drop.startDate, drop.endDate)}</p>)}
+                  </div>
           
           {/* Display other relevant information */}
-        </div>
+          </div>
+                </div>
+                </li>
       ))}
+      </ul>
     </div>
+    </>
   );
 
-      }
+}
 
 export default MyAuctions;

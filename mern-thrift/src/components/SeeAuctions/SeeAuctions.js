@@ -7,6 +7,8 @@ import { Link, useNavigate } from "react-router-dom"
 import moment from 'moment'
 import axios from "axios"
 import Navbar from "../../common/header/Navbar"
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const SeeAuctions = ({userCart}) => {
@@ -26,6 +28,7 @@ const SeeAuctions = ({userCart}) => {
       .then((response) => {
         console.log(response.data);
         setAuctions(response.data);
+        
       })
       .catch((error) => {
         console.error(error);
@@ -39,6 +42,7 @@ const SeeAuctions = ({userCart}) => {
       .post(`http://localhost:9002/remindmeforauction/${announcementId}`, {token})
       .then((response) => {
         console.log(response.data);
+        toast.success(response.data.data);
         // Handle any success actions if needed
       })
       .catch((error) => {
@@ -73,55 +77,58 @@ const SeeAuctions = ({userCart}) => {
 
   return (
     <>
+    <div className="drops-title-container">
+        <h1 className="drops-title">Auctions</h1>
+      </div>
+    <div className="see-announcements-container">
+        <ul className="announcements-list">
     {
-      auctions.map((announcement) => {
-      return(
-            <div className='box'>
-              <div className='product mtop'>
-                <div className='img'>
-                  <img id="flashcard-img" src={"./images/uploads/"+announcement.fileName} alt='' />
-                  {/* <img id="flashcard-img" src={`data:image/png;base64,${base64String}`} alt="Uploaded" /> */}
-                  <div className='product-like'>
-                    <label>0</label> <br />
-                    <i className='fa-regular fa-heart' onClick={increment}></i>
-                  </div>
-                </div>
-                <div className='product-details'>
+      auctions.map((announcement) => (
+            
+        <li key={announcement.id} className="announcement-item">
+        <div className="drop">
+          <div className="drop-img">
+            <img
+              id="drop-announcement-img"
+              src={"./images/uploads/" + announcement.fileName}
+              alt=""
+            />
+          </div>
+                <div className='drop-details'>
                   <h3>{announcement.title}</h3>
                   <div className='desc'>
                     <h4>{announcement.description}</h4> 
                   </div>
                   <div className='price'>
-                    <h4>{announcement.startingPrice}</h4> 
+                    <h4 className="price-range">Price Range: </h4>
+                    <h4 className="price-range-value">BDT {announcement.startingPrice}</h4> 
                   </div>
                   <div className='datetime'>
-                    <h4>{new Date(announcement.startDate).toLocaleString()}</h4> 
+                  <i className="fas fa-clock"></i>
+                    <h4>{new Date(announcement.startDate).toLocaleString()} to</h4> 
                   </div>
                   <div className='datetime'>
+                  <i className="fas fa-clock"></i>
                     <h4>{new Date(announcement.endDate).toLocaleString()}</h4> 
                   </div>
                   <div className='desc'>
                    <Link to={`/profile/${announcement.createdBy}`}>
-                    <h4>{announcement.createdBy}</h4> 
+                    <h4 className="addedby"> Added by <span>{announcement.createdBy}</span></h4> 
                     </Link>
                   </div>
-
-                  
-                
-                  {renderStatus(announcement.startDate, announcement.endDate) === "Upcoming" && (
-                  <button id="remindme" onClick={() => remindMe(announcement._id)}>
-                    Remind me
-                  </button>
-                )}
-                  {renderStatus(announcement.startDate, announcement.endDate) === "Ongoing" && (<button id="remindme" onClick={() => Bid(announcement._id)}>Bid</button>)}
-
-            {renderStatus(announcement.startDate, announcement.endDate)}
+                  <div className="status">
+                  {renderStatus(announcement.startDate, announcement.endDate) === "Ongoing" && (<p className="ongoing">{renderStatus(announcement.startDate, announcement.endDate)}</p>)}
+                  {renderStatus(announcement.startDate, announcement.endDate) === "Upcoming" && (<p className="upcoming">{renderStatus(announcement.startDate, announcement.endDate)}</p>)}
+                  </div>
+                  {renderStatus(announcement.startDate, announcement.endDate) === "Ongoing" && (<button className="remindme-button" onClick={() => Bid(announcement._id)}>Bid</button>)}
+                  {renderStatus(announcement.startDate, announcement.endDate) === "Upcoming" && (<button className="remindme-button" onClick={() => remindMe(announcement._id)}>Remind me</button>)}
                 </div>
-              </div>
-            </div>)
-            })
+                </div>
+            </li>)
+            )
           }
-        
+        </ul>
+        </div>
             </>
           )
 }
