@@ -118,14 +118,20 @@ const PlaceBid = ({ setIsAuthenticated, userCart }) => {
             <div className="timer">
               <h4>{timeRemaining}</h4>
             </div>
-            <input
-              type="text"
-              name="bid"
-              value={bid}
-              onChange={handleChange}
-              placeholder="Enter your bid"
-            />
-            <button onClick={Bid}>Place Bid</button>
+            {timeRemaining !== "Auction ended" && (
+  <input
+    type="text"
+    name="bid"
+    value={bid}
+    onChange={handleChange}
+    placeholder="Enter your bid"
+  />
+)}
+
+            {timeRemaining !== "Auction ended" && (
+  <button onClick={Bid}>Place Bid</button>
+)}
+
           </div>
         </div>
     </>

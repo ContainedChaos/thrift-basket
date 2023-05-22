@@ -78,7 +78,9 @@ const ViewOngoingAuction = ({ setIsAuthenticated, userCart }) => {
                 </div>
                 <div className="price">
                   {auction.winningBidder && (
+                    <Link to={`/profile/${auction.winningBidder.name}`}>
                     <h4>Winning Bidder: <span>{auction.winningBidder.name}</span></h4>
+                    </Link>
                   )}
                 </div>
                 <div className="datetime">

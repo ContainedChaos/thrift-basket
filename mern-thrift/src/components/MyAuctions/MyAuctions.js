@@ -106,7 +106,7 @@ const MyAuctions = () => {
                 )}
                 
                   {renderStatus(drop.startDate, drop.endDate) === "Ongoing" && (<button className="remindme-button" onClick={() => view(drop._id)}>View</button>)}
-                  {/* {renderStatus(drop.startDate, drop.endDate) === "Ended" && (<button id="view" onClick={() => view(drop._id)}>View</button>)} */}
+                  {renderStatus(drop.startDate, drop.endDate) === "Ended" && (<button className="remindme-button" onClick={() => view(drop._id)}>View</button>)}
 
                   <div className="status">
                   {renderStatus(drop.startDate, drop.endDate) === "Ongoing" && (<p className="ongoing">{renderStatus(drop.startDate, drop.endDate)}</p>)}
